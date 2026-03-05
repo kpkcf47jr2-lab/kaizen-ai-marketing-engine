@@ -29,10 +29,7 @@ services:
           name: kaizen-db
           property: connectionString
       - key: REDIS_URL
-        fromService:
-          name: kaizen-redis
-          type: redis
-          property: connectionString
+        sync: false        # paste Internal Key Value URL from Render Redis
       - key: NEXTAUTH_URL
         sync: false        # set manually to your Render URL
       - key: NEXTAUTH_SECRET
@@ -100,10 +97,7 @@ services:
           name: kaizen-db
           property: connectionString
       - key: REDIS_URL
-        fromService:
-          name: kaizen-redis
-          type: redis
-          property: connectionString
+        sync: false        # paste Internal Key Value URL from Render Redis
       - key: OPENAI_API_KEY
         sync: false
       - key: ELEVENLABS_API_KEY
