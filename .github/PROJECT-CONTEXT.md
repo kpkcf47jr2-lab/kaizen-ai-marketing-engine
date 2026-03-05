@@ -2,10 +2,12 @@
 
 > **INSTRUCCIÓN PARA AGENTES IA:** Este documento es la fuente de verdad del proyecto. Léelo completo antes de hacer cualquier cambio. Contiene toda la arquitectura, estado actual, y próximos pasos.
 
-> **Última actualización:** 4 de marzo de 2026  
+> **Última actualización:** 5 de marzo de 2026  
 > **Build status:** ✅ COMPILA EXITOSAMENTE (next build + worker tsc pasan)  
 > **Production readiness:** ✅ Auditoría completa — listo para deploy  
-> **Ubicación:** `/Users/marioisaacrodriguezdelrey/Projects/kaizen-ai-marketing/`
+> **Deployment:** 🔄 EN PROCESO — Blueprint aplicado en Render, esperando API keys  
+> **Ubicación local:** `/Users/marioisaacrodriguezdelrey/Projects/kaizen-ai-marketing/`  
+> **GitHub repo:** `https://github.com/kpkcf47jr2-lab/kaizen-ai-marketing-engine.git`
 
 ---
 
@@ -325,7 +327,7 @@ X_CLIENT_SECRET=
 - [ ] No hay componentes reutilizables (todo inline en pages)
 
 ### ❌ Por implementar (PRÓXIMA FASE):
-- [ ] **Prisma migrations**: Ejecutar `./scripts/create-migration.sh init` cuando haya DB local disponible (Docker)
+- [x] **Prisma migrations**: ✅ Generada con `prisma migrate diff --from-empty` (342 líneas SQL, sin Docker)
 - [ ] **Video Compositor real**: Remotion con text overlays, transiciones, branding, subtítulos automáticos
 - [ ] **LinkedIn Publisher**: LinkedIn Marketing API
 - [ ] **Content Strategy AI**: trending topics, optimal posting times, content variety
@@ -358,51 +360,173 @@ X_CLIENT_SECRET=
 
 ---
 
-## 10. DEPLOYMENT (Render)
+## 10. DEPLOYMENT (Render) — ESTADO ACTUAL
 
-**Plataforma elegida:** Render (https://render.com)
+**Plataforma:** Render (https://render.com)  
+**Workspace:** "Kairos 777's workspace" (login con Google, NO GitHub)  
+**Blueprint:** "KAME" — aplicado el 5 de marzo de 2026  
+**Costo total:** $14/mes (web $7 + worker $7 + DB free + Redis free)  
+**Estado:** 🔄 Blueprint aplicado, servicios creándose, faltan API keys externas
 
-### Servicios en Render:
-| Servicio | Tipo | Plan |
-|----------|------|------|
-| `kaizen-web` | Web Service | Starter ($7/mo) |
-| `kaizen-worker` | Background Worker | Starter ($7/mo) |
-| `kaizen-db` | PostgreSQL | Free (256MB) → Starter ($7/mo) |
-| `kaizen-redis` | Redis | Free (25MB) → Starter ($10/mo) |
+### 10.1 GitHub
+- **Repo:** `https://github.com/kpkcf47jr2-lab/kaizen-ai-marketing-engine.git`
+- **Owner:** `kpkcf47jr2-lab`
+- **Visibilidad:** Public
+- **Branch:** `main`
+- **Commit inicial:** 83 archivos, 14,367 líneas
+- **PAT (Personal Access Token):** Guardado localmente (NO incluir en docs — GitHub Push Protection lo bloquea)
+- **Push command:** Se usa temporalmente en URL y se remueve después por seguridad:
+  ```bash
+  git remote set-url origin https://kpkcf47jr2-lab:<TU_PAT>@github.com/kpkcf47jr2-lab/kaizen-ai-marketing-engine.git
+  git push
+  git remote set-url origin https://github.com/kpkcf47jr2-lab/kaizen-ai-marketing-engine.git
+  ```
 
-### Archivos de deploy:
-- `render.yaml` — Blueprint (Infrastructure as Code)
-- `/api/health` — Health check endpoint
+### 10.2 Servicios en Render
+| Servicio | Tipo | Plan | Estado |
+|----------|------|------|--------|
+| `kaizen-web` | Web Service | Starter ($7/mo) | 🔄 Creado via Blueprint |
+| `kaizen-worker` | Background Worker | Starter ($7/mo) | 🔄 Creado via Blueprint |
+| `kaizen-db` | PostgreSQL | Free (256MB) | ✅ Auto-creado por Blueprint |
+| `KAME-redis` | Key Value (Redis) | Free (25MB, 50 conn) | ✅ Creado manualmente |
 
-### Pasos para deployar:
-1. Generar migración inicial: `./scripts/create-migration.sh init` (requiere DB local con Docker)
-2. Push repo a GitHub
-3. En Render → "New" → "Blueprint" → seleccionar repo
-4. Crear Redis manualmente ("New" → "Redis") con nombre `kaizen-redis`
-5. Configurar env vars marcadas como `sync: false` (API keys, etc.)
-6. Render detecta `render.yaml` y crea web + worker + postgres automáticamente
-7. El build ejecuta `prisma migrate deploy` automáticamente
+### 10.3 Redis (creado manualmente)
+- **Nombre en Render:** `KAME-redis`
+- **Internal URL:** `redis://red-d6khtoqli9vc73f8d8qg:6379`
+- **Región:** Oregon
+- **Plan:** Free (25MB, 50 conexiones)
+- **IMPORTANTE:** `render.yaml` usa `sync: false` para REDIS_URL (no `fromService`), porque el nombre no es `kaizen-redis`
 
-### Worker Health Check:
-- El worker expone HTTP en `:8080` con estado de los 3 workers
-- Render puede monitorearlo via HTTP health check
+### 10.4 Env Vars — Estado
 
-### Storage (S3):
-- Opción recomendada: **Cloudflare R2** (0 egress fees, S3-compatible)
-- Alternativa: AWS S3 directamente
+#### ✅ Auto-configuradas por Render:
+| Variable | Valor | Servicio |
+|----------|-------|----------|
+| `NODE_ENV` | `production` | web + worker |
+| `NODE_VERSION` | `20` | web + worker |
+| `DATABASE_URL` | Auto (fromDatabase) | web + worker |
+| `NEXTAUTH_SECRET` | Auto (generateValue) | web |
+| `ENCRYPTION_KEY` | Auto (generateValue) | web + worker |
+| `WEB3_RPC_URL` | `https://bsc-dataseed1.binance.org/` | web + worker |
+| `CHAIN_ID` | `56` | web |
+
+#### ✅ Configuradas manualmente en Blueprint:
+| Variable | Valor | Servicio |
+|----------|-------|----------|
+| `REDIS_URL` | `redis://red-d6khtoqli9vc73f8d8qg:6379` | web + worker |
+| `KAIROSCOIN_TOKEN_ADDRESS` | `0x14D41707269c7D8b8DFa5095b38824a46dA05da3` | web + worker |
+| `PAYMENT_RECEIVER_ADDRESS` | `0xda32780a6d7F4e9267D28a5C41EA75050e2A8B9B` | web + worker |
+
+#### 🔴 FALTAN — Prioridad 1 (esenciales):
+| Variable | Para qué | Cómo obtenerla | Costo |
+|----------|----------|----------------|-------|
+| `NEXTAUTH_URL` | Auth funcione en prod | Esperar a que Render despliegue → copiar URL del servicio web (ej: `https://kaizen-web-xxxx.onrender.com`) | Gratis |
+| `OPENAI_API_KEY` | Generar scripts + thumbnails (GPT-4o + DALL-E 3) | https://platform.openai.com/api-keys → Create new secret key → agregar $10 de créditos en Billing | ~$0.01-0.03/script |
+| `ELEVENLABS_API_KEY` | Voiceovers TTS | https://elevenlabs.io → Perfil → API Keys (plan Free = 10K chars/mes) | Gratis |
+
+#### 🟡 FALTAN — Prioridad 2 (storage para assets):
+| Variable | Para qué | Cómo obtenerla |
+|----------|----------|----------------|
+| `S3_BUCKET` | Nombre del bucket | Cloudflare R2: crear bucket `kame-assets` |
+| `S3_REGION` | Región | `auto` (para R2) |
+| `S3_ACCESS_KEY` | Auth de storage | R2 → Manage API Tokens → Create → Object Read & Write |
+| `S3_SECRET_KEY` | Auth de storage | Mismo token de arriba |
+| `S3_ENDPOINT` | URL del storage | `https://<ACCOUNT_ID>.r2.cloudflarestorage.com` |
+| **Alternativa:** AWS S3 directo (más complejo) o MinIO self-hosted |
+
+#### 🟢 FALTAN — Prioridad 3 (Google login, opcional):
+| Variable | Cómo obtenerla |
+|----------|----------------|
+| `GOOGLE_CLIENT_ID` | Google Cloud Console → APIs & Services → Credentials → Create OAuth client ID (Web) |
+| `GOOGLE_CLIENT_SECRET` | Mismo de arriba |
+| **Redirect URI:** `https://<RENDER_URL>/api/auth/callback/google` |
+
+#### 🔵 FALTAN — Prioridad 4 (publicación en redes, cuando estés listo):
+| Variable | Plataforma | URL para obtener |
+|----------|------------|------------------|
+| `META_APP_ID` + `META_APP_SECRET` | Facebook/Instagram | https://developers.facebook.com → Create App → Business type |
+| `TIKTOK_CLIENT_KEY` + `TIKTOK_CLIENT_SECRET` | TikTok | https://developers.tiktok.com → Create App (tarda 2-5 días aprobación) |
+| `X_CLIENT_ID` + `X_CLIENT_SECRET` | X/Twitter | https://developer.x.com → Portal → Create Project+App (Free tier = solo postear) |
+
+### 10.5 Migración de BD
+- **Archivo:** `prisma/migrations/0_init/migration.sql` (342 líneas SQL)
+- **Lock:** `prisma/migrations/migration_lock.toml` (provider = postgresql)
+- **Generado con:** `prisma migrate diff --from-empty --to-schema-datamodel` (sin Docker, sin DB local)
+- **Se ejecuta en deploy:** `prisma migrate deploy` en el buildCommand de `render.yaml`
+
+### 10.6 Archivos de deploy
+- `render.yaml` — Blueprint IaC (2 services + 1 database)
+- `/api/health` — Health check con verificación de DB (`SELECT 1`) + Redis (`ping`)
+- Worker health: HTTP en `:8080`
+
+### 10.7 Storage (S3)
+- **Recomendado:** Cloudflare R2 (0 egress fees, S3-compatible, 10GB gratis/mes)
+- **Alternativa:** AWS S3
+- **URL para R2:** https://dash.cloudflare.com → R2 Object Storage
 
 ---
 
-## 11. CÓMO CONTINUAR EN UN NUEVO CHAT
+## 11. PRÓXIMOS PASOS INMEDIATOS (para la próxima sesión)
+
+### Paso 1: Verificar que Render haya desplegado
+- Ir a https://dashboard.render.com → Blueprint "KAME"
+- Verificar que `kaizen-web` y `kaizen-worker` tengan status "Live"
+- Copiar la URL del servicio web (ej: `https://kaizen-web-xxxx.onrender.com`)
+- Verificar health: `curl https://<URL>/api/health`
+
+### Paso 2: Configurar NEXTAUTH_URL
+- En Render → kaizen-web → Environment → Add env var
+- Key: `NEXTAUTH_URL`, Value: la URL del paso 1
+- Redeploy el servicio
+
+### Paso 3: Obtener API keys (en orden de prioridad)
+1. **OPENAI_API_KEY** → https://platform.openai.com/api-keys (agregar $10 billing)
+2. **ELEVENLABS_API_KEY** → https://elevenlabs.io (plan Free)
+3. **S3 Storage (Cloudflare R2)** → https://dash.cloudflare.com → R2 (5 env vars)
+4. Google OAuth → https://console.cloud.google.com/apis/credentials (opcional)
+5. Social APIs → Meta, TikTok, X (cuando estés listo para publicar)
+
+### Paso 4: Agregar keys a Render
+- Cada key se agrega en AMBOS servicios (kaizen-web + kaizen-worker) donde aplique
+- Después de agregar, Render hace auto-redeploy
+
+### Paso 5: Probar flujo completo
+1. Abrir `https://<URL>/register` → crear cuenta
+2. Dashboard → Brand Kit → configurar marca
+3. Dashboard → Credits → comprar con KairosCoin (o seed con FORCE_SEED=1)
+4. Generar contenido (necesita OPENAI_API_KEY)
+5. Ver en Library
+6. Conectar red social y publicar
+
+---
+
+## 12. CÓMO CONTINUAR EN UN NUEVO CHAT
 
 Pega esta instrucción al agente:
 
 ```
-Estoy trabajando en el proyecto Kaizen AI Marketing Engine.
+Estoy trabajando en el proyecto KAME (Kaizen AI Marketing Engine).
 Ubicación: /Users/marioisaacrodriguezdelrey/Projects/kaizen-ai-marketing/
-Lee el archivo .github/PROJECT-CONTEXT.md para entender todo el contexto del proyecto.
-El proyecto ya compila (next build pasa). Continúa desde donde se quedó la sección 8 "Por implementar".
+GitHub: https://github.com/kpkcf47jr2-lab/kaizen-ai-marketing-engine.git
+Lee el archivo .github/PROJECT-CONTEXT.md para entender todo el contexto.
+
+Estado actual:
+- El código está completo y compila (next build + worker tsc pasan)
+- El repo está en GitHub (83 archivos, 14,367 líneas)
+- Render Blueprint "KAME" fue aplicado ($14/mes)
+- Redis creado en Render (KAME-redis, Internal URL en el doc)
+- FALTAN API keys externas — ver sección 10.4 del PROJECT-CONTEXT.md
+- Continúa desde la sección 11 "Próximos pasos inmediatos"
 ```
+
+---
+
+## 13. HISTORIAL DE SESIONES
+
+| Fecha | Qué se hizo |
+|-------|-------------|
+| 3-4 mar 2026 | Construcción completa: monorepo, schema, providers, UI, workers, KairosPay, auditoría prod round 1+2 |
+| 5 mar 2026 | Git init, GitHub push (kpkcf47jr2-lab/kaizen-ai-marketing-engine), Render Redis (KAME-redis), Blueprint "KAME" aplicado, render.yaml fix (REDIS_URL sync:false). Pendiente: API keys externas |
 
 ---
 
