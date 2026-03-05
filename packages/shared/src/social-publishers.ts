@@ -524,54 +524,94 @@ export class XTwitterPublisher implements SocialPublisher {
 export class ElitePublisher implements SocialPublisher {
   readonly provider = 'ELITE';
 
+  private get baseUrl() {
+    return process.env.ELITE_API_URL || 'https://api.elite-777.com/api/v1';
+  }
+
+  /**
+   * Publish a video to Elite.
+   * Flow: 1) Upload media via /api/v1/media/upload
+   *       2) Create reel via /api/v1/reels with the media URL
+   * Auth: X-API-Key header with elk_live_xxx key
+   */
   async publishVideo(params: {
     videoUrl: string;
     caption?: string;
     hashtags?: string[];
-    accessToken: string;
+    accessToken: string; // This is the elk_live_xxx API key
     accountId?: string;
   }): Promise<{ remotePostId: string; remoteUrl?: string }> {
-    const baseUrl = process.env.ELITE_API_URL || 'https://api.elite.social';
-    const body = {
-      video_url: params.videoUrl,
-      caption: params.caption || '',
-      hashtags: params.hashtags || [],
-      visibility: 'public',
-    };
+    const apiKey = params.accessToken; // In Elite, we store the API key as accessToken
 
-    const res = await fetch(`${baseUrl}/v1/posts/video`, {
+    // Step 1: Upload the video via media/upload
+    const uploadRes = await fetch(`${this.baseUrl}/media/upload`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${params.accessToken}`,
+        Authorization: `Bearer ${apiKey}`,
       },
-      body: JSON.stringify(body),
+      body: JSON.stringify({
+        url: params.videoUrl,
+        type: 'video',
+      }),
     });
 
-    if (!res.ok) {
-      const err = await res.text();
-      throw new Error(`Elite publish failed (${res.status}): ${err}`);
+    if (!uploadRes.ok) {
+      const err = await uploadRes.text();
+      throw new Error(`Elite media upload failed (${uploadRes.status}): ${err}`);
     }
 
-    const data = await res.json();
+    const uploadData = await uploadRes.json();
+    const mediaId = uploadData.id || uploadData.media_id;
+
+    // Step 2: Create a reel with the uploaded media
+    const reelRes = await fetch(`${this.baseUrl}/reels`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify({
+        media_id: mediaId,
+        caption: params.caption || '',
+        hashtags: params.hashtags || [],
+      }),
+    });
+
+    if (!reelRes.ok) {
+      const err = await reelRes.text();
+      throw new Error(`Elite reel creation failed (${reelRes.status}): ${err}`);
+    }
+
+    const reelData = await reelRes.json();
+    const postId = reelData.id || reelData.post_id || reelData.reel_id;
     return {
-      remotePostId: data.id || data.post_id,
-      remoteUrl: data.url || `https://elite.social/post/${data.id || data.post_id}`,
+      remotePostId: postId,
+      remoteUrl: reelData.url || `https://elite-777.com/reel/${postId}`,
     };
   }
 
+  /**
+   * Refresh Elite OAuth token via their token endpoint.
+   */
   async refreshToken(refreshToken: string): Promise<{
     accessToken: string;
     refreshToken?: string;
-    expiresAt: Date;
+    expiresAt?: Date;
   }> {
-    const baseUrl = process.env.ELITE_API_URL || 'https://api.elite.social';
-    const res = await fetch(`${baseUrl}/v1/auth/refresh`, {
+    // Refresh via Elite OAuth token endpoint
+    const res = await fetch('https://api.elite-777.com/oauth/token', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ refresh_token: refreshToken }),
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({
+        grant_type: 'refresh_token',
+        refresh_token: refreshToken,
+        client_id: process.env.ELITE_CLIENT_ID || '',
+        client_secret: process.env.ELITE_CLIENT_SECRET || '',
+      }),
     });
     const data = await res.json();
+    if (!res.ok) throw new Error(data.error_description || 'Elite token refresh failed');
     return {
       accessToken: data.access_token,
       refreshToken: data.refresh_token,
@@ -583,17 +623,16 @@ export class ElitePublisher implements SocialPublisher {
     remotePostId: string;
     accessToken: string;
   }): Promise<{ views?: number; likes?: number; comments?: number; shares?: number }> {
-    const baseUrl = process.env.ELITE_API_URL || 'https://api.elite.social';
-    const res = await fetch(`${baseUrl}/v1/posts/${params.remotePostId}/metrics`, {
+    const res = await fetch(`${this.baseUrl}/posts/${params.remotePostId}`, {
       headers: { Authorization: `Bearer ${params.accessToken}` },
     });
     if (!res.ok) return {};
     const data = await res.json();
     return {
-      views: data.views,
-      likes: data.likes,
-      comments: data.comments,
-      shares: data.shares,
+      views: data.views ?? data.view_count,
+      likes: data.likes ?? data.like_count,
+      comments: data.comments ?? data.comment_count,
+      shares: data.shares ?? data.share_count,
     };
   }
 }

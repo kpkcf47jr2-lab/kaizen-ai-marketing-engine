@@ -13,18 +13,42 @@ export default function ConnectionsPage() {
   }, []);
 
   function getOAuthUrl(provider: string) {
+    const redirectBase = window.location.origin;
+
     if (provider === 'ELITE') {
-      return `https://elite.social/oauth/authorize?client_id=${process.env.NEXT_PUBLIC_ELITE_CLIENT_ID}&redirect_uri=${encodeURIComponent(window.location.origin + '/api/social/elite/callback')}&scope=content.publish,content.read,profile.read&response_type=code`;
+      const params = new URLSearchParams({
+        client_id: process.env.NEXT_PUBLIC_ELITE_CLIENT_ID || '',
+        redirect_uri: `${redirectBase}/api/social/elite/callback`,
+        response_type: 'code',
+        scope: 'posts:write media:upload profile:read',
+      });
+      return `https://api.elite-777.com/oauth/authorize?${params.toString()}`;
     }
+
     if (provider === 'META_INSTAGRAM' || provider === 'META_FACEBOOK') {
       const scopes = [...SOCIAL_PROVIDERS.META_INSTAGRAM.scopes, ...SOCIAL_PROVIDERS.META_FACEBOOK.scopes].join(',');
-      return `https://www.facebook.com/v19.0/dialog/oauth?client_id=${process.env.NEXT_PUBLIC_META_APP_ID}&redirect_uri=${encodeURIComponent(window.location.origin + '/api/social/meta/callback')}&scope=${scopes}&response_type=code`;
+      return `https://www.facebook.com/v19.0/dialog/oauth?client_id=${process.env.NEXT_PUBLIC_META_APP_ID}&redirect_uri=${encodeURIComponent(redirectBase + '/api/social/meta/callback')}&scope=${scopes}&response_type=code`;
     }
-    // TODO: Add other providers
+
     return '#';
   }
 
-  const isConnected = (provider: string) => accounts.some((a) => a.provider === provider);
+  // Check for success/error in URL params
+  const [statusMsg, setStatusMsg] = useState('');
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('success') === 'elite') {
+      setStatusMsg('✅ ¡Elite conectada exitosamente!');
+      window.history.replaceState({}, '', '/dashboard/connections');
+    } else if (params.get('error') === 'elite_failed') {
+      setStatusMsg('❌ Error al conectar Elite — intenta de nuevo');
+      window.history.replaceState({}, '', '/dashboard/connections');
+    } else if (params.get('error') === 'elite_oauth_denied') {
+      setStatusMsg('⚠️ Conexión cancelada');
+      window.history.replaceState({}, '', '/dashboard/connections');
+    }
+  }, []);
+
   const eliteAccount = accounts.find((a) => a.provider === 'ELITE');
   const otherProviders = Object.entries(SOCIAL_PROVIDERS).filter(([key]) => key !== 'ELITE');
 
@@ -32,6 +56,13 @@ export default function ConnectionsPage() {
     <div>
       <h1 className="text-3xl font-bold mb-1">Redes sociales</h1>
       <p className="text-muted-foreground mb-8">Conecta tus redes para publicación automática.</p>
+
+      {/* Status message */}
+      {statusMsg && (
+        <div className="mb-6 p-4 rounded-xl border border-border bg-card text-sm">
+          {statusMsg}
+        </div>
+      )}
 
       {/* ── Elite — Featured Card ─────────────────────────── */}
       <div className="mb-8">
@@ -55,9 +86,9 @@ export default function ConnectionsPage() {
                 <span className="text-purple-400 text-sm font-normal">— La red social del futuro</span>
               </h2>
               {eliteAccount ? (
-                <p className="text-sm text-green-400 mt-1">✓ Conectada como @{eliteAccount.providerUsername || 'usuario'}</p>
+                <p className="text-sm text-green-400 mt-1">✓ Conectada como @{eliteAccount.providerUsername}</p>
               ) : (
-                <p className="text-sm text-muted-foreground mt-1">Publica videos con IA directamente en Elite</p>
+                <p className="text-sm text-muted-foreground mt-1">Inicia sesión con tu cuenta de Elite para publicar automáticamente</p>
               )}
             </div>
 
