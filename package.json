@@ -1,0 +1,23 @@
+{
+  "name": "kaizen-ai-marketing",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Kaizen AI Marketing Engine — Automated AI video generation & social publishing with KairosCoin payments",
+  "scripts": {
+    "dev": "pnpm --filter @kaizen/web dev",
+    "build": "pnpm --filter @kaizen/web build",
+    "worker": "pnpm --filter @kaizen/worker start",
+    "worker:dev": "pnpm --filter @kaizen/worker dev",
+    "db:migrate": "pnpm --filter @kaizen/web prisma migrate dev",
+    "db:migrate:deploy": "pnpm --filter @kaizen/web prisma migrate deploy",
+    "db:push": "pnpm --filter @kaizen/web prisma db push",
+    "db:seed": "pnpm --filter @kaizen/web prisma db seed",
+    "db:studio": "pnpm --filter @kaizen/web prisma studio",
+    "lint": "pnpm -r lint",
+    "clean": "pnpm -r clean"
+  },
+  "engines": {
+    "node": ">=20",
+    "pnpm": ">=9"
+  }
+}

@@ -1,0 +1,342 @@
+// Kaizen AI Marketing Engine — Prisma Schema
+// All entities for the MVP
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ─── Auth & Users ────────────────────────────────────────
+
+enum Role {
+  USER
+  ADMIN
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  passwordHash  String?
+  name          String?
+  image         String?
+  role          Role      @default(USER)
+  emailVerified DateTime?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  // Relations
+  brandProfile   BrandProfile?
+  socialAccounts SocialAccount[]
+  wallet         Wallet?
+  creditLedger   CreditLedger[]
+  payments       OnchainPayment[]
+  contentJobs    ContentJob[]
+  assets         Asset[]
+  posts          Post[]
+  sessions       Session[]
+  accounts       Account[]
+
+  @@map("users")
+}
+
+// NextAuth support tables
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}
+
+// ─── Brand Profile ───────────────────────────────────────
+
+model BrandProfile {
+  id              String   @id @default(cuid())
+  userId          String   @unique
+  brandName       String
+  niche           String?
+  language        String   @default("en")
+  tone            String?  // e.g. "professional", "casual", "energetic"
+  masterPrompt    String   @db.Text
+  ctas            String[] // call-to-action phrases
+  links           String[] // website/product links
+  hashtagsDefault String[] // default hashtags
+  styleGuidelines String?  @db.Text
+  products        String?  @db.Text // JSON description of products
+  targetAudience  String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("brand_profiles")
+}
+
+// ─── Social Accounts (OAuth) ─────────────────────────────
+
+enum SocialProvider {
+  META_INSTAGRAM
+  META_FACEBOOK
+  YOUTUBE
+  TIKTOK
+  X_TWITTER
+}
+
+enum SocialAccountStatus {
+  ACTIVE
+  EXPIRED
+  REVOKED
+  ERROR
+}
+
+model SocialAccount {
+  id                    String              @id @default(cuid())
+  userId                String
+  provider              SocialProvider
+  providerAccountId     String?
+  providerUsername      String?
+  accessTokenEncrypted  String              @db.Text
+  refreshTokenEncrypted String?             @db.Text
+  tokenExpiresAt        DateTime?
+  scopes                String[]
+  status                SocialAccountStatus @default(ACTIVE)
+  metadata              Json?               // extra provider data
+  connectedAt           DateTime            @default(now())
+  updatedAt             DateTime            @updatedAt
+
+  user  User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  posts Post[]
+
+  @@unique([userId, provider])
+  @@map("social_accounts")
+}
+
+// ─── Wallet & Payments ───────────────────────────────────
+
+model Wallet {
+  id          String   @id @default(cuid())
+  userId      String   @unique
+  address     String
+  chainId     Int      @default(56) // BSC mainnet
+  connectedAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("wallets")
+}
+
+enum LedgerType {
+  PURCHASE
+  SPEND
+  REFUND
+  BONUS
+}
+
+model CreditLedger {
+  id           String     @id @default(cuid())
+  userId       String
+  type         LedgerType
+  amount       Int        // positive for credit, negative for debit
+  balanceAfter Int
+  referenceId  String?    // links to OnchainPayment.id or ContentJob.id
+  description  String?
+  createdAt    DateTime   @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, createdAt])
+  @@map("credit_ledger")
+}
+
+enum PaymentStatus {
+  PENDING
+  CONFIRMING
+  CONFIRMED
+  FAILED
+}
+
+model OnchainPayment {
+  id            String        @id @default(cuid())
+  userId        String
+  txHash        String        @unique
+  chainId       Int
+  fromAddress   String
+  toAddress     String
+  tokenAddress  String
+  amount        String        // wei string for precision
+  amountDisplay String?       // human-readable
+  creditsPurchased Int?
+  status        PaymentStatus @default(PENDING)
+  confirmations Int           @default(0)
+  confirmedAt   DateTime?
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([status])
+  @@map("onchain_payments")
+}
+
+// ─── Content Generation ──────────────────────────────────
+
+enum JobStatus {
+  QUEUED
+  RUNNING
+  GENERATING_SCRIPT
+  GENERATING_VOICE
+  GENERATING_VIDEO
+  PUBLISHING
+  SUCCESS
+  FAILED
+  CANCELLED
+}
+
+model ContentJob {
+  id           String    @id @default(cuid())
+  userId       String
+  scheduledFor DateTime
+  status       JobStatus @default(QUEUED)
+  progress     Int       @default(0) // 0-100
+  error        String?   @db.Text
+  retries      Int       @default(0)
+  maxRetries   Int       @default(3)
+  metadata     Json?     // extra config for this job
+  startedAt    DateTime?
+  completedAt  DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  user   User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  assets Asset[]
+  posts  Post[]
+
+  @@index([userId, status])
+  @@index([scheduledFor, status])
+  @@map("content_jobs")
+}
+
+// ─── Assets (generated files) ────────────────────────────
+
+enum AssetType {
+  VIDEO
+  IMAGE
+  AUDIO
+  SCRIPT
+  CAPTION
+  THUMBNAIL
+}
+
+model Asset {
+  id           String    @id @default(cuid())
+  userId       String
+  contentJobId String?
+  type         AssetType
+  url          String
+  filename     String?
+  mimeType     String?
+  sizeBytes    Int?
+  durationMs   Int?      // for video/audio
+  metadata     Json?
+  createdAt    DateTime  @default(now())
+
+  user       User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  contentJob ContentJob? @relation(fields: [contentJobId], references: [id])
+  posts      Post[]
+
+  @@index([userId, type])
+  @@map("assets")
+}
+
+// ─── Posts (published content) ───────────────────────────
+
+enum PostStatus {
+  DRAFT
+  SCHEDULED
+  PUBLISHING
+  PUBLISHED
+  FAILED
+}
+
+model Post {
+  id              String     @id @default(cuid())
+  userId          String
+  socialAccountId String
+  contentJobId    String?
+  assetId         String?
+  provider        SocialProvider
+  caption         String?    @db.Text
+  hashtags        String[]
+  status          PostStatus @default(DRAFT)
+  remotePostId    String?    // ID on the social platform
+  remoteUrl       String?    // URL on the social platform
+  publishedAt     DateTime?
+  scheduledFor    DateTime?
+  metrics         Json?      // { views, likes, comments, shares }
+  error           String?
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @updatedAt
+
+  user          User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  socialAccount SocialAccount @relation(fields: [socialAccountId], references: [id])
+  contentJob    ContentJob?   @relation(fields: [contentJobId], references: [id])
+  asset         Asset?        @relation(fields: [assetId], references: [id])
+
+  @@index([userId, status])
+  @@index([scheduledFor, status])
+  @@map("posts")
+}
+
+// ─── Audit Log ───────────────────────────────────────────
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  userId    String?
+  action    String
+  entity    String
+  entityId  String?
+  details   Json?
+  ip        String?
+  createdAt DateTime @default(now())
+
+  @@index([userId, createdAt])
+  @@index([entity, entityId])
+  @@map("audit_logs")
+}

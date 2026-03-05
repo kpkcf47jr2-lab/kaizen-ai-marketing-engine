@@ -1,0 +1,141 @@
+# ============================================
+# Kaizen AI Marketing Engine — Render Blueprint
+# ============================================
+# Deploy: Connect this repo in Render → "New Blueprint Instance"
+# Docs: https://render.com/docs/blueprint-spec
+
+services:
+  # ── Next.js Web App ─────────────────────────
+  - type: web
+    name: kaizen-web
+    runtime: node
+    region: oregon
+    plan: starter        # $7/mo — upgrade to standard ($25) when needed
+    buildCommand: |
+      corepack enable &&
+      pnpm install --frozen-lockfile &&
+      pnpm --filter @kaizen/web exec prisma generate &&
+      pnpm --filter @kaizen/web exec prisma migrate deploy &&
+      pnpm --filter @kaizen/web build
+    startCommand: pnpm --filter @kaizen/web start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: "20"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: kaizen-db
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          name: kaizen-redis
+          type: redis
+          property: connectionString
+      - key: NEXTAUTH_URL
+        sync: false        # set manually to your Render URL
+      - key: NEXTAUTH_SECRET
+        generateValue: true
+      - key: ENCRYPTION_KEY
+        generateValue: true
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: ELEVENLABS_API_KEY
+        sync: false
+      - key: S3_BUCKET
+        sync: false
+      - key: S3_REGION
+        sync: false
+      - key: S3_ACCESS_KEY
+        sync: false
+      - key: S3_SECRET_KEY
+        sync: false
+      - key: S3_ENDPOINT
+        sync: false
+      - key: KAIROSCOIN_TOKEN_ADDRESS
+        sync: false
+      - key: PAYMENT_RECEIVER_ADDRESS
+        sync: false
+      - key: WEB3_RPC_URL
+        value: "https://bsc-dataseed1.binance.org/"
+      - key: CHAIN_ID
+        value: "56"
+      - key: META_APP_ID
+        sync: false
+      - key: META_APP_SECRET
+        sync: false
+      - key: GOOGLE_CLIENT_ID
+        sync: false
+      - key: GOOGLE_CLIENT_SECRET
+        sync: false
+      - key: TIKTOK_CLIENT_KEY
+        sync: false
+      - key: TIKTOK_CLIENT_SECRET
+        sync: false
+      - key: X_CLIENT_ID
+        sync: false
+      - key: X_CLIENT_SECRET
+        sync: false
+
+  # ── BullMQ Worker (Background) ─────────────
+  - type: worker
+    name: kaizen-worker
+    runtime: node
+    region: oregon
+    plan: starter        # $7/mo
+    buildCommand: |
+      corepack enable &&
+      pnpm install --frozen-lockfile &&
+      pnpm --filter @kaizen/worker prisma:generate &&
+      pnpm --filter @kaizen/worker build
+    startCommand: pnpm --filter @kaizen/worker start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: "20"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: kaizen-db
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          name: kaizen-redis
+          type: redis
+          property: connectionString
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: ELEVENLABS_API_KEY
+        sync: false
+      - key: S3_BUCKET
+        sync: false
+      - key: S3_REGION
+        sync: false
+      - key: S3_ACCESS_KEY
+        sync: false
+      - key: S3_SECRET_KEY
+        sync: false
+      - key: S3_ENDPOINT
+        sync: false
+      - key: ENCRYPTION_KEY
+        sync: false
+      - key: KAIROSCOIN_TOKEN_ADDRESS
+        sync: false
+      - key: PAYMENT_RECEIVER_ADDRESS
+        sync: false
+      - key: WEB3_RPC_URL
+        value: "https://bsc-dataseed1.binance.org/"
+
+databases:
+  # ── PostgreSQL ──────────────────────────────
+  - name: kaizen-db
+    plan: free           # 256MB free — upgrade to starter ($7) for 1GB
+    databaseName: kaizen_ai
+    user: kaizen
+    region: oregon
+
+# ── Redis ─────────────────────────────────────
+# Note: Create Redis manually in Render dashboard
+# (Redis is not yet supported in render.yaml blueprints)
+# Name it "kaizen-redis" so the env vars auto-link
