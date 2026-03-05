@@ -1,27 +1,34 @@
 /**
- * Content Generation Processor
- * Orchestrates: Script → Voice → Video → Thumbnail pipeline via real providers.
- * Uses correct Prisma schema field names (see PROJECT-CONTEXT.md §4).
+ * Content Generation Processor — HeyGen-Powered Pipeline
+ *
+ * NEW FLOW (HeyGen handles video + voice):
+ *   1. GPT-4o generates script + HeyGen video prompt (derived from Master Prompt)
+ *   2. HeyGen generates avatar video with lip-synced voice (no separate TTS!)
+ *   3. DALL-E generates thumbnail (optional)
+ *   4. Posts are scheduled for connected social accounts
+ *   5. Credits are charged based on video tier (FREE/PRO/ULTRA)
+ *
+ * The user pays in KairosCoin → KAME pays HeyGen in USD on their behalf.
  */
 import prisma from '../lib/prisma.js';
 import {
   OpenAILLMProvider,
-  ElevenLabsTTSProvider,
+  HeyGenVideoProvider,
   MockLLMProvider,
-  MockTTSProvider,
   MockVideoProvider,
   MockThumbnailProvider,
   DALLEThumbnailProvider,
-  CREDITS_PER_VIDEO,
+  CREDITS_BY_TIER,
 } from '@kaizen/shared';
 import type {
   LLMProvider,
-  TTSProvider,
   VideoProvider,
   ThumbnailProvider,
   BrandConfig,
   StorageUploadFn,
 } from '@kaizen/shared';
+import type { GeneratedContentPlan } from '@kaizen/shared/src/openai-llm.js';
+import type { VideoQualityTier } from '@kaizen/shared';
 
 interface ContentJobData {
   contentJobId: string;
@@ -65,18 +72,24 @@ async function getStorageUpload(): Promise<StorageUploadFn> {
 
 // ─── Provider Factory ────────────────────────────────────
 
-function createProviders(uploadFn: StorageUploadFn): {
-  llm: LLMProvider;
-  tts: TTSProvider;
+function createProviders(
+  uploadFn: StorageUploadFn,
+  tier: VideoQualityTier = 'pro',
+  campaignConfig?: { avatarId?: string; voiceId?: string },
+): {
+  llm: LLMProvider & { generateContentPlan?: typeof OpenAILLMProvider.prototype.generateContentPlan };
   video: VideoProvider;
   thumbnail: ThumbnailProvider;
 } {
   return {
     llm: process.env.OPENAI_API_KEY ? new OpenAILLMProvider() : new MockLLMProvider(),
-    tts: process.env.ELEVENLABS_API_KEY
-      ? new ElevenLabsTTSProvider(undefined, uploadFn)
-      : new MockTTSProvider(),
-    video: new MockVideoProvider(), // TODO: Replace with Remotion compositor
+    video: process.env.HEYGEN_API_KEY
+      ? new HeyGenVideoProvider({
+          tier,
+          defaultAvatarId: campaignConfig?.avatarId,
+          defaultVoiceId: campaignConfig?.voiceId,
+        })
+      : new MockVideoProvider(),
     thumbnail: process.env.OPENAI_API_KEY
       ? new DALLEThumbnailProvider(undefined, uploadFn)
       : new MockThumbnailProvider(),
@@ -88,6 +101,14 @@ function createProviders(uploadFn: StorageUploadFn): {
 export async function processContentJob(data: ContentJobData) {
   const { contentJobId, userId } = data;
 
+  // Load the content job to get the video tier
+  const contentJob = await prisma.contentJob.findUnique({
+    where: { id: contentJobId },
+  });
+  if (!contentJob) throw new Error(`Content job ${contentJobId} not found`);
+
+  const videoTier = (contentJob.videoTier?.toLowerCase() || 'pro') as VideoQualityTier;
+
   // Update job to RUNNING
   await prisma.contentJob.update({
     where: { id: contentJobId },
@@ -98,6 +119,9 @@ export async function processContentJob(data: ContentJobData) {
     // Load brand profile
     const brand = await prisma.brandProfile.findUnique({ where: { userId } });
     if (!brand) throw new Error('Brand profile not found — cannot generate content');
+
+    // Load campaign config for avatar/voice preferences
+    const campaign = await prisma.campaign.findUnique({ where: { userId } });
 
     const brandConfig: BrandConfig = {
       brandName: brand.brandName,
@@ -113,33 +137,69 @@ export async function processContentJob(data: ContentJobData) {
       targetAudience: brand.targetAudience || undefined,
     };
 
-    // Get recent topics to avoid repetition
+    // Get recent topics to avoid repetition (last 30)
     const recentJobs = await prisma.asset.findMany({
       where: { userId, type: 'SCRIPT' },
       orderBy: { createdAt: 'desc' },
-      take: 10,
+      take: 30,
       select: { filename: true },
     });
     const previousTopics = recentJobs.map((a) => a.filename || '').filter(Boolean);
 
     const uploadFn = await getStorageUpload();
-    const providers = createProviders(uploadFn);
+    const providers = createProviders(uploadFn, videoTier, {
+      avatarId: campaign?.avatarId || undefined,
+      voiceId: campaign?.voiceId || undefined,
+    });
 
-    // ── Step 1: Generate script ──────────────────────────
+    // ── Step 1: Generate content plan (script + HeyGen directives) ──
     await prisma.contentJob.update({
       where: { id: contentJobId },
       data: { status: 'GENERATING_SCRIPT', progress: 10 },
     });
 
-    console.log(`  [content:${contentJobId}] 📝 Generating script...`);
-    const script = await providers.llm.generateScript(brandConfig, {
-      topic: data.topic,
-      previousTopics,
-      language: data.language || brand.language,
-    });
+    console.log(`  [content:${contentJobId}] 📝 Generating content plan (tier: ${videoTier})...`);
+
+    let contentPlan: GeneratedContentPlan;
+    if ('generateContentPlan' in providers.llm && providers.llm.generateContentPlan) {
+      contentPlan = await providers.llm.generateContentPlan(brandConfig, {
+        topic: data.topic,
+        previousTopics,
+        language: data.language || brand.language,
+        contentDay: new Date().getDate(),
+      });
+    } else {
+      // Fallback for MockLLMProvider
+      const script = await providers.llm.generateScript(brandConfig, {
+        topic: data.topic,
+        previousTopics,
+        language: data.language || brand.language,
+      });
+      contentPlan = {
+        ...script,
+        heygenPrompt: `A ${brand.tone || 'professional'} presenter talking about ${brand.niche || 'business'}`,
+        sceneDirection: 'Avatar centered, natural gestures',
+        background: 'modern office',
+        avatarMood: 'confident',
+      };
+    }
 
     // Save script as asset
-    const scriptText = `# ${script.title}\n\n${script.script}\n\n---\nCaption: ${script.caption}\nHashtags: ${script.hashtags.join(', ')}\nCTA: ${script.cta}`;
+    const scriptText = [
+      `# ${contentPlan.title}`,
+      '',
+      contentPlan.script,
+      '',
+      '---',
+      `Caption: ${contentPlan.caption}`,
+      `Hashtags: ${contentPlan.hashtags.join(', ')}`,
+      `CTA: ${contentPlan.cta}`,
+      `HeyGen Prompt: ${contentPlan.heygenPrompt}`,
+      `Scene: ${contentPlan.sceneDirection}`,
+      `Background: ${contentPlan.background}`,
+      `Mood: ${contentPlan.avatarMood}`,
+    ].join('\n');
+
     const scriptKey = `scripts/${contentJobId}-script.txt`;
     const scriptUrl = await uploadFn(scriptKey, new TextEncoder().encode(scriptText), 'text/plain');
 
@@ -149,7 +209,7 @@ export async function processContentJob(data: ContentJobData) {
         contentJobId,
         type: 'SCRIPT',
         url: scriptUrl,
-        filename: script.title,
+        filename: contentPlan.title,
         mimeType: 'text/plain',
         sizeBytes: new TextEncoder().encode(scriptText).byteLength,
       },
@@ -160,46 +220,33 @@ export async function processContentJob(data: ContentJobData) {
       data: { progress: 30 },
     });
 
-    // ── Step 2: Generate voiceover ───────────────────────
+    // ── Step 2: Generate video via HeyGen (includes voice!) ──
+    // NO separate TTS step — HeyGen handles voice + lip-sync + avatar
     await prisma.contentJob.update({
       where: { id: contentJobId },
-      data: { status: 'GENERATING_VOICE', progress: 35 },
+      data: { status: 'GENERATING_VIDEO', progress: 35 },
     });
 
-    console.log(`  [content:${contentJobId}] 🎙️ Generating voiceover...`);
-    const voice = await providers.tts.synthesize(script.script, {
-      language: script.language,
-    });
-
-    const audioAsset = await prisma.asset.create({
-      data: {
-        userId,
-        contentJobId,
-        type: 'AUDIO',
-        url: voice.url,
-        filename: `${script.title}-voiceover.mp3`,
-        mimeType: 'audio/mpeg',
-        durationMs: voice.durationMs,
-      },
-    });
-
-    await prisma.contentJob.update({
-      where: { id: contentJobId },
-      data: { progress: 55 },
-    });
-
-    // ── Step 3: Generate video ───────────────────────────
-    await prisma.contentJob.update({
-      where: { id: contentJobId },
-      data: { status: 'GENERATING_VIDEO', progress: 60 },
-    });
-
-    console.log(`  [content:${contentJobId}] 🎬 Generating video...`);
+    console.log(`  [content:${contentJobId}] 🎬 Generating video via HeyGen (${videoTier})...`);
     let video;
     try {
-      video = await providers.video.generateAvatarVideo(script.script, voice.url);
-    } catch {
-      video = await providers.video.generateTemplateVideo(script.script, voice.url);
+      // Primary: Avatar video with the script (HeyGen does TTS internally)
+      video = await providers.video.generateAvatarVideo(
+        contentPlan.script,
+        '', // No separate audio URL needed — HeyGen generates the voice
+        {
+          backgroundUrl: undefined, // TODO: brand background images
+          width: videoTier === 'free' ? 720 : 1080,
+          height: videoTier === 'free' ? 1280 : 1920,
+        },
+      );
+    } catch (avatarError) {
+      console.warn(`  [content:${contentJobId}] ⚠️ Avatar video failed, trying template...`, avatarError);
+      video = await providers.video.generateTemplateVideo(contentPlan.script, undefined, {
+        brandColor: brandConfig.styleGuidelines || undefined,
+        width: videoTier === 'free' ? 720 : 1080,
+        height: videoTier === 'free' ? 1280 : 1920,
+      });
     }
 
     const videoAsset = await prisma.asset.create({
@@ -208,7 +255,7 @@ export async function processContentJob(data: ContentJobData) {
         contentJobId,
         type: 'VIDEO',
         url: video.url,
-        filename: `${script.title}-video.mp4`,
+        filename: `${contentPlan.title}-video.mp4`,
         mimeType: 'video/mp4',
         durationMs: video.durationMs,
       },
@@ -219,21 +266,35 @@ export async function processContentJob(data: ContentJobData) {
       data: { progress: 80 },
     });
 
-    // ── Step 4: Generate thumbnail ───────────────────────
+    // ── Step 3: Generate thumbnail (optional) ────────────
     console.log(`  [content:${contentJobId}] 🖼️ Generating thumbnail...`);
     let thumbnailAsset = null;
     try {
-      const thumbnail = await providers.thumbnail.generateThumbnail(script.title, brandConfig);
-      thumbnailAsset = await prisma.asset.create({
-        data: {
-          userId,
-          contentJobId,
-          type: 'THUMBNAIL',
-          url: thumbnail.url,
-          filename: `${script.title}-thumb.png`,
-          mimeType: 'image/png',
-        },
-      });
+      // Use HeyGen's thumbnail if available, otherwise DALL-E
+      if (video.thumbnailUrl) {
+        thumbnailAsset = await prisma.asset.create({
+          data: {
+            userId,
+            contentJobId,
+            type: 'THUMBNAIL',
+            url: video.thumbnailUrl,
+            filename: `${contentPlan.title}-thumb.png`,
+            mimeType: 'image/png',
+          },
+        });
+      } else {
+        const thumbnail = await providers.thumbnail.generateThumbnail(contentPlan.title, brandConfig);
+        thumbnailAsset = await prisma.asset.create({
+          data: {
+            userId,
+            contentJobId,
+            type: 'THUMBNAIL',
+            url: thumbnail.url,
+            filename: `${contentPlan.title}-thumb.png`,
+            mimeType: 'image/png',
+          },
+        });
+      }
     } catch (err) {
       console.warn(`  [content:${contentJobId}] ⚠️ Thumbnail generation skipped:`, err);
     }
@@ -243,10 +304,12 @@ export async function processContentJob(data: ContentJobData) {
       data: { progress: 90 },
     });
 
-    // ── Step 5: Create draft posts for connected social accounts ──
+    // ── Step 4: Create draft posts for connected social accounts ──
     const socialAccounts = await prisma.socialAccount.findMany({
       where: { userId, status: 'ACTIVE' },
     });
+
+    const autoPublish = campaign?.autoPublish !== false; // default true
 
     for (const account of socialAccounts) {
       await prisma.post.create({
@@ -256,30 +319,45 @@ export async function processContentJob(data: ContentJobData) {
           contentJobId,
           assetId: videoAsset.id,
           provider: account.provider,
-          caption: script.caption,
-          hashtags: script.hashtags,
-          status: 'SCHEDULED',
-          scheduledFor: new Date(Date.now() + 5 * 60 * 1000), // Schedule 5 min from now
+          caption: contentPlan.caption,
+          hashtags: contentPlan.hashtags,
+          status: autoPublish ? 'SCHEDULED' : 'DRAFT',
+          scheduledFor: autoPublish ? new Date(Date.now() + 5 * 60 * 1000) : undefined,
         },
       });
     }
 
-    // ── Step 6: Spend credits ────────────────────────────
-    const lastLedger = await prisma.creditLedger.findFirst({
-      where: { userId },
-      orderBy: { createdAt: 'desc' },
-    });
-    const currentBalance = lastLedger?.balanceAfter ?? 0;
+    // ── Step 5: Spend credits (based on tier) ────────────
+    const creditsToSpend = CREDITS_BY_TIER[videoTier.toUpperCase() as keyof typeof CREDITS_BY_TIER] ?? 10;
 
-    if (currentBalance >= CREDITS_PER_VIDEO) {
-      await prisma.creditLedger.create({
+    if (creditsToSpend > 0) {
+      const lastLedger = await prisma.creditLedger.findFirst({
+        where: { userId },
+        orderBy: { createdAt: 'desc' },
+      });
+      const currentBalance = lastLedger?.balanceAfter ?? 0;
+
+      if (currentBalance >= creditsToSpend) {
+        await prisma.creditLedger.create({
+          data: {
+            userId,
+            type: 'SPEND',
+            amount: -creditsToSpend,
+            balanceAfter: currentBalance - creditsToSpend,
+            referenceId: contentJobId,
+            description: `${videoTier.toUpperCase()} video: ${contentPlan.title}`,
+          },
+        });
+      }
+    }
+
+    // Update campaign stats
+    if (campaign) {
+      await prisma.campaign.update({
+        where: { id: campaign.id },
         data: {
-          userId,
-          type: 'SPEND',
-          amount: -CREDITS_PER_VIDEO,
-          balanceAfter: currentBalance - CREDITS_PER_VIDEO,
-          referenceId: contentJobId,
-          description: `Content generation: ${script.title}`,
+          totalGenerated: { increment: 1 },
+          lastGeneratedAt: new Date(),
         },
       });
     }
@@ -294,15 +372,16 @@ export async function processContentJob(data: ContentJobData) {
       },
     });
 
-    console.log(`  [content:${contentJobId}] ✅ Pipeline complete — ${socialAccounts.length} posts scheduled`);
+    console.log(`  [content:${contentJobId}] ✅ Pipeline complete — ${socialAccounts.length} posts ${autoPublish ? 'scheduled' : 'drafted'} (tier: ${videoTier}, credits: -${creditsToSpend})`);
 
     return {
       success: true,
       videoAssetId: videoAsset.id,
       scriptAssetId: scriptAsset.id,
-      audioAssetId: audioAsset.id,
       thumbnailAssetId: thumbnailAsset?.id,
       postsCreated: socialAccounts.length,
+      creditsSpent: creditsToSpend,
+      videoTier,
     };
   } catch (error) {
     console.error(`  [content:${contentJobId}] ❌ Failed:`, error);

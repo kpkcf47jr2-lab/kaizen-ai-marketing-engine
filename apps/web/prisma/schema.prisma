@@ -30,6 +30,7 @@ model User {
 
   // Relations
   brandProfile   BrandProfile?
+  campaign       Campaign?
   socialAccounts SocialAccount[]
   wallet         Wallet?
   creditLedger   CreditLedger[]
@@ -111,6 +112,7 @@ model BrandProfile {
 // ─── Social Accounts (OAuth) ─────────────────────────────
 
 enum SocialProvider {
+  ELITE
   META_INSTAGRAM
   META_FACEBOOK
   YOUTUBE
@@ -238,6 +240,7 @@ model ContentJob {
   error        String?   @db.Text
   retries      Int       @default(0)
   maxRetries   Int       @default(3)
+  videoTier    VideoTier @default(PRO)
   metadata     Json?     // extra config for this job
   startedAt    DateTime?
   completedAt  DateTime?
@@ -339,4 +342,39 @@ model AuditLog {
   @@index([userId, createdAt])
   @@index([entity, entityId])
   @@map("audit_logs")
+}
+
+// ─── Campaign ────────────────────────────────────────────
+
+enum VideoTier {
+  FREE
+  PRO
+  ULTRA
+}
+
+enum CampaignStatus {
+  ACTIVE
+  PAUSED
+  COMPLETED
+}
+
+model Campaign {
+  id              String         @id @default(cuid())
+  userId          String         @unique
+  status          CampaignStatus @default(ACTIVE)
+  videoTier       VideoTier      @default(PRO)
+  frequency       Int            @default(1)   // 1 or 2 videos per day
+  publishHours    Int[]          @default([9]) // hours (0-23) to publish
+  avatarId        String?                       // HeyGen avatar ID
+  voiceId         String?                       // HeyGen voice ID
+  language        String         @default("es")
+  autoPublish     Boolean        @default(true)
+  totalGenerated  Int            @default(0)
+  lastGeneratedAt DateTime?
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("campaigns")
 }

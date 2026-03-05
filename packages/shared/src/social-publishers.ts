@@ -519,8 +519,91 @@ export class XTwitterPublisher implements SocialPublisher {
 
 // ─── Publisher Registry ──────────────────────────────────
 
+// ─── Elite Social Publisher ──────────────────────────────
+
+export class ElitePublisher implements SocialPublisher {
+  readonly provider = 'ELITE';
+
+  async publishVideo(params: {
+    videoUrl: string;
+    caption?: string;
+    hashtags?: string[];
+    accessToken: string;
+    accountId?: string;
+  }): Promise<{ remotePostId: string; remoteUrl?: string }> {
+    const baseUrl = process.env.ELITE_API_URL || 'https://api.elite.social';
+    const body = {
+      video_url: params.videoUrl,
+      caption: params.caption || '',
+      hashtags: params.hashtags || [],
+      visibility: 'public',
+    };
+
+    const res = await fetch(`${baseUrl}/v1/posts/video`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${params.accessToken}`,
+      },
+      body: JSON.stringify(body),
+    });
+
+    if (!res.ok) {
+      const err = await res.text();
+      throw new Error(`Elite publish failed (${res.status}): ${err}`);
+    }
+
+    const data = await res.json();
+    return {
+      remotePostId: data.id || data.post_id,
+      remoteUrl: data.url || `https://elite.social/post/${data.id || data.post_id}`,
+    };
+  }
+
+  async refreshToken(refreshToken: string): Promise<{
+    accessToken: string;
+    refreshToken?: string;
+    expiresAt: Date;
+  }> {
+    const baseUrl = process.env.ELITE_API_URL || 'https://api.elite.social';
+    const res = await fetch(`${baseUrl}/v1/auth/refresh`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ refresh_token: refreshToken }),
+    });
+    const data = await res.json();
+    return {
+      accessToken: data.access_token,
+      refreshToken: data.refresh_token,
+      expiresAt: new Date(Date.now() + (data.expires_in || 86400) * 1000),
+    };
+  }
+
+  async getMetrics(params: {
+    remotePostId: string;
+    accessToken: string;
+  }): Promise<{ views?: number; likes?: number; comments?: number; shares?: number }> {
+    const baseUrl = process.env.ELITE_API_URL || 'https://api.elite.social';
+    const res = await fetch(`${baseUrl}/v1/posts/${params.remotePostId}/metrics`, {
+      headers: { Authorization: `Bearer ${params.accessToken}` },
+    });
+    if (!res.ok) return {};
+    const data = await res.json();
+    return {
+      views: data.views,
+      likes: data.likes,
+      comments: data.comments,
+      shares: data.shares,
+    };
+  }
+}
+
+// ─── Publisher Registry ──────────────────────────────────
+
 export function getPublisher(provider: string): SocialPublisher {
   switch (provider) {
+    case 'ELITE':
+      return new ElitePublisher();
     case 'META_INSTAGRAM':
       return new MetaInstagramPublisher();
     case 'META_FACEBOOK':

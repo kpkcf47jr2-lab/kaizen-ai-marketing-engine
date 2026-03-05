@@ -12,6 +12,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
   const navItems = [
     { href: '/dashboard', label: 'Overview', icon: '📊' },
     { href: '/dashboard/brand', label: 'Brand Kit', icon: '🎨' },
+    { href: '/dashboard/campaign', label: 'Campaign', icon: '🎬' },
     { href: '/dashboard/connections', label: 'Connections', icon: '🔗' },
     { href: '/dashboard/credits', label: 'Credits', icon: '🪙' },
     { href: '/dashboard/calendar', label: 'Calendar', icon: '📅' },

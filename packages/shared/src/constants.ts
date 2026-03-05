@@ -4,7 +4,20 @@ export const APP_NAME = 'Kaizen AI Marketing';
 export const APP_VERSION = '0.1.0';
 
 // ─── Credits ─────────────────────────────────────────────
-export const CREDITS_PER_VIDEO = 10;
+export const CREDITS_PER_VIDEO = 10; // Default (Pro tier)
+
+/** Credits consumed per video by quality tier */
+export const CREDITS_BY_TIER = {
+  FREE: 0,      // Watermark, 720p — free
+  PRO: 10,      // 1080p, Avatar III, no watermark
+  ULTRA: 50,    // 1080p, Avatar IV, ultra-realistic
+} as const;
+
+/** Frequency options for campaigns */
+export const FREQUENCY_OPTIONS = [
+  { value: 1, label: '1 video per day', description: 'Consistent daily content' },
+  { value: 2, label: '2 videos per day', description: 'Maximum growth mode' },
+] as const;
 
 export const CREDIT_PACKAGES = [
   { id: 'starter', name: 'Starter', credits: 100, priceKairosCoin: '50', priceWei: '50000000000000000000', popular: false },
@@ -15,6 +28,13 @@ export const CREDIT_PACKAGES = [
 
 // ─── Social Providers Config ─────────────────────────────
 export const SOCIAL_PROVIDERS = {
+  ELITE: {
+    name: 'Elite',
+    icon: 'elite',
+    color: '#8B5CF6',
+    scopes: ['content.publish', 'content.read', 'profile.read'],
+    featured: true,
+  },
   META_INSTAGRAM: {
     name: 'Instagram',
     icon: 'instagram',
@@ -57,7 +77,33 @@ export const VIDEO_CONFIG = {
   fps: 30,
   format: 'mp4',
 } as const;
-
+/** Video tier descriptions for UI */
+export const VIDEO_TIERS = {
+  FREE: {
+    name: 'Free',
+    description: '720p with watermark — perfect to get started',
+    resolution: '720p',
+    watermark: true,
+    credits: 0,
+    engine: 'Avatar III',
+  },
+  PRO: {
+    name: 'Pro',
+    description: '1080p HD, no watermark — professional quality',
+    resolution: '1080p',
+    watermark: false,
+    credits: 10,
+    engine: 'Avatar III',
+  },
+  ULTRA: {
+    name: 'Ultra',
+    description: '1080p Ultra-Realistic — indistinguishable from real video',
+    resolution: '1080p',
+    watermark: false,
+    credits: 50,
+    engine: 'Avatar IV',
+  },
+} as const;
 // ─── Supported Languages ─────────────────────────────────
 export const SUPPORTED_LANGUAGES = [
   { code: 'en', name: 'English' },

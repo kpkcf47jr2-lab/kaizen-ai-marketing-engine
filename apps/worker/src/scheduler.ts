@@ -71,32 +71,119 @@ export function startScheduler(connection: ConnectionOptions) {
     }
   }
 
-  // ── Content Generation Scheduler (daily) ───────────────
+  // ── Campaign-Aware Content Scheduler (hourly checks) ────
 
   const CONTENT_INTERVAL_MS = 60 * 60 * 1000; // Check every hour
-  let lastContentRunDate = '';
 
   async function contentTick() {
-    const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
-
-    // Only run once per day
-    if (lastContentRunDate === today) return;
-
-    const currentHour = new Date().getHours();
-    // Generate content a few hours before the default publish time
-    // so it's ready when publish time comes
-    const generateHour = Math.max(0, DEFAULT_PUBLISH_HOUR - 3);
-    if (currentHour < generateHour) return;
+    const now = new Date();
+    const today = now.toISOString().split('T')[0]; // YYYY-MM-DD
+    const currentHour = now.getHours();
 
     try {
-      console.log(`[scheduler] 🤖 Running daily content generation for ${today}...`);
-      lastContentRunDate = today;
+      console.log(`[scheduler] 🤖 Checking campaigns (${today} ${currentHour}:00)...`);
 
-      // Find users with active social accounts and brand profiles
-      const eligibleUsers = await prisma.user.findMany({
+      // Find ACTIVE campaigns with brand profiles and social accounts
+      const campaigns = await prisma.campaign.findMany({
+        where: {
+          status: 'ACTIVE',
+          user: {
+            brandProfile: { isNot: null },
+            socialAccounts: { some: { status: 'ACTIVE' } },
+          },
+        },
+        include: {
+          user: {
+            include: {
+              brandProfile: true,
+              creditLedger: {
+                orderBy: { createdAt: 'desc' },
+                take: 1,
+              },
+            },
+          },
+        },
+      });
+
+      let generated = 0;
+
+      for (const campaign of campaigns) {
+        const user = campaign.user;
+        const publishHours: number[] = campaign.publishHours;
+
+        // ── Check: Is this a publish hour for the campaign? ──
+        // We generate content 1 hour BEFORE the publish hour so it's ready
+        const isGenerationHour = publishHours.some(
+          (h) => h - 1 === currentHour || h === currentHour,
+        );
+        if (!isGenerationHour) continue;
+
+        // ── Check: Credit balance ──
+        const balance = user.creditLedger[0]?.balanceAfter ?? 0;
+        const tierKey = campaign.videoTier as string;
+        const requiredCredits = tierKey === 'FREE' ? 0 : tierKey === 'ULTRA' ? 50 : 10;
+
+        if (requiredCredits > 0 && balance < requiredCredits) {
+          console.log(`[scheduler] ⚠️ ${user.email} — not enough credits (${balance} < ${requiredCredits}), skipping`);
+          continue;
+        }
+
+        // ── Check: How many jobs already generated today? ──
+        const jobsToday = await prisma.contentJob.count({
+          where: {
+            userId: user.id,
+            createdAt: { gte: new Date(`${today}T00:00:00Z`) },
+            status: {
+              in: ['QUEUED', 'RUNNING', 'GENERATING_SCRIPT', 'GENERATING_VIDEO', 'SUCCESS'],
+            },
+          },
+        });
+
+        if (jobsToday >= campaign.frequency) {
+          // Already reached daily limit
+          continue;
+        }
+
+        // ── Create content job for this campaign ──
+        const scheduledFor = new Date();
+        const nextPublishHour = publishHours.find((h) => h >= currentHour) ?? publishHours[0];
+        scheduledFor.setHours(nextPublishHour, 0, 0, 0);
+
+        const contentJob = await prisma.contentJob.create({
+          data: {
+            userId: user.id,
+            status: 'QUEUED',
+            scheduledFor,
+            maxRetries: MAX_JOB_RETRIES,
+            videoTier: campaign.videoTier,
+          },
+        });
+
+        await contentQueue.add(
+          `campaign-${campaign.id}-${user.id}-${today}-${jobsToday + 1}`,
+          {
+            contentJobId: contentJob.id,
+            userId: user.id,
+            language: campaign.language || undefined,
+          },
+          {
+            attempts: MAX_JOB_RETRIES,
+            backoff: { type: 'exponential', delay: JOB_RETRY_DELAY_MS },
+          },
+        );
+
+        generated++;
+        console.log(
+          `[scheduler] 📝 Queued content for ${user.email} (tier: ${campaign.videoTier}, ${jobsToday + 1}/${campaign.frequency} today)`,
+        );
+      }
+
+      // ── Fallback: Users without campaigns (legacy behavior) ──
+      const usersWithoutCampaign = await prisma.user.findMany({
         where: {
           brandProfile: { isNot: null },
           socialAccounts: { some: { status: 'ACTIVE' } },
+          campaign: null, // No campaign configured yet
         },
         include: {
           brandProfile: true,
@@ -107,68 +194,58 @@ export function startScheduler(connection: ConnectionOptions) {
         },
       });
 
-      let generated = 0;
+      const generateHour = Math.max(0, DEFAULT_PUBLISH_HOUR - 3);
 
-      for (const user of eligibleUsers) {
-        // Check if user has enough credits
-        const balance = user.creditLedger[0]?.balanceAfter ?? 0;
-        if (balance <= 0) {
-          console.log(`[scheduler] ⚠️ User ${user.email} has no credits, skipping`);
-          continue;
+      if (currentHour === generateHour) {
+        for (const user of usersWithoutCampaign) {
+          const balance = user.creditLedger[0]?.balanceAfter ?? 0;
+          if (balance <= 0) continue;
+
+          const existingJob = await prisma.contentJob.findFirst({
+            where: {
+              userId: user.id,
+              createdAt: { gte: new Date(`${today}T00:00:00Z`) },
+              status: {
+                in: ['QUEUED', 'RUNNING', 'GENERATING_SCRIPT', 'GENERATING_VIDEO', 'SUCCESS'],
+              },
+            },
+          });
+          if (existingJob) continue;
+
+          const scheduledFor = new Date();
+          scheduledFor.setHours(DEFAULT_PUBLISH_HOUR, 0, 0, 0);
+
+          const contentJob = await prisma.contentJob.create({
+            data: {
+              userId: user.id,
+              status: 'QUEUED',
+              scheduledFor,
+              maxRetries: MAX_JOB_RETRIES,
+            },
+          });
+
+          await contentQueue.add(
+            `daily-content-${user.id}-${today}`,
+            {
+              contentJobId: contentJob.id,
+              userId: user.id,
+            },
+            {
+              attempts: MAX_JOB_RETRIES,
+              backoff: { type: 'exponential', delay: JOB_RETRY_DELAY_MS },
+            },
+          );
+
+          generated++;
+          console.log(`[scheduler] 📝 Queued legacy content for ${user.email}`);
         }
-
-        // Check if content was already generated today
-        const existingJob = await prisma.contentJob.findFirst({
-          where: {
-            userId: user.id,
-            createdAt: { gte: new Date(`${today}T00:00:00Z`) },
-            status: { in: ['QUEUED', 'RUNNING', 'GENERATING_SCRIPT', 'GENERATING_VOICE', 'GENERATING_VIDEO', 'SUCCESS'] },
-          },
-        });
-
-        if (existingJob) {
-          console.log(`[scheduler] ⏭️ User ${user.email} already has content for today`);
-          continue;
-        }
-
-        // Create a content job
-        const scheduledFor = new Date();
-        scheduledFor.setHours(DEFAULT_PUBLISH_HOUR, 0, 0, 0);
-
-        const contentJob = await prisma.contentJob.create({
-          data: {
-            userId: user.id,
-            status: 'QUEUED',
-            scheduledFor,
-            maxRetries: MAX_JOB_RETRIES,
-          },
-        });
-
-        await contentQueue.add(
-          `daily-content-${user.id}-${today}`,
-          {
-            contentJobId: contentJob.id,
-            userId: user.id,
-          },
-          {
-            attempts: MAX_JOB_RETRIES,
-            backoff: { type: 'exponential', delay: JOB_RETRY_DELAY_MS },
-          },
-        );
-
-        generated++;
-        console.log(`[scheduler] 📝 Queued content generation for ${user.email}`);
       }
 
       if (generated > 0) {
-        console.log(`[scheduler] ✅ Queued daily content for ${generated} users`);
-      } else {
-        console.log('[scheduler] ℹ️ No eligible users for daily content generation');
+        console.log(`[scheduler] ✅ Queued content for ${generated} users`);
       }
     } catch (error) {
       console.error('[scheduler] ❌ Content generation tick error:', error);
-      // Reset so it retries next hour
-      lastContentRunDate = '';
     }
   }
 
@@ -183,6 +260,6 @@ export function startScheduler(connection: ConnectionOptions) {
   setInterval(contentTick, CONTENT_INTERVAL_MS);
 
   console.log(`[scheduler] ⏰ Publish check: every ${PUBLISH_INTERVAL_MS / 60000} min`);
-  console.log(`[scheduler] ⏰ Daily content generation: checked every hour (runs at ~${DEFAULT_PUBLISH_HOUR - 3}:00)`);
+  console.log(`[scheduler] ⏰ Campaign content: checked every hour, respects campaign.publishHours`);
 }
 
