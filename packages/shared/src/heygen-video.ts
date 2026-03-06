@@ -33,11 +33,11 @@ export const HEYGEN_COST_PER_SEC: Record<VideoQualityTier, number> = {
   ultra: 0.10,    // Avatar IV (1080p, ultra-realistic)
 };
 
-/** Credits (KRS) cost per video by tier */
+/** Credits (KRC) cost per video by tier */
 export const CREDITS_PER_VIDEO_BY_TIER: Record<VideoQualityTier, number> = {
   free: 0,       // Free tier — watermarked
-  pro: 10,       // ~$0.50 cost → charge 10 KRS credits
-  ultra: 50,     // ~$3.00 cost → charge 50 KRS credits
+  pro: 10,       // ~$0.50 cost → charge 10 KRC credits
+  ultra: 50,     // ~$3.00 cost → charge 50 KRC credits
 };
 
 export class HeyGenVideoProvider implements VideoProvider {

@@ -203,7 +203,7 @@ export default function CampaignPage() {
       <div className="space-y-3">
         <h2 className="text-lg font-semibold">Calidad de video</h2>
         <p className="text-sm text-muted-foreground">
-          Pagás en KairosCoin (KRS) — nosotros nos encargamos de HeyGen.
+          Pagás en KairosCoin (KRC) — nosotros nos encargamos de HeyGen.
         </p>
         <div className="grid grid-cols-3 gap-4">
           {(Object.entries(TIER_INFO) as [keyof typeof TIER_INFO, (typeof TIER_INFO)[keyof typeof TIER_INFO]][]).map(
@@ -371,7 +371,7 @@ export default function CampaignPage() {
           </div>
           <div className="flex gap-2">
             <span>4️⃣</span>
-            <p>Pagas en KairosCoin (KRS) — nosotros nos encargamos del resto en USD</p>
+            <p>Pagas en KairosCoin (KRC) — nosotros nos encargamos del resto en USD</p>
           </div>
         </div>
       </div>

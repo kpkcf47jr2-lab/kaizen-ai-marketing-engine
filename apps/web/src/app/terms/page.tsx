@@ -44,7 +44,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-lg font-semibold mb-2">5. Credits &amp; Payments</h2>
             <p>
-              Content generation consumes credits. Credits can be purchased using KairosCoin (KRS)
+              Content generation consumes credits. Credits can be purchased using KairosCoin (KRC)
               on the Binance Smart Chain. All purchases are final. Credit balances do not expire.
             </p>
           </section>

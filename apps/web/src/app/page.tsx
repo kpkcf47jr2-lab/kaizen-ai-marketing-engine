@@ -181,7 +181,7 @@ export default function HomePage() {
                 { icon: '🎯', title: '30 Tipos de Contenido', desc: 'Tutoriales, testimonios, behind-the-scenes, tips, tendencias... nunca se repite.' },
                 { icon: '🖼️', title: 'Thumbnails con IA', desc: 'DALL-E genera thumbnails atractivos que aumentan tus clicks y views.' },
                 { icon: '📊', title: 'Analíticas en Tiempo Real', desc: 'Métricas de cada post: views, likes, comentarios, shares. Todo en un dashboard.' },
-                { icon: '🪙', title: 'Paga con KairosCoin', desc: 'Compra créditos con KRS desde tu Kairos Wallet. Rápido, seguro, sin tarjeta.' },
+                { icon: '🪙', title: 'Paga con KairosCoin', desc: 'Compra créditos con KRC desde tu Kairos Wallet. Rápido, seguro, sin tarjeta.' },
               ].map((feature) => (
                 <div
                   key={feature.title}

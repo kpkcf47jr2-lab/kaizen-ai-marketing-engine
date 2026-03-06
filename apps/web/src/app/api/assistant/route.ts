@@ -43,7 +43,7 @@ const SYSTEM_PROMPT = `Eres KAME AI, el asistente experto en marketing digital d
 - Luego crea una Campaña (frecuencia, tier de video, horarios)
 - KAME genera el script, video, thumbnail y publica automáticamente
 - Tiers: FREE (con watermark), PRO (10 créditos), ULTRA (50 créditos, calidad premium)
-- Los créditos se compran con KairosCoin (KRS), una stablecoin en Binance Smart Chain
+- Los créditos se compran con KairosCoin (KRC), una stablecoin en Binance Smart Chain
 - Redes soportadas: Elite (recomendada), Instagram, Facebook, YouTube, TikTok, X
 
 ## CONTEXTO DEL USUARIO
