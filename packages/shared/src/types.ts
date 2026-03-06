@@ -1,5 +1,5 @@
 // ─── Social Providers ────────────────────────────────────
-export type SocialProvider = 'META_INSTAGRAM' | 'META_FACEBOOK' | 'YOUTUBE' | 'TIKTOK' | 'X_TWITTER';
+export type SocialProvider = 'ELITE' | 'META_INSTAGRAM' | 'META_FACEBOOK' | 'YOUTUBE' | 'TIKTOK' | 'X_TWITTER';
 
 export interface SocialTokens {
   accessToken: string;

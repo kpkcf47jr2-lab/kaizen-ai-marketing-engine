@@ -56,7 +56,7 @@ export const autoPostConfigSchema = z.object({
   publishHour: z.number().int().min(0).max(23).default(9),
   frequency: z.enum(['daily', 'every_other_day', 'weekdays']).default('daily'),
   providers: z.array(z.enum([
-    'META_INSTAGRAM', 'META_FACEBOOK', 'YOUTUBE', 'TIKTOK', 'X_TWITTER',
+    'ELITE', 'META_INSTAGRAM', 'META_FACEBOOK', 'YOUTUBE', 'TIKTOK', 'X_TWITTER',
   ])).min(1),
 });
 
@@ -65,7 +65,7 @@ export const autoPostConfigSchema = z.object({
 export const generateContentSchema = z.object({
   topic: z.string().max(500).optional(),
   providers: z.array(z.enum([
-    'META_INSTAGRAM', 'META_FACEBOOK', 'YOUTUBE', 'TIKTOK', 'X_TWITTER',
+    'ELITE', 'META_INSTAGRAM', 'META_FACEBOOK', 'YOUTUBE', 'TIKTOK', 'X_TWITTER',
   ])).optional(),
   scheduledFor: z.string().datetime().optional(),
 });

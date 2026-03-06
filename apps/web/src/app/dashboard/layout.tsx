@@ -1,11 +1,19 @@
-import Link from 'next/link';
-import { redirect } from 'next/navigation';
-import { getServerSession } from 'next-auth';
-import { authOptions } from '@/lib/auth';
+'use client';
 
-export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
-  const session = await getServerSession(authOptions);
-  if (!session?.user) redirect('/login');
+import Link from 'next/link';
+import { useSession, signOut } from 'next-auth/react';
+import { redirect } from 'next/navigation';
+
+export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+  const { data: session, status } = useSession();
+
+  if (status === 'loading') {
+    return <div className="min-h-screen flex items-center justify-center bg-background"><p>Loading...</p></div>;
+  }
+  if (!session?.user) {
+    redirect('/login');
+    return null;
+  }
 
   const user = session.user as any;
 
@@ -49,7 +57,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
           ))}
         </nav>
 
-        <div className="p-4 border-t border-border">
+        <div className="p-4 border-t border-border space-y-3">
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-xs font-medium">
               {user.name?.[0] || user.email?.[0] || '?'}
@@ -59,6 +67,13 @@ export default async function DashboardLayout({ children }: { children: React.Re
               <p className="text-xs text-muted-foreground truncate">{user.email}</p>
             </div>
           </div>
+          <button
+            onClick={() => signOut({ callbackUrl: '/login' })}
+            className="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-red-400 hover:bg-red-500/10 transition"
+          >
+            <span>🚪</span>
+            <span>Sign Out</span>
+          </button>
         </div>
       </aside>
 
