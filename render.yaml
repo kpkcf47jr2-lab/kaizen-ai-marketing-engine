@@ -15,7 +15,7 @@ services:
       corepack enable &&
       pnpm install --frozen-lockfile &&
       pnpm --filter @kaizen/web exec prisma generate &&
-      pnpm --filter @kaizen/web exec prisma migrate deploy &&
+      pnpm --filter @kaizen/web exec prisma db push &&
       pnpm --filter @kaizen/web build
     startCommand: pnpm --filter @kaizen/web start
     healthCheckPath: /api/health
@@ -38,6 +38,8 @@ services:
         generateValue: true
       - key: OPENAI_API_KEY
         sync: false
+      - key: HEYGEN_API_KEY
+        sync: false
       - key: ELEVENLABS_API_KEY
         sync: false
       - key: S3_BUCKET
@@ -58,6 +60,10 @@ services:
         value: "https://bsc-dataseed1.binance.org/"
       - key: CHAIN_ID
         value: "56"
+      - key: ELITE_CLIENT_ID
+        sync: false
+      - key: ELITE_CLIENT_SECRET
+        sync: false
       - key: META_APP_ID
         sync: false
       - key: META_APP_SECRET
@@ -99,6 +105,8 @@ services:
       - key: REDIS_URL
         sync: false        # paste Internal Key Value URL from Render Redis
       - key: OPENAI_API_KEY
+        sync: false
+      - key: HEYGEN_API_KEY
         sync: false
       - key: ELEVENLABS_API_KEY
         sync: false
