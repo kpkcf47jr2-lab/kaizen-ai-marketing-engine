@@ -118,6 +118,8 @@ enum SocialProvider {
   YOUTUBE
   TIKTOK
   X_TWITTER
+  TELEGRAM
+  WHATSAPP
 }
 
 enum SocialAccountStatus {

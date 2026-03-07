@@ -95,6 +95,15 @@ export interface SocialPublisher {
     accountId?: string;
   }): Promise<{ remotePostId: string; remoteUrl?: string }>;
 
+  /** Publish a text + image/banner post (for messaging channels like Telegram/WhatsApp) */
+  publishPost?(params: {
+    text: string;
+    imageUrl?: string;
+    hashtags?: string[];
+    accessToken: string;
+    channelId?: string;
+  }): Promise<{ remotePostId: string; remoteUrl?: string }>;
+
   /** Get basic metrics for a post */
   getMetrics(params: {
     remotePostId: string;

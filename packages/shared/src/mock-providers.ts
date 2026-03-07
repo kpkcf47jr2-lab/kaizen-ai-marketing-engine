@@ -102,6 +102,14 @@ export class MockPublisher implements SocialPublisher {
     };
   }
 
+  async publishPost() {
+    await new Promise((r) => setTimeout(r, 300));
+    return {
+      remotePostId: `mock_post_${Date.now()}`,
+      remoteUrl: 'https://example.com/mock-article',
+    };
+  }
+
   async getMetrics() {
     return { views: 1234, likes: 89, comments: 12, shares: 5 };
   }

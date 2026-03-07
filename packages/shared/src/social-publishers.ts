@@ -519,6 +519,326 @@ export class XTwitterPublisher implements SocialPublisher {
 
 // ─── Publisher Registry ──────────────────────────────────
 
+// ─── Telegram Publisher (Bot API) ────────────────────────
+
+export class TelegramPublisher implements SocialPublisher {
+  readonly provider = 'TELEGRAM';
+
+  private get botApiBase() {
+    return 'https://api.telegram.org/bot';
+  }
+
+  /**
+   * Publish a video to Telegram channel via Bot API.
+   * accessToken = Bot Token, accountId = Chat/Channel ID
+   */
+  async publishVideo({ videoUrl, caption, hashtags, accessToken, accountId }: {
+    videoUrl: string;
+    caption: string;
+    hashtags?: string[];
+    accessToken: string;
+    accountId?: string;
+  }) {
+    const chatId = accountId;
+    if (!chatId) throw new Error('Telegram channel ID is required');
+
+    const hashtagStr = hashtags?.map((h) => (h.startsWith('#') ? h : `#${h}`)).join(' ') || '';
+    const fullCaption = `${caption}\n\n${hashtagStr}`.trim().slice(0, 1024); // Telegram caption limit
+
+    const res = await fetch(`${this.botApiBase}${accessToken}/sendVideo`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        chat_id: chatId,
+        video: videoUrl,
+        caption: fullCaption,
+        parse_mode: 'HTML',
+        supports_streaming: true,
+      }),
+    });
+
+    const data = await res.json();
+    if (!data.ok) throw new Error(`Telegram sendVideo error: ${data.description || 'Unknown error'}`);
+
+    const messageId = data.result?.message_id;
+    return {
+      remotePostId: String(messageId),
+      remoteUrl: `https://t.me/c/${String(chatId).replace('-100', '')}/${messageId}`,
+    };
+  }
+
+  /**
+   * Publish a text + image/banner post to Telegram channel.
+   */
+  async publishPost({ text, imageUrl, hashtags, accessToken, channelId }: {
+    text: string;
+    imageUrl?: string;
+    hashtags?: string[];
+    accessToken: string;
+    channelId?: string;
+  }) {
+    const chatId = channelId;
+    if (!chatId) throw new Error('Telegram channel ID is required');
+
+    const hashtagStr = hashtags?.map((h) => (h.startsWith('#') ? h : `#${h}`)).join(' ') || '';
+    const fullText = `${text}\n\n${hashtagStr}`.trim();
+
+    let res;
+    if (imageUrl) {
+      // Send photo with caption
+      res = await fetch(`${this.botApiBase}${accessToken}/sendPhoto`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          chat_id: chatId,
+          photo: imageUrl,
+          caption: fullText.slice(0, 1024),
+          parse_mode: 'HTML',
+        }),
+      });
+    } else {
+      // Send text only
+      res = await fetch(`${this.botApiBase}${accessToken}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: fullText.slice(0, 4096),
+          parse_mode: 'HTML',
+          disable_web_page_preview: false,
+        }),
+      });
+    }
+
+    const data = await res.json();
+    if (!data.ok) throw new Error(`Telegram publish error: ${data.description || 'Unknown error'}`);
+
+    const messageId = data.result?.message_id;
+    return {
+      remotePostId: String(messageId),
+      remoteUrl: `https://t.me/c/${String(chatId).replace('-100', '')}/${messageId}`,
+    };
+  }
+
+  async getMetrics({ remotePostId, accessToken }: { remotePostId: string; accessToken: string }) {
+    // Telegram Bot API doesn't provide per-message analytics
+    // Channel stats require Telegram Premium / Statistics API
+    return { views: undefined, likes: undefined, comments: undefined, shares: undefined };
+  }
+
+  async refreshToken(_refreshToken: string) {
+    // Telegram bot tokens don't expire — return the same token
+    return { accessToken: _refreshToken };
+  }
+
+  /**
+   * Verify a bot token and get bot info.
+   */
+  static async verifyBot(botToken: string): Promise<{ id: number; username: string; firstName: string }> {
+    const res = await fetch(`https://api.telegram.org/bot${botToken}/getMe`);
+    const data = await res.json();
+    if (!data.ok) throw new Error(`Invalid bot token: ${data.description}`);
+    return {
+      id: data.result.id,
+      username: data.result.username,
+      firstName: data.result.first_name,
+    };
+  }
+
+  /**
+   * Verify bot has access to a channel and get channel info.
+   */
+  static async verifyChannel(botToken: string, channelId: string): Promise<{ title: string; type: string; id: number }> {
+    const res = await fetch(`https://api.telegram.org/bot${botToken}/getChat`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ chat_id: channelId }),
+    });
+    const data = await res.json();
+    if (!data.ok) throw new Error(`Cannot access channel: ${data.description}. Make sure the bot is added as admin to the channel.`);
+    return {
+      title: data.result.title || data.result.first_name || 'Unknown',
+      type: data.result.type,
+      id: data.result.id,
+    };
+  }
+}
+
+// ─── WhatsApp Publisher (Meta Cloud API) ─────────────────
+
+export class WhatsAppPublisher implements SocialPublisher {
+  readonly provider = 'WHATSAPP';
+
+  private get apiBase() {
+    return 'https://graph.facebook.com/v19.0';
+  }
+
+  /**
+   * Publish a video to WhatsApp Channel/Group.
+   * accessToken = WhatsApp Business API permanent token
+   * accountId = Phone Number ID from Meta Business
+   */
+  async publishVideo({ videoUrl, caption, hashtags, accessToken, accountId }: {
+    videoUrl: string;
+    caption: string;
+    hashtags?: string[];
+    accessToken: string;
+    accountId?: string;
+  }) {
+    if (!accountId) throw new Error('WhatsApp Phone Number ID is required');
+
+    const hashtagStr = hashtags?.map((h) => (h.startsWith('#') ? h : `#${h}`)).join(' ') || '';
+    const fullCaption = `${caption}\n\n${hashtagStr}`.trim();
+
+    // Step 1: Upload media to WhatsApp
+    const uploadRes = await fetch(`${this.apiBase}/${accountId}/media`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        messaging_product: 'whatsapp',
+        type: 'video',
+        link: videoUrl,
+      }),
+    });
+
+    const uploadData = await uploadRes.json();
+    if (uploadData.error) throw new Error(`WhatsApp media upload: ${uploadData.error.message}`);
+    const mediaId = uploadData.id;
+
+    // Step 2: Send template message with media to channel
+    // For WhatsApp Channels, we use the newsletter API
+    const channelId = process.env.WHATSAPP_CHANNEL_ID;
+    if (channelId) {
+      const res = await fetch(`${this.apiBase}/${accountId}/messages`, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          messaging_product: 'whatsapp',
+          to: channelId,
+          type: 'video',
+          video: {
+            id: mediaId,
+            caption: fullCaption.slice(0, 1024),
+          },
+        }),
+      });
+
+      const data = await res.json();
+      if (data.error) throw new Error(`WhatsApp send: ${data.error.message}`);
+      const messageId = data.messages?.[0]?.id || mediaId;
+      return { remotePostId: messageId };
+    }
+
+    return { remotePostId: mediaId };
+  }
+
+  /**
+   * Publish a text + image/banner post to WhatsApp.
+   */
+  async publishPost({ text, imageUrl, hashtags, accessToken, channelId }: {
+    text: string;
+    imageUrl?: string;
+    hashtags?: string[];
+    accessToken: string;
+    channelId?: string;
+  }) {
+    const phoneNumberId = channelId || process.env.WHATSAPP_PHONE_NUMBER_ID;
+    if (!phoneNumberId) throw new Error('WhatsApp Phone Number ID is required');
+
+    const hashtagStr = hashtags?.map((h) => (h.startsWith('#') ? h : `#${h}`)).join(' ') || '';
+    const fullText = `${text}\n\n${hashtagStr}`.trim();
+
+    const recipientId = process.env.WHATSAPP_CHANNEL_ID || process.env.WHATSAPP_RECIPIENT_ID;
+    if (!recipientId) throw new Error('WhatsApp recipient/channel ID is required');
+
+    let messageBody: any;
+
+    if (imageUrl) {
+      // Upload image first
+      const uploadRes = await fetch(`${this.apiBase}/${phoneNumberId}/media`, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          messaging_product: 'whatsapp',
+          type: 'image',
+          link: imageUrl,
+        }),
+      });
+      const uploadData = await uploadRes.json();
+      if (uploadData.error) throw new Error(`WhatsApp media upload: ${uploadData.error.message}`);
+
+      messageBody = {
+        messaging_product: 'whatsapp',
+        to: recipientId,
+        type: 'image',
+        image: {
+          id: uploadData.id,
+          caption: fullText.slice(0, 1024),
+        },
+      };
+    } else {
+      messageBody = {
+        messaging_product: 'whatsapp',
+        to: recipientId,
+        type: 'text',
+        text: { body: fullText.slice(0, 4096) },
+      };
+    }
+
+    const res = await fetch(`${this.apiBase}/${phoneNumberId}/messages`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(messageBody),
+    });
+
+    const data = await res.json();
+    if (data.error) throw new Error(`WhatsApp send: ${data.error.message}`);
+
+    const messageId = data.messages?.[0]?.id || 'sent';
+    return { remotePostId: messageId };
+  }
+
+  async getMetrics({ remotePostId, accessToken }: { remotePostId: string; accessToken: string }) {
+    // WhatsApp Business API has limited analytics
+    // Message stats available through WhatsApp Business Manager
+    return { views: undefined, likes: undefined, comments: undefined, shares: undefined };
+  }
+
+  async refreshToken(_refreshToken: string) {
+    // WhatsApp permanent tokens don't expire
+    // System user tokens from Meta Business are long-lived
+    return { accessToken: _refreshToken };
+  }
+
+  /**
+   * Verify WhatsApp Business token and get phone number info.
+   */
+  static async verifyToken(accessToken: string, phoneNumberId: string): Promise<{ phoneNumber: string; displayName: string }> {
+    const res = await fetch(
+      `https://graph.facebook.com/v19.0/${phoneNumberId}?fields=display_phone_number,verified_name`,
+      { headers: { Authorization: `Bearer ${accessToken}` } },
+    );
+    const data = await res.json();
+    if (data.error) throw new Error(`WhatsApp verification failed: ${data.error.message}`);
+    return {
+      phoneNumber: data.display_phone_number || phoneNumberId,
+      displayName: data.verified_name || 'WhatsApp Business',
+    };
+  }
+}
+
 // ─── Elite Social Publisher ──────────────────────────────
 
 export class ElitePublisher implements SocialPublisher {
@@ -653,6 +973,10 @@ export function getPublisher(provider: string): SocialPublisher {
       return new YouTubePublisher();
     case 'X_TWITTER':
       return new XTwitterPublisher();
+    case 'TELEGRAM':
+      return new TelegramPublisher();
+    case 'WHATSAPP':
+      return new WhatsAppPublisher();
     default:
       throw new Error(`No publisher available for provider: ${provider}`);
   }

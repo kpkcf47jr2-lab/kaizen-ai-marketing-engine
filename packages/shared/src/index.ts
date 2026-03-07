@@ -20,6 +20,8 @@ export {
   TikTokPublisher,
   YouTubePublisher,
   XTwitterPublisher,
+  TelegramPublisher,
+  WhatsAppPublisher,
   getPublisher,
 } from './social-publishers';
 export {

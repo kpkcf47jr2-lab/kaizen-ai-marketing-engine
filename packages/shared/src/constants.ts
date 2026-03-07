@@ -65,6 +65,20 @@ export const SOCIAL_PROVIDERS = {
     color: '#000000',
     scopes: ['tweet.read', 'tweet.write', 'users.read', 'offline.access'],
   },
+  TELEGRAM: {
+    name: 'Telegram',
+    icon: 'telegram',
+    color: '#26A5E4',
+    scopes: ['bot:send_messages', 'bot:send_photos', 'bot:send_documents'],
+    isMessaging: true,
+  },
+  WHATSAPP: {
+    name: 'WhatsApp',
+    icon: 'whatsapp',
+    color: '#25D366',
+    scopes: ['whatsapp_business_messaging'],
+    isMessaging: true,
+  },
 } as const;
 
 // ─── Video Config ────────────────────────────────────────

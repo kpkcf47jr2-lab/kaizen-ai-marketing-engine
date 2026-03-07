@@ -151,6 +151,72 @@ export class PublishingService {
       return false;
     }
   }
+
+  /**
+   * Publish a text + image/banner post to a messaging channel (Telegram/WhatsApp).
+   * Uses the publishPost method of the publisher.
+   */
+  static async publishPostToChannel(
+    postId: string,
+    socialAccountId: string,
+    text: string,
+    imageUrl?: string,
+    hashtags?: string[],
+  ) {
+    const socialAccount = await prisma.socialAccount.findUnique({
+      where: { id: socialAccountId },
+    });
+    if (!socialAccount) throw new Error('Social account not found');
+
+    let publisher: SocialPublisher;
+    try {
+      publisher = getPublisher(socialAccount.provider);
+    } catch {
+      console.warn(`No real publisher for ${socialAccount.provider}, using mock`);
+      publisher = new MockPublisher();
+    }
+
+    // Check if publisher supports text+image posts
+    if (!publisher.publishPost) {
+      // Fallback: try publishVideo with text as caption if no publishPost
+      throw new Error(`Publisher ${socialAccount.provider} does not support text posts`);
+    }
+
+    const accessToken = await decryptToken(socialAccount.accessTokenEncrypted);
+    const metadata = socialAccount.metadata as any;
+    const channelId = metadata?.channelId || socialAccount.providerAccountId || undefined;
+
+    try {
+      const result = await publisher.publishPost({
+        text,
+        imageUrl,
+        hashtags,
+        accessToken,
+        channelId,
+      });
+
+      await prisma.post.update({
+        where: { id: postId },
+        data: {
+          status: 'PUBLISHED',
+          remotePostId: result.remotePostId,
+          remoteUrl: result.remoteUrl,
+          publishedAt: new Date(),
+        },
+      });
+
+      return result;
+    } catch (error: any) {
+      await prisma.post.update({
+        where: { id: postId },
+        data: {
+          status: 'FAILED',
+          error: error.message || 'Unknown publishing error',
+        },
+      });
+      throw error;
+    }
+  }
 }
 
 // Re-export for convenience
