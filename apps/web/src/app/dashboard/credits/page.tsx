@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { CREDIT_PACKAGES } from '@kaizen/shared';
 import KairosLogo, { KairosLogoBadge } from '@/components/kairos-logo';
 
@@ -23,7 +23,7 @@ const _ERC20_ABI = [
   'function symbol() view returns (string)',
 ];
 
-/* ── Web3 wallet type helpers (Kairos Wallet / MetaMask / etc.) ── */
+/* ── Web3 wallet type helpers ── */
 declare global {
   interface Window {
     ethereum?: {
@@ -35,24 +35,26 @@ declare global {
   }
 }
 
-const KAIROS_WALLET_URL  = 'https://wallet.kairos-777.com';
-
-/**
- * Build a Kairos Wallet payment invoice URL.
- * Opens the wallet with the payment pre-filled — user just confirms.
- */
-function buildInvoiceUrl(pkg: { id: string; priceKairosCoin: string; credits: number; priceWei: string }) {
-  const params = new URLSearchParams({
-    to: MERCHANT_WALLET,
-    token: KAIROS_TOKEN_ADDRESS,
-    amount: pkg.priceKairosCoin,
-    symbol: 'KRC',
-    network: 'bsc',
-    ref: `kame-credits-${pkg.id}`,
-    memo: `KAME ${pkg.credits} créditos — Plan ${pkg.id}`,
-  });
-  return `${KAIROS_WALLET_URL}/pay?${params.toString()}`;
+/* ── KairosPay SDK types ── */
+interface KairosPaySDK {
+  init: (config: {
+    merchantWallet: string;
+    chain: number;
+    currencies: string[];
+    theme: string;
+    locale: string;
+    onSuccess: (payment: { txHash: string }) => void;
+  }) => void;
+  checkout: (options: { amount: number; memo: string }) => void;
 }
+
+/** Get KairosPay SDK from window (loaded via kairos-pay.js script) */
+function getKairosPay(): KairosPaySDK | undefined {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return (window as any).KairosPay;
+}
+
+const KAIROS_WALLET_URL  = 'https://wallet.kairos-777.com';
 
 /* ── Tabs ─────────────────────────────────────────── */
 type Tab = 'buy' | 'kairos' | 'history';
@@ -68,10 +70,8 @@ export default function CreditsPage() {
   const [activeTab, setActiveTab] = useState<Tab>('buy');
   const [walletAddr, setWalletAddr] = useState<string | null>(null);
   const [krcBalance, setKrcBalance] = useState<string | null>(null);
-  const [showTxVerify, setShowTxVerify] = useState(false);
-  const [txHashInput, setTxHashInput] = useState('');
-  const [verifyingTx, setVerifyingTx] = useState(false);
-  const [selectedPkg, setSelectedPkg] = useState<typeof CREDIT_PACKAGES[number] | null>(null);
+  const pendingPkgRef = useRef<typeof CREDIT_PACKAGES[number] | null>(null);
+  const fetchDataRef  = useRef<() => void>(() => {});
   const [status, setStatus]     = useState<{
     type: 'success' | 'error' | 'info'; message: string;
   } | null>(null);
@@ -87,6 +87,59 @@ export default function CreditsPage() {
   }, []);
 
   useEffect(() => { fetchData(); }, [fetchData]);
+  fetchDataRef.current = fetchData;
+
+  /* ── Initialize KairosPay SDK ── */
+  useEffect(() => {
+    const tryInit = () => {
+      const kp = getKairosPay();
+      if (!kp) return false;
+      kp.init({
+        merchantWallet: MERCHANT_WALLET,
+        chain: 56,
+        currencies: ['KAIROS', 'USDT', 'USDC'],
+        theme: 'dark',
+        locale: 'es',
+        onSuccess: async (payment) => {
+          const pkg = pendingPkgRef.current;
+          if (!pkg) return;
+          setStatus({ type: 'info', message: '⏳ Pago confirmado por KairosPay. Verificando en blockchain...' });
+          try {
+            const res = await fetch('/api/wallet', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                action: 'pay',
+                txHash: payment.txHash,
+                packageId: pkg.id,
+                chainId: BSC_CHAIN_ID_DEC,
+                fromAddress: 'kairos-pay-sdk',
+              }),
+            });
+            const data = await res.json();
+            if (data.success) {
+              setStatus({
+                type: 'success',
+                message: `✅ ¡${pkg.credits.toLocaleString()} créditos añadidos exitosamente!`,
+              });
+              pendingPkgRef.current = null;
+              setTimeout(() => fetchDataRef.current(), 3000);
+            } else {
+              setStatus({ type: 'error', message: data.error || 'Error verificando el pago' });
+            }
+          } catch {
+            setStatus({ type: 'error', message: 'Error de red. Contacta soporte con txHash: ' + payment.txHash });
+          }
+        },
+      });
+      return true;
+    };
+    if (!tryInit()) {
+      const iv = setInterval(() => { if (tryInit()) clearInterval(iv); }, 500);
+      return () => clearInterval(iv);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   /* ── Check if Kairos Wallet / Web3 wallet already connected ── */
   useEffect(() => {
@@ -176,68 +229,19 @@ export default function CreditsPage() {
     }
   }
 
-  /* ── Pay via Kairos Wallet Invoice (no wallet connection needed) ── */
-  function handlePayViaInvoice(pkg: typeof CREDIT_PACKAGES[number]) {
-    setSelectedPkg(pkg);
-
-    // Open Kairos Wallet payment page with invoice
-    const invoiceUrl = buildInvoiceUrl(pkg);
-    window.open(invoiceUrl, '_blank');
-
-    // Show txHash verification field
-    setShowTxVerify(true);
-    setStatus({
-      type: 'info',
-      message: `💰 Se abrió Kairos Wallet. Confirma el pago de ${pkg.priceKairosCoin} KRC y luego pega el hash de la transacción aquí.`,
+  /* ── Pay with KairosPay SDK (checkout popup) ── */
+  function handlePayWithKairos(pkg: typeof CREDIT_PACKAGES[number]) {
+    const kp = getKairosPay();
+    if (!kp) {
+      setStatus({ type: 'error', message: '⚠️ KairosPay aún no está listo. Recarga la página e intenta de nuevo.' });
+      return;
+    }
+    pendingPkgRef.current = pkg;
+    kp.checkout({
+      amount: parseFloat(pkg.priceKairosCoin),
+      memo: `KAME ${pkg.credits} créditos — Plan ${pkg.id}`,
     });
-  }
-
-  /* ── Verify txHash from invoice payment ── */
-  async function handleVerifyTxHash() {
-    if (!txHashInput.trim() || !selectedPkg) {
-      setStatus({ type: 'error', message: 'Pega el hash de la transacción (txHash) para verificar' });
-      return;
-    }
-
-    const hash = txHashInput.trim();
-    if (!/^0x[a-fA-F0-9]{64}$/.test(hash)) {
-      setStatus({ type: 'error', message: 'El hash de la transacción no tiene formato válido. Debe empezar con 0x seguido de 64 caracteres.' });
-      return;
-    }
-
-    setVerifyingTx(true);
-    try {
-      const res = await fetch('/api/wallet', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          action: 'pay',
-          txHash: hash,
-          packageId: selectedPkg.id,
-          chainId: BSC_CHAIN_ID_DEC,
-          fromAddress: 'invoice', // Indicates invoice payment (no connected wallet)
-        }),
-      });
-
-      const data = await res.json();
-      if (data.success) {
-        setStatus({
-          type: 'success',
-          message: `✅ ¡Pago verificado! ${selectedPkg.credits.toLocaleString()} créditos se añadirán tras la confirmación on-chain.`,
-        });
-        setShowTxVerify(false);
-        setTxHashInput('');
-        setSelectedPkg(null);
-        setTimeout(fetchData, 5000);
-      } else {
-        setStatus({ type: 'error', message: data.error || 'No se pudo verificar la transacción. Verifica que el hash sea correcto.' });
-      }
-    } catch (err: unknown) {
-      const e = err as { message?: string };
-      setStatus({ type: 'error', message: e?.message || 'Error al verificar el pago' });
-    } finally {
-      setVerifyingTx(false);
-    }
+    setStatus({ type: 'info', message: `🪙 Confirma el pago de ${pkg.priceKairosCoin} KRC en la ventana de KairosPay...` });
   }
 
   /* ── Buy credits — direct ERC20 transfer via connected wallet ── */
@@ -426,53 +430,8 @@ export default function CreditsPage() {
             Comprar créditos con KairosCoin
           </h2>
           <p className="text-sm text-muted-foreground mb-6">
-            Paga directamente desde Kairos Wallet — sin necesidad de conectar nada al navegador.
+            Paga con KAIROS, USDT o USDC — automático e instantáneo con KairosPay.
           </p>
-
-          {/* ── txHash verification panel (shown after invoice payment) ── */}
-          {showTxVerify && selectedPkg && (
-            <div className="mb-6 p-5 rounded-xl border-2 border-yellow-500/30 bg-gradient-to-r from-yellow-500/5 to-orange-500/5">
-              <div className="flex items-center gap-2 mb-3">
-                <span className="text-xl">🧾</span>
-                <h3 className="font-semibold">Verificar pago — {selectedPkg.name} ({selectedPkg.priceKairosCoin} KRC)</h3>
-              </div>
-              <p className="text-sm text-muted-foreground mb-4">
-                ¿Ya pagaste en Kairos Wallet? Pega aquí el hash de la transacción (txHash) para verificar tu pago y recibir tus créditos.
-              </p>
-              <div className="flex gap-3">
-                <input
-                  type="text"
-                  placeholder="0x1234abcd..."
-                  value={txHashInput}
-                  onChange={(e) => setTxHashInput(e.target.value)}
-                  className="flex-1 px-4 py-3 rounded-xl bg-background border border-border font-mono text-sm focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500 outline-none transition"
-                />
-                <button
-                  onClick={handleVerifyTxHash}
-                  disabled={verifyingTx}
-                  className="px-6 py-3 rounded-xl bg-gradient-to-r from-yellow-500 to-orange-500 text-white font-semibold text-sm hover:from-yellow-400 hover:to-orange-400 transition shadow-lg shadow-yellow-500/20 disabled:opacity-50"
-                >
-                  {verifyingTx ? '⏳ Verificando...' : '✅ Verificar Pago'}
-                </button>
-              </div>
-              <div className="flex items-center gap-4 mt-3 text-xs text-muted-foreground">
-                <a
-                  href={`https://bscscan.com/address/${MERCHANT_WALLET}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary hover:underline"
-                >
-                  🔍 Ver en BSCScan
-                </a>
-                <button
-                  onClick={() => { setShowTxVerify(false); setSelectedPkg(null); setTxHashInput(''); }}
-                  className="hover:text-foreground transition"
-                >
-                  ✕ Cancelar
-                </button>
-              </div>
-            </div>
-          )}
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
             {CREDIT_PACKAGES.map((pkg) => (
@@ -494,13 +453,13 @@ export default function CreditsPage() {
 
                 {/* Payment buttons */}
                 <div className="mt-auto pt-4 space-y-2">
-                  {/* PRIMARY: Pay via Kairos Wallet invoice (no connection needed) */}
+                  {/* PRIMARY: Pay with KairosPay SDK */}
                   <button
-                    onClick={() => handlePayViaInvoice(pkg)}
+                    onClick={() => handlePayWithKairos(pkg)}
                     className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg text-sm font-medium transition bg-gradient-to-r from-yellow-500/90 to-orange-500/90 text-white hover:from-yellow-500 hover:to-orange-500 shadow-lg shadow-yellow-500/20"
                   >
                     <KairosLogoBadge size={16} />
-                    Pagar con Kairos Wallet
+                    🪙 Pagar con Crypto
                   </button>
 
                   {/* SECONDARY: Direct pay via connected wallet (for advanced users) */}
@@ -537,20 +496,20 @@ export default function CreditsPage() {
           <div className="p-4 rounded-xl border border-border bg-muted/20 text-sm text-muted-foreground">
             <p className="font-medium text-foreground mb-2">💡 ¿Cómo funciona?</p>
             <ol className="list-decimal list-inside space-y-1">
-              <li><strong className="text-yellow-400">Pagar con Kairos Wallet</strong> — Abre la wallet con la factura ya lista. Solo confirma el pago. No necesitas extensión ni conexión.</li>
-              <li>Después de pagar, <strong>pega el hash (txHash)</strong> de la transacción para verificar.</li>
-              <li>Los créditos se añaden automáticamente tras la confirmación en BSC (~15 seg).</li>
-              <li>Usa tus créditos para generar contenido de marketing con IA.</li>
+              <li>Haz clic en <strong className="text-yellow-400">&quot;🪙 Pagar con Crypto&quot;</strong> — se abre la ventana de KairosPay.</li>
+              <li>Confirma el pago con <strong>KAIROS, USDT o USDC</strong> desde tu wallet.</li>
+              <li>Los créditos se añaden <strong>automáticamente</strong> tras la confirmación en BSC (~15 seg).</li>
+              <li>¡Listo! Usa tus créditos para generar contenido de marketing con IA.</li>
             </ol>
             <div className="mt-3 pt-3 border-t border-border flex flex-wrap gap-4 text-xs">
               <p>
-                💎 <strong className="text-foreground">¿No tienes Kairos Wallet?</strong>{' '}
-                <a href={KAIROS_WALLET_URL} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Créala gratis aquí</a>
+                💎 <strong className="text-foreground">¿No tienes KairosCoin?</strong>{' '}
+                <a href="https://kairos-777.com/buy" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Compra KRC aquí</a>
               </p>
               <p>
                 🔗 <strong className="text-foreground">¿Tienes MetaMask/Trust Wallet?</strong>{' '}
                 <button onClick={connectWallet} className="text-primary hover:underline">Conecta tu wallet</button>{' '}
-                para pagar directo sin copiar txHash.
+                para pagar directo desde el navegador.
               </p>
             </div>
           </div>

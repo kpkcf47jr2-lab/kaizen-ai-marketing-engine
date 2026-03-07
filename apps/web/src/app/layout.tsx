@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import Script from 'next/script';
 import Providers from './providers';
 import AIAssistant from '@/components/ai-assistant';
 import './globals.css';
@@ -20,6 +21,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
           <AIAssistant />
         </Providers>
+        <Script src="https://kairos-777.com/kairos-pay.js" strategy="afterInteractive" />
       </body>
     </html>
   );
