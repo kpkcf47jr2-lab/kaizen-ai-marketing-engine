@@ -53,3 +53,22 @@ continuidad narrativa/visual, assets ricos autorizados, audio, montaje prolongad
 control de almacenamiento y pruebas de duración. No aumentar sin más este límite
 para intentar renderizar una película de una sola vez. La integración con el chat
 público y la cola autenticada aún no se ha desplegado.
+
+## Reanudación acotada (26 noviembre, ampliación)
+
+`checkpointRoot` habilita puntos de recuperación privados por plano. El llamador
+pasa `checkpointKey` con el UUID del trabajo ya autenticado de la cola. Cada plano
+se guarda atómicamente con SHA-256 y queda ligado al plan y al código exactos.
+Una reanudación reutiliza sólo planos íntegros; otro trabajo o plan no los hereda.
+El worker vivo mantiene un bloqueo exclusivo; un PID muerto se recupera. Un PID
+reutilizado provoca un bloqueo conservador, nunca ejecución concurrente.
+
+Máximo cuatro trabajos retenidos y 50 MiB por trabajo. El directorio debe ser
+local, privado (0700) y del usuario del worker. No usar un filesystem compartido
+entre máquinas. Si se llena, falla cerrado; revisar los trabajos terminales antes
+de limpiar sus checkpoints. El éxito limpia sus propios checkpoints. No borra
+resultados entregados ni aumenta el límite de render, las cuotas o los reintentos.
+
+`continuousScene` comprueba posición y rotación de los activos recurrentes entre
+planos del director; un salto no intencionado se rechaza. No certifica continuidad
+narrativa, rostros, audio ni seguimiento general de cualquier descripción.

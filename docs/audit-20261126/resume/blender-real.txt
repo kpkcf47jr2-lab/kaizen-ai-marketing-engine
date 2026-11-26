@@ -1,0 +1,21 @@
+Running as unit: kame-resume-proof3-20261126.service
+TAP version 13
+# {"executable":"blender","code":null,"stderr":""}
+# Subtest: real Blender resumes completed shot after cancellation without rendering it twice
+ok 1 - real Blender resumes completed shot after cancellation without rendering it twice
+  ---
+  duration_ms: 73500.806
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 1
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 73801.724361
+Finished with result: success
+Main processes terminated with: code=exited/status=0
+Service runtime: 1min 14.123s
+CPU time consumed: 31.541s

@@ -1,4 +1,4 @@
-import { scenePlan } from './scene-plan.mjs';
+import { continuousScene } from './scene-plan.mjs';
 
 // The caller supplies the existing authenticated Qwen adapter. This module has
 // no endpoint, credential, external-provider fallback, wallet or memory of its own.
@@ -24,5 +24,5 @@ export async function directScene(prompt, complete) {
   if(typeof result?.content!=='string' || result.content.length>32768) throw new Error('invalid_director_response');
   let data;try{data=JSON.parse(result.content);}catch{throw new Error('invalid_director_json');}
   if(data?.unsupported===true) throw new Error('native_scene_unsupported');
-  return scenePlan(data);
+  return continuousScene(data);
 }

@@ -1,0 +1,34 @@
+✔ reopen resumes only committed bytes for same job, plan and renderer (27.918625ms)
+✔ another queue job cannot inherit clips; live execution is exclusive (24.322584ms)
+✔ tampered clips and symbolic links are not reused (33.057042ms)
+✔ bounded checkpoint count, file size and root permissions (33.188292ms)
+✔ invalid identities and out of range indices fail closed (8.383ms)
+✔ a killed process leaves committed shots recoverable with a new lock (76.103875ms)
+✔ director uses injected owned model and validates every response (1.916375ms)
+﹣ render validated real Qwen plan with own Blender engine (0.064958ms) # SKIP
+✔ shared immutable assets across shots and exact duration (0.18775ms)
+✔ reject untrusted scene 0 (0.142584ms)
+✔ reject untrusted scene 1 (0.109834ms)
+✔ reject untrusted scene 2 (0.094ms)
+✔ reject untrusted scene 3 (0.077625ms)
+✔ reject untrusted scene 4 (0.099958ms)
+✔ reject untrusted scene 5 (0.084375ms)
+✔ reject untrusted scene 6 (0.119917ms)
+✔ reject untrusted scene 7 (0.091292ms)
+✔ reject untrusted scene 8 (0.06875ms)
+✔ reject untrusted scene 9 (0.080292ms)
+✔ reject untrusted scene 10 (0.066791ms)
+✔ reject untrusted scene 11 (0.052375ms)
+✔ reject untrusted scene 12 (0.105542ms)
+✔ aggregate work cap accounts for samples (0.223583ms)
+✔ Linux renderer has no network, home, credentials or GPU device binds (0.777417ms)
+﹣ real Blender native rendering and cancellation (0.029042ms) # SKIP
+✔ director rejects teleportation and rotation jumps across shots (0.3535ms)
+ℹ tests 26
+ℹ suites 0
+ℹ pass 24
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 2
+ℹ todo 0
+ℹ duration_ms 273.611417

@@ -52,3 +52,16 @@ export function scenePlan(input) {
   if (frames/fps > 30 || width*height*frames*samples/4 > 64_000_000) throw new Error('native_render_budget_exceeded');
   return {version:1,width,height,fps,samples,assets,shots};
 }
+
+// Cinematic cuts may change the camera, not silently teleport the same asset.
+// Explicit lower-level scene plans still permit deliberate discontinuities.
+export function continuousScene(input) {
+  const plan=scenePlan(input),last=new Map();
+  for(const shot of plan.shots)for(const o of shot.objects){
+    const previous=last.get(o.asset);
+    if(previous && (o.from.some((v,i)=>Math.abs(v-previous.to[i])>1e-6)
+      || o.rotationFrom.some((v,i)=>Math.abs((((v-previous.rotationTo[i])%360)+540)%360-180)>1e-6)))throw Error('native_scene_continuity_failed');
+    last.set(o.asset,o);
+  }
+  return plan;
+}

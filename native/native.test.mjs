@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import {scenePlan} from './scene-plan.mjs';
+import {scenePlan,continuousScene} from './scene-plan.mjs';
 import {sandboxCommand} from './sandbox.mjs';
 import {createNativeRenderer} from './render.mjs';
 import {directScene} from './director.mjs';
@@ -65,4 +65,9 @@ test('real Blender native rendering and cancellation',{skip:!process.env.KAME_NA
     fs.writeFileSync(process.env.KAME_NATIVE_TEST_OUTPUT,result.bytes,{mode:0o600});
     fs.writeFileSync(process.env.KAME_NATIVE_TEST_OUTPUT+'.json',JSON.stringify(result.metadata,null,2),{mode:0o600});
   }
+});
+
+test('director rejects teleportation and rotation jumps across shots',async()=>{
+ for(const field of ['from','rotationFrom']){const p=fixture();p.shots[1].objects[0][field][0]+=1;assert.throws(()=>continuousScene(p),/continuity/);await assert.rejects(directScene('Two continuous shots',async()=>({content:JSON.stringify(p)})),/continuity/);}
+ const p=fixture();p.shots[1].objects[0].rotationFrom[0]=360;assert.equal(continuousScene(p).shots.length,2);
 });
