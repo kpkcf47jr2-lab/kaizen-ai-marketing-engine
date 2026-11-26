@@ -1,0 +1,22 @@
+  [content:job-a] ❌ Failed: Error: KAME_NATIVE_PIPELINE_REQUIRED: legacy external-model generation is disabled
+    at requireLegacyGenerationOptIn (/Users/kaizenllc/Development/kame-native-audit-20261126/packages/shared/src/generation-safety.ts:11:11)
+    at processContentJob (/Users/kaizenllc/Development/kame-native-audit-20261126/apps/worker/src/processors/content.processor.ts:125:5)
+    at async waitForActual (node:assert:621:5)
+    at async strict.rejects (node:assert:744:25)
+    at async TestContext.<anonymous> (/Users/kaizenllc/Development/kame-native-audit-20261126/apps/worker/test/safety.test.ts:25:5)
+    at async Test.run (node:internal/test_runner/test:1125:7)
+    at async Test.processPendingSubtests (node:internal/test_runner/test:787:7)
+  [publish:p] ❌ Failed: KAME_PUBLISH_BINDING_MISMATCH
+  [publish:p] ❌ Failed: KAME_PUBLICATION_RECONCILIATION_REQUIRED
+  [publish:p] ❌ Failed: KAME_PUBLICATION_NOT_SCHEDULED
+✔ content processor rejects another owner before writes or providers (4.423417ms)
+✔ native-only processor fails visibly before accessing external providers (3.24525ms)
+✔ publisher rejects crossed assets, preserves ambiguous state, deduplicates success (0.423916ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 235.238292

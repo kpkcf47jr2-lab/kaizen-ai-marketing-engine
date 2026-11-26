@@ -4,7 +4,7 @@
  * Uses correct Prisma schema field names (see PROJECT-CONTEXT.md §4).
  */
 import prisma from '../lib/prisma.js';
-import { getPublisher, MockPublisher, decrypt } from '@kaizen/shared';
+import { getPublisher, requirePublishBinding, decrypt } from '@kaizen/shared';
 import type { SocialPublisher } from '@kaizen/shared';
 
 interface PublishJobData {
@@ -18,12 +18,6 @@ export async function processPublishJob(data: PublishJobData) {
   const { postId, socialAccountId, assetId } = data;
 
   try {
-    // Mark post as PUBLISHING
-    await prisma.post.update({
-      where: { id: postId },
-      data: { status: 'PUBLISHING' },
-    });
-
     const socialAccount = await prisma.socialAccount.findUnique({
       where: { id: socialAccountId },
     });
@@ -36,6 +30,11 @@ export async function processPublishJob(data: PublishJobData) {
 
     const post = await prisma.post.findUnique({ where: { id: postId } });
     if (!post) throw new Error(`Post ${postId} not found`);
+    requirePublishBinding(post, socialAccount, asset);
+    if (post.status === 'PUBLISHED') return { success: true, remotePostId: post.remotePostId };
+    // Unknown submissions must be reconciled, never posted twice on retry.
+    if (post.status === 'PUBLISHING') throw new Error('KAME_PUBLICATION_RECONCILIATION_REQUIRED');
+    if (post.status !== 'SCHEDULED') throw new Error('KAME_PUBLICATION_NOT_SCHEDULED');
 
     console.log(`  [publish:${postId}] Publishing to ${socialAccount.provider} (@${socialAccount.providerUsername})...`);
 
@@ -45,13 +44,12 @@ export async function processPublishJob(data: PublishJobData) {
     const accessToken = await decrypt(socialAccount.accessTokenEncrypted, encKey);
 
     // Get the appropriate publisher
-    let publisher: SocialPublisher;
-    try {
-      publisher = getPublisher(socialAccount.provider);
-    } catch {
-      console.warn(`  [publish:${postId}] No real publisher for ${socialAccount.provider}, using mock`);
-      publisher = new MockPublisher();
-    }
+    const publisher: SocialPublisher = getPublisher(socialAccount.provider);
+    const claimed = await prisma.post.updateMany({
+      where: { id: postId, status: post.status },
+      data: { status: 'PUBLISHING' },
+    });
+    if (claimed.count !== 1) throw new Error('KAME_PUBLICATION_ALREADY_CLAIMED');
 
     // Publish the video
     const result = await publisher.publishVideo({
@@ -61,6 +59,10 @@ export async function processPublishJob(data: PublishJobData) {
       accessToken,
       accountId: socialAccount.providerAccountId || undefined,
     });
+    if (typeof result?.remotePostId !== 'string' || !result.remotePostId.trim() ||
+        result.remotePostId.length > 512 || result.remotePostId.startsWith('mock_')) {
+      throw new Error('KAME_PUBLICATION_RECONCILIATION_REQUIRED');
+    }
 
     // Update post with success status
     await prisma.post.update({
@@ -78,13 +80,8 @@ export async function processPublishJob(data: PublishJobData) {
   } catch (error) {
     const errorMsg = error instanceof Error ? error.message : 'Unknown error';
 
-    await prisma.post.update({
-      where: { id: postId },
-      data: {
-        status: 'FAILED',
-        error: errorMsg,
-      },
-    });
+    // Preserve PUBLISHING after ambiguous remote calls. Do not modify a row when
+    // queue IDs failed ownership/binding checks; the queue error remains visible.
 
     console.error(`  [publish:${postId}] ❌ Failed: ${errorMsg}`);
     throw error;

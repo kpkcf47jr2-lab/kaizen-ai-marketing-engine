@@ -19,6 +19,8 @@ import {
   MockTTSProvider,
   MockVideoProvider,
   MockThumbnailProvider,
+  requireRealProviders,
+  requireLegacyGenerationOptIn,
 } from '@kaizen/shared';
 import { storage } from '@/lib/storage';
 
@@ -59,6 +61,8 @@ export class ContentService {
     brand: BrandConfig,
     options?: { topic?: string; previousTopics?: string[] },
   ): Promise<ContentBundle> {
+    requireLegacyGenerationOptIn();
+    requireRealProviders([this.llm.name, this.tts.name, this.video.name, this.thumbnail.name]);
     // Step 1: Generate script via LLM
     const script = await this.llm.generateScript(brand, options);
 
@@ -90,11 +94,15 @@ export class ContentService {
     brand: BrandConfig,
     options?: { topic?: string; previousTopics?: string[] },
   ) {
+    requireLegacyGenerationOptIn();
+    requireRealProviders([this.llm.name]);
     return this.llm.generateScript(brand, options);
   }
 
   /** Get available TTS voices */
   async listVoices(language?: string) {
+    requireLegacyGenerationOptIn();
+    requireRealProviders([this.tts.name]);
     return this.tts.listVoices(language);
   }
 }

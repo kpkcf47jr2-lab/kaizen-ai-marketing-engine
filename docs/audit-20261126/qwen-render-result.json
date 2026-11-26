@@ -1,0 +1,12 @@
+{
+  "engine": "kame-procedural-blender",
+  "externalModels": false,
+  "device": "CPU",
+  "width": 320,
+  "height": 240,
+  "fps": 12,
+  "frames": 24,
+  "durationMs": 2000,
+  "sha256": "a5e18c04e914a71c0a77910e725773347a95c0d4166b9c1f438465192ad4ac0b",
+  "planSha256": "cea7006ca40cc99cf2cc1ed8254e646e5389f5076e085be270a8dbc1a93411f7"
+}

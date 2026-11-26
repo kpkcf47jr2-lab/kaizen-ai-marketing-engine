@@ -1,0 +1,18 @@
+{
+  "at": "2026-11-26T22:05:14.283Z",
+  "agentId": "kaizen_8167cc06ff6807b34f02c20917afe901a66f4e53",
+  "walletAddress": "0x5827843D93017789d1772839100FF70825db5222",
+  "delegation": "not-authorized",
+  "balances": {
+    "137": {
+      "usdc": 0,
+      "native": 0
+    },
+    "8453": {
+      "usdc": 0,
+      "native": 0
+    }
+  },
+  "unresolvedTransfers": 0,
+  "financialActions": 0
+}

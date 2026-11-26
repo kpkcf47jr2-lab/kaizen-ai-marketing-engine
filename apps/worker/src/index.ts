@@ -16,7 +16,7 @@ const redis = new IORedis(REDIS_URL, { maxRetriesPerRequest: null });
 const connection = redis as unknown as ConnectionOptions;
 
 console.log('🚀 Kaizen AI Worker starting...');
-console.log(`   Redis: ${REDIS_URL}`);
+console.log('   Redis: configured');
 
 // ── Content Generation Worker ──────────────────────────
 const contentWorker = new Worker(

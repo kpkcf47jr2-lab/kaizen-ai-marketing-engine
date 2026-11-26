@@ -19,6 +19,9 @@ import {
   MockThumbnailProvider,
   DALLEThumbnailProvider,
   CREDITS_BY_TIER,
+  requireContentOwner,
+  requireRealProviders,
+  requireLegacyGenerationOptIn,
 } from '@kaizen/shared';
 import type {
   LLMProvider,
@@ -106,6 +109,7 @@ export async function processContentJob(data: ContentJobData) {
     where: { id: contentJobId },
   });
   if (!contentJob) throw new Error(`Content job ${contentJobId} not found`);
+  requireContentOwner(contentJob, userId);
 
   const videoTier = (contentJob.videoTier?.toLowerCase() || 'pro') as VideoQualityTier;
 
@@ -116,6 +120,9 @@ export async function processContentJob(data: ContentJobData) {
   });
 
   try {
+    // This processor still uses external models. Never silently substitute mocks
+    // or invoke it under the native-only policy while native integration is pending.
+    requireLegacyGenerationOptIn();
     // Load brand profile
     const brand = await prisma.brandProfile.findUnique({ where: { userId } });
     if (!brand) throw new Error('Brand profile not found — cannot generate content');
@@ -151,6 +158,7 @@ export async function processContentJob(data: ContentJobData) {
       avatarId: campaign?.avatarId || undefined,
       voiceId: campaign?.voiceId || undefined,
     });
+    requireRealProviders([providers.llm.name, providers.video.name, providers.thumbnail.name]);
 
     // ── Step 1: Generate content plan (script + HeyGen directives) ──
     await prisma.contentJob.update({

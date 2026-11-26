@@ -1,0 +1,14 @@
+{
+  "base": "493bb7c",
+  "status": "candidate_not_deployed",
+  "files": {
+    "native/README.md": "3a52fb390ae0ed64bbcd28d8aa0369ae189d1d3787badeca1ec07132afd0ed87",
+    "native/demo.json": "7c5845521180611242814041fff8524804fc242585d1de3c7452cdb055e404b6",
+    "native/director.mjs": "b5465907a6843539b5989c12e77ccb3a9b50c8d83c270c21bc526c74a0be28e0",
+    "native/native.test.mjs": "7e8447fd91e00d6092898ef1ce7325566e61aa96794d4d96cb91584890a35515",
+    "native/render-scene.py": "c1361dd0e983d351d01ddffe01d0bafdc2241514fd34cf34cc33d13c38f01457",
+    "native/render.mjs": "c6a3ec774392fea329763c0e8ff093855686e44fe87cdf6311ebbbf3ee642005",
+    "native/sandbox.mjs": "501868680e27973507f1a9105e3f6a965c55695b46dbc9189a1a704104bd834c",
+    "native/scene-plan.mjs": "7aec1f2e982c5035eee563587b6112ed9269264f192afc565a452d8f8cdbeb7c"
+  }
+}

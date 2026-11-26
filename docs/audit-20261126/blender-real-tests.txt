@@ -1,0 +1,96 @@
+Running as unit: kame-native-repo-optimized-20261126.service
+TAP version 13
+# Subtest: director uses injected owned model and validates every response
+ok 1 - director uses injected owned model and validates every response
+  ---
+  duration_ms: 6.363906
+  ...
+# Subtest: render validated real Qwen plan with own Blender engine
+ok 2 - render validated real Qwen plan with own Blender engine
+  ---
+  duration_ms: 272842.208958
+  ...
+# Subtest: shared immutable assets across shots and exact duration
+ok 3 - shared immutable assets across shots and exact duration
+  ---
+  duration_ms: 1.0322
+  ...
+# Subtest: reject untrusted scene 0
+ok 4 - reject untrusted scene 0
+  ---
+  duration_ms: 0.804997
+  ...
+# Subtest: reject untrusted scene 1
+ok 5 - reject untrusted scene 1
+  ---
+  duration_ms: 0.490057
+  ...
+# Subtest: reject untrusted scene 2
+ok 6 - reject untrusted scene 2
+  ---
+  duration_ms: 0.61615
+  ...
+# Subtest: reject untrusted scene 3
+ok 7 - reject untrusted scene 3
+  ---
+  duration_ms: 0.667443
+  ...
+# Subtest: reject untrusted scene 4
+ok 8 - reject untrusted scene 4
+  ---
+  duration_ms: 0.604694
+  ...
+# Subtest: reject untrusted scene 5
+ok 9 - reject untrusted scene 5
+  ---
+  duration_ms: 0.56725
+  ...
+# Subtest: reject untrusted scene 6
+ok 10 - reject untrusted scene 6
+  ---
+  duration_ms: 0.626197
+  ...
+# Subtest: reject untrusted scene 7
+ok 11 - reject untrusted scene 7
+  ---
+  duration_ms: 0.627426
+  ...
+# Subtest: reject untrusted scene 8
+ok 12 - reject untrusted scene 8
+  ---
+  duration_ms: 1.352546
+  ...
+# Subtest: reject untrusted scene 9
+ok 13 - reject untrusted scene 9
+  ---
+  duration_ms: 0.645602
+  ...
+# Subtest: reject untrusted scene 10
+ok 14 - reject untrusted scene 10
+  ---
+  duration_ms: 0.585364
+  ...
+# Subtest: reject untrusted scene 11
+ok 15 - reject untrusted scene 11
+  ---
+  duration_ms: 0.369765
+  ...
+# Subtest: reject untrusted scene 12
+ok 16 - reject untrusted scene 12
+  ---
+  duration_ms: 0.587911
+  ...
+# Subtest: aggregate work cap accounts for samples
+ok 17 - aggregate work cap accounts for samples
+  ---
+  duration_ms: 0.589231
+  ...
+# Subtest: Linux renderer has no network, home, credentials or GPU device binds
+ok 18 - Linux renderer has no network, home, credentials or GPU device binds
+  ---
+  duration_ms: 1.549655
+  ...
+Finished with result: timeout
+Main processes terminated with: code=exited/status=1
+Service runtime: 6min 172ms
+CPU time consumed: 2min 57.601s

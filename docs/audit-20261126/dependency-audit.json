@@ -1,0 +1,2378 @@
+{
+  "advisories": {
+    "1112593": {
+      "findings": [
+        {
+          "version": "14.2.35",
+          "paths": [
+            "apps__web>next",
+            "apps__web>next-auth>next"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1112593,
+      "title": "Next.js self-hosted applications vulnerable to DoS via Image Optimizer remotePatterns configuration",
+      "module_name": "next",
+      "vulnerable_versions": ">=10.0.0 <15.5.10",
+      "patched_versions": ">=15.5.10",
+      "severity": "moderate",
+      "cwe": "CWE-400, CWE-770",
+      "github_advisory_id": "GHSA-9g9p-9gw9-jx7f",
+      "url": "https://github.com/advisories/GHSA-9g9p-9gw9-jx7f"
+    },
+    "1112653": {
+      "findings": [
+        {
+          "version": "14.2.35",
+          "paths": [
+            "apps__web>next",
+            "apps__web>next-auth>next"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1112653,
+      "title": "Next.js HTTP request deserialization can lead to DoS when using insecure React Server Components",
+      "module_name": "next",
+      "vulnerable_versions": ">=13.0.0 <15.0.8",
+      "patched_versions": ">=15.0.8",
+      "severity": "high",
+      "cwe": "CWE-400, CWE-502",
+      "github_advisory_id": "GHSA-h25m-26qc-wcjf",
+      "url": "https://github.com/advisories/GHSA-h25m-26qc-wcjf"
+    },
+    "1114875": {
+      "findings": [
+        {
+          "version": "1.15.5",
+          "paths": [
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/sign-client>@walletconnect/core>@walletconnect/keyvaluestorage>unstorage>h3",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/sign-client>@walletconnect/core>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/sign-client>@walletconnect/core>@walletconnect/utils>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/sign-client>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/sign-client>@walletconnect/utils>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/sign-client>@walletconnect/core>@walletconnect/keyvaluestorage>unstorage>h3",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/sign-client>@walletconnect/core>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/sign-client>@walletconnect/core>@walletconnect/utils>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/sign-client>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/sign-client>@walletconnect/utils>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/utils>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/utils>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1114875,
+      "title": "h3 has a Path Traversal via Percent-Encoded Dot Segments in serveStatic Allows Arbitrary File Read",
+      "module_name": "h3",
+      "vulnerable_versions": "<1.15.6",
+      "patched_versions": ">=1.15.6",
+      "severity": "moderate",
+      "cwe": "CWE-22, CWE-116",
+      "github_advisory_id": "GHSA-wr4h-v87w-p3r7",
+      "url": "https://github.com/advisories/GHSA-wr4h-v87w-p3r7"
+    },
+    "1114897": {
+      "findings": [
+        {
+          "version": "14.2.35",
+          "paths": [
+            "apps__web>next",
+            "apps__web>next-auth>next"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1114897,
+      "title": "Next.js: HTTP request smuggling in rewrites",
+      "module_name": "next",
+      "vulnerable_versions": ">=9.5.0 <15.5.13",
+      "patched_versions": ">=15.5.13",
+      "severity": "moderate",
+      "cwe": "CWE-444",
+      "github_advisory_id": "GHSA-ggv3-7p47-pfv8",
+      "url": "https://github.com/advisories/GHSA-ggv3-7p47-pfv8"
+    },
+    "1114940": {
+      "findings": [
+        {
+          "version": "14.2.35",
+          "paths": [
+            "apps__web>next",
+            "apps__web>next-auth>next"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1114940,
+      "title": "Next.js: Unbounded next/image disk cache growth can exhaust storage",
+      "module_name": "next",
+      "vulnerable_versions": ">=10.0.0 <15.5.14",
+      "patched_versions": ">=15.5.14",
+      "severity": "moderate",
+      "cwe": "CWE-400",
+      "github_advisory_id": "GHSA-3x4c-7xq6-9pq8",
+      "url": "https://github.com/advisories/GHSA-3x4c-7xq6-9pq8"
+    },
+    "1115114": {
+      "findings": [
+        {
+          "version": "1.15.5",
+          "paths": [
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/sign-client>@walletconnect/core>@walletconnect/keyvaluestorage>unstorage>h3",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/sign-client>@walletconnect/core>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/sign-client>@walletconnect/core>@walletconnect/utils>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/sign-client>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/sign-client>@walletconnect/utils>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/sign-client>@walletconnect/core>@walletconnect/keyvaluestorage>unstorage>h3",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/sign-client>@walletconnect/core>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/sign-client>@walletconnect/core>@walletconnect/utils>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/sign-client>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/sign-client>@walletconnect/utils>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/utils>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/utils>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1115114,
+      "title": "h3: SSE Event Injection via Unsanitized Carriage Return (`\\r`) in EventStream Data and Comment Fields (Bypass of CVE Fix)",
+      "module_name": "h3",
+      "vulnerable_versions": "<1.15.9",
+      "patched_versions": ">=1.15.9",
+      "severity": "moderate",
+      "cwe": "CWE-74",
+      "github_advisory_id": "GHSA-4hxc-9384-m385",
+      "url": "https://github.com/advisories/GHSA-4hxc-9384-m385"
+    },
+    "1115117": {
+      "findings": [
+        {
+          "version": "1.15.5",
+          "paths": [
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/sign-client>@walletconnect/core>@walletconnect/keyvaluestorage>unstorage>h3",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/sign-client>@walletconnect/core>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/sign-client>@walletconnect/core>@walletconnect/utils>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/sign-client>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/sign-client>@walletconnect/utils>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/sign-client>@walletconnect/core>@walletconnect/keyvaluestorage>unstorage>h3",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/sign-client>@walletconnect/core>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/sign-client>@walletconnect/core>@walletconnect/utils>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/sign-client>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/sign-client>@walletconnect/utils>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/utils>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/utils>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1115117,
+      "title": "h3: Double Decoding in `serveStatic` Bypasses `resolveDotSegments` Path Traversal Protection via `%252e%252e`",
+      "module_name": "h3",
+      "vulnerable_versions": "<=1.15.8",
+      "patched_versions": ">=1.15.9",
+      "severity": "moderate",
+      "cwe": "CWE-22",
+      "github_advisory_id": "GHSA-72gr-qfp7-vwhw",
+      "url": "https://github.com/advisories/GHSA-72gr-qfp7-vwhw"
+    },
+    "1115161": {
+      "findings": [
+        {
+          "version": "1.15.5",
+          "paths": [
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/sign-client>@walletconnect/core>@walletconnect/keyvaluestorage>unstorage>h3",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/sign-client>@walletconnect/core>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/sign-client>@walletconnect/core>@walletconnect/utils>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/sign-client>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/sign-client>@walletconnect/utils>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/sign-client>@walletconnect/core>@walletconnect/keyvaluestorage>unstorage>h3",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/sign-client>@walletconnect/core>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/sign-client>@walletconnect/core>@walletconnect/utils>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/sign-client>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/sign-client>@walletconnect/utils>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/utils>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/utils>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1115161,
+      "title": "h3 has a Server-Sent Events Injection via Unsanitized Newlines in Event Stream Fields",
+      "module_name": "h3",
+      "vulnerable_versions": "<1.15.6",
+      "patched_versions": ">=1.15.6",
+      "severity": "high",
+      "cwe": "CWE-93",
+      "github_advisory_id": "GHSA-22cc-p3c6-wpvm",
+      "url": "https://github.com/advisories/GHSA-22cc-p3c6-wpvm"
+    },
+    "1115339": {
+      "findings": [
+        {
+          "version": "5.4.1",
+          "paths": [
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-env>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-http>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-env>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-http>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-login>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-login>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-login>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-login>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-process>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-web-identity>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-process>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-web-identity>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/middleware-flexible-checksums>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/middleware-sdk-s3>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/signature-v4-multi-region>@aws-sdk/middleware-sdk-s3>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/s3-request-presigner>@aws-sdk/signature-v4-multi-region>@aws-sdk/middleware-sdk-s3>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-env>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-http>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-env>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-http>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-login>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-login>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-login>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-login>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-process>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-web-identity>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-process>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-web-identity>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/middleware-flexible-checksums>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/middleware-sdk-s3>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/signature-v4-multi-region>@aws-sdk/middleware-sdk-s3>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1115339,
+      "title": "fast-xml-parser affected by numeric entity expansion bypassing all entity expansion limits (incomplete fix for CVE-2026-26278)",
+      "module_name": "fast-xml-parser",
+      "vulnerable_versions": ">=5.0.0 <5.5.6",
+      "patched_versions": ">=5.5.6",
+      "severity": "high",
+      "cwe": "CWE-776",
+      "github_advisory_id": "GHSA-8gc5-j5rx-235r",
+      "url": "https://github.com/advisories/GHSA-8gc5-j5rx-235r"
+    },
+    "1115549": {
+      "findings": [
+        {
+          "version": "2.3.1",
+          "paths": [
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/sign-client>@walletconnect/core>@walletconnect/keyvaluestorage>unstorage>anymatch>picomatch",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/sign-client>@walletconnect/core>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>anymatch>picomatch",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/sign-client>@walletconnect/core>@walletconnect/utils>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>anymatch>picomatch",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/sign-client>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>anymatch>picomatch",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/sign-client>@walletconnect/utils>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>anymatch>picomatch",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>anymatch>picomatch",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/sign-client>@walletconnect/core>@walletconnect/keyvaluestorage>unstorage>anymatch>picomatch",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/sign-client>@walletconnect/core>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>anymatch>picomatch",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/sign-client>@walletconnect/core>@walletconnect/utils>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>anymatch>picomatch",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/sign-client>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>anymatch>picomatch",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/sign-client>@walletconnect/utils>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>anymatch>picomatch",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>anymatch>picomatch",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/utils>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>anymatch>picomatch",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/utils>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>anymatch>picomatch",
+            "apps__web>tailwindcss-animate>tailwindcss>chokidar>anymatch>picomatch",
+            "apps__web>tailwindcss-animate>tailwindcss>chokidar>readdirp>picomatch",
+            "apps__web>tailwindcss-animate>tailwindcss>fast-glob>micromatch>picomatch",
+            "apps__web>tailwindcss-animate>tailwindcss>micromatch>picomatch"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1115549,
+      "title": "Picomatch: Method Injection in POSIX Character Classes causes incorrect Glob Matching",
+      "module_name": "picomatch",
+      "vulnerable_versions": "<2.3.2",
+      "patched_versions": ">=2.3.2",
+      "severity": "moderate",
+      "cwe": "CWE-1321",
+      "github_advisory_id": "GHSA-3v7f-55p6-f55p",
+      "url": "https://github.com/advisories/GHSA-3v7f-55p6-f55p"
+    },
+    "1115551": {
+      "findings": [
+        {
+          "version": "4.0.3",
+          "paths": [
+            "apps__web>tailwindcss-animate>tailwindcss>sucrase>tinyglobby>fdir>picomatch",
+            "apps__web>tailwindcss-animate>tailwindcss>sucrase>tinyglobby>picomatch"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1115551,
+      "title": "Picomatch: Method Injection in POSIX Character Classes causes incorrect Glob Matching",
+      "module_name": "picomatch",
+      "vulnerable_versions": ">=4.0.0 <4.0.4",
+      "patched_versions": ">=4.0.4",
+      "severity": "moderate",
+      "cwe": "CWE-1321",
+      "github_advisory_id": "GHSA-3v7f-55p6-f55p",
+      "url": "https://github.com/advisories/GHSA-3v7f-55p6-f55p"
+    },
+    "1115552": {
+      "findings": [
+        {
+          "version": "2.3.1",
+          "paths": [
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/sign-client>@walletconnect/core>@walletconnect/keyvaluestorage>unstorage>anymatch>picomatch",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/sign-client>@walletconnect/core>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>anymatch>picomatch",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/sign-client>@walletconnect/core>@walletconnect/utils>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>anymatch>picomatch",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/sign-client>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>anymatch>picomatch",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/sign-client>@walletconnect/utils>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>anymatch>picomatch",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>anymatch>picomatch",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/sign-client>@walletconnect/core>@walletconnect/keyvaluestorage>unstorage>anymatch>picomatch",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/sign-client>@walletconnect/core>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>anymatch>picomatch",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/sign-client>@walletconnect/core>@walletconnect/utils>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>anymatch>picomatch",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/sign-client>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>anymatch>picomatch",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/sign-client>@walletconnect/utils>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>anymatch>picomatch",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>anymatch>picomatch",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/utils>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>anymatch>picomatch",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/utils>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>anymatch>picomatch",
+            "apps__web>tailwindcss-animate>tailwindcss>chokidar>anymatch>picomatch",
+            "apps__web>tailwindcss-animate>tailwindcss>chokidar>readdirp>picomatch",
+            "apps__web>tailwindcss-animate>tailwindcss>fast-glob>micromatch>picomatch",
+            "apps__web>tailwindcss-animate>tailwindcss>micromatch>picomatch"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1115552,
+      "title": "Picomatch has a ReDoS vulnerability via extglob quantifiers",
+      "module_name": "picomatch",
+      "vulnerable_versions": "<2.3.2",
+      "patched_versions": ">=2.3.2",
+      "severity": "high",
+      "cwe": "CWE-1333",
+      "github_advisory_id": "GHSA-c2c7-rcm5-vvqj",
+      "url": "https://github.com/advisories/GHSA-c2c7-rcm5-vvqj"
+    },
+    "1115554": {
+      "findings": [
+        {
+          "version": "4.0.3",
+          "paths": [
+            "apps__web>tailwindcss-animate>tailwindcss>sucrase>tinyglobby>fdir>picomatch",
+            "apps__web>tailwindcss-animate>tailwindcss>sucrase>tinyglobby>picomatch"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1115554,
+      "title": "Picomatch has a ReDoS vulnerability via extglob quantifiers",
+      "module_name": "picomatch",
+      "vulnerable_versions": ">=4.0.0 <4.0.4",
+      "patched_versions": ">=4.0.4",
+      "severity": "high",
+      "cwe": "CWE-1333",
+      "github_advisory_id": "GHSA-c2c7-rcm5-vvqj",
+      "url": "https://github.com/advisories/GHSA-c2c7-rcm5-vvqj"
+    },
+    "1116102": {
+      "findings": [
+        {
+          "version": "6.1.4",
+          "paths": [
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/sign-client>@walletconnect/core>@walletconnect/keyvaluestorage>unstorage>h3>defu",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/sign-client>@walletconnect/core>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3>defu",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/sign-client>@walletconnect/core>@walletconnect/utils>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3>defu",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/sign-client>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3>defu",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/sign-client>@walletconnect/utils>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3>defu",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3>defu",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/sign-client>@walletconnect/core>@walletconnect/keyvaluestorage>unstorage>h3>defu",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/sign-client>@walletconnect/core>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3>defu",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/sign-client>@walletconnect/core>@walletconnect/utils>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3>defu",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/sign-client>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3>defu",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/sign-client>@walletconnect/utils>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3>defu",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3>defu",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/utils>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3>defu",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/utils>@walletconnect/types>@walletconnect/keyvaluestorage>unstorage>h3>defu"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1116102,
+      "title": "defu: Prototype pollution via `__proto__` key in defaults argument",
+      "module_name": "defu",
+      "vulnerable_versions": "<=6.1.4",
+      "patched_versions": ">=6.1.5",
+      "severity": "high",
+      "cwe": "CWE-1321",
+      "github_advisory_id": "GHSA-737v-mqg7-c878",
+      "url": "https://github.com/advisories/GHSA-737v-mqg7-c878"
+    },
+    "1116307": {
+      "findings": [
+        {
+          "version": "5.4.1",
+          "paths": [
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-env>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-http>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-env>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-http>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-login>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-login>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-login>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-login>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-process>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-web-identity>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-process>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-web-identity>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/middleware-flexible-checksums>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/middleware-sdk-s3>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/signature-v4-multi-region>@aws-sdk/middleware-sdk-s3>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/s3-request-presigner>@aws-sdk/signature-v4-multi-region>@aws-sdk/middleware-sdk-s3>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-env>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-http>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-env>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-http>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-login>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-login>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-login>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-login>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-process>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-web-identity>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-process>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-web-identity>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/middleware-flexible-checksums>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/middleware-sdk-s3>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/signature-v4-multi-region>@aws-sdk/middleware-sdk-s3>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1116307,
+      "title": "Entity Expansion Limits Bypassed When Set to Zero Due to JavaScript Falsy Evaluation in fast-xml-parser",
+      "module_name": "fast-xml-parser",
+      "vulnerable_versions": ">=5.0.0 <5.5.7",
+      "patched_versions": ">=5.5.7",
+      "severity": "moderate",
+      "cwe": "CWE-1284",
+      "github_advisory_id": "GHSA-jp2q-39xq-3w4g",
+      "url": "https://github.com/advisories/GHSA-jp2q-39xq-3w4g"
+    },
+    "1116376": {
+      "findings": [
+        {
+          "version": "14.2.35",
+          "paths": [
+            "apps__web>next",
+            "apps__web>next-auth>next"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1116376,
+      "title": "Next.js has a Denial of Service with Server Components",
+      "module_name": "next",
+      "vulnerable_versions": ">=13.0.0 <15.5.15",
+      "patched_versions": ">=15.5.15",
+      "severity": "high",
+      "cwe": "CWE-770",
+      "github_advisory_id": "GHSA-q4gf-8mx6-v5v3",
+      "url": "https://github.com/advisories/GHSA-q4gf-8mx6-v5v3"
+    },
+    "1117015": {
+      "findings": [
+        {
+          "version": "8.5.8",
+          "paths": [
+            "apps__web>@web3modal/ethers>@web3modal/scaffold-vue>vue>@vue/compiler-sfc>postcss",
+            "apps__web>@web3modal/ethers>@web3modal/siwe>vue>@vue/compiler-sfc>postcss",
+            "apps__web>@web3modal/ethers>vue>@vue/compiler-sfc>postcss",
+            "apps__web>tailwindcss-animate>tailwindcss>postcss",
+            "apps__web>tailwindcss-animate>tailwindcss>postcss-import>postcss",
+            "apps__web>tailwindcss-animate>tailwindcss>postcss-js>postcss",
+            "apps__web>tailwindcss-animate>tailwindcss>postcss-load-config>postcss",
+            "apps__web>tailwindcss-animate>tailwindcss>postcss-nested>postcss"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "version": "8.4.31",
+          "paths": [
+            "apps__web>next>postcss",
+            "apps__web>next-auth>next>postcss"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1117015,
+      "title": "PostCSS has XSS via Unescaped </style> in its CSS Stringify Output",
+      "module_name": "postcss",
+      "vulnerable_versions": "<8.5.10",
+      "patched_versions": ">=8.5.10",
+      "severity": "moderate",
+      "cwe": "CWE-79",
+      "github_advisory_id": "GHSA-qx2v-qp2m-jg93",
+      "url": "https://github.com/advisories/GHSA-qx2v-qp2m-jg93"
+    },
+    "1117931": {
+      "findings": [
+        {
+          "version": "14.2.35",
+          "paths": [
+            "apps__web>next",
+            "apps__web>next-auth>next"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1117931,
+      "title": "Next.js Vulnerable to Denial of Service with Server Components",
+      "module_name": "next",
+      "vulnerable_versions": ">=13.0.0 <15.5.16",
+      "patched_versions": ">=15.5.16",
+      "severity": "high",
+      "cwe": "CWE-770",
+      "github_advisory_id": "GHSA-8h8q-6873-q5fj",
+      "url": "https://github.com/advisories/GHSA-8h8q-6873-q5fj"
+    },
+    "1118942": {
+      "findings": [
+        {
+          "version": "14.2.35",
+          "paths": [
+            "apps__web>next",
+            "apps__web>next-auth>next"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1118942,
+      "title": "Next.js's Middleware / Proxy redirects can be cache-poisoned",
+      "module_name": "next",
+      "vulnerable_versions": ">=12.2.0 <15.5.16",
+      "patched_versions": ">=15.5.16",
+      "severity": "low",
+      "cwe": "CWE-349",
+      "github_advisory_id": "GHSA-3g8h-86w9-wvmq",
+      "url": "https://github.com/advisories/GHSA-3g8h-86w9-wvmq"
+    },
+    "1118944": {
+      "findings": [
+        {
+          "version": "14.2.35",
+          "paths": [
+            "apps__web>next",
+            "apps__web>next-auth>next"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1118944,
+      "title": "Next.js vulnerable to cross-site scripting in App Router applications using CSP nonces",
+      "module_name": "next",
+      "vulnerable_versions": ">=13.4.0 <15.5.16",
+      "patched_versions": ">=15.5.16",
+      "severity": "moderate",
+      "cwe": "CWE-79",
+      "github_advisory_id": "GHSA-ffhc-5mcf-pf4q",
+      "url": "https://github.com/advisories/GHSA-ffhc-5mcf-pf4q"
+    },
+    "1118946": {
+      "findings": [
+        {
+          "version": "14.2.35",
+          "paths": [
+            "apps__web>next",
+            "apps__web>next-auth>next"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1118946,
+      "title": "Next.js vulnerable to cache poisoning via collisions in React Server Component cache-busting",
+      "module_name": "next",
+      "vulnerable_versions": ">=13.4.6 <15.5.16",
+      "patched_versions": ">=15.5.16",
+      "severity": "low",
+      "cwe": "CWE-328",
+      "github_advisory_id": "GHSA-vfv6-92ff-j949",
+      "url": "https://github.com/advisories/GHSA-vfv6-92ff-j949"
+    },
+    "1118948": {
+      "findings": [
+        {
+          "version": "14.2.35",
+          "paths": [
+            "apps__web>next",
+            "apps__web>next-auth>next"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1118948,
+      "title": "Next.js has cross-site scripting in beforeInteractive scripts with untrusted input",
+      "module_name": "next",
+      "vulnerable_versions": ">=13.0.0 <15.5.16",
+      "patched_versions": ">=15.5.16",
+      "severity": "moderate",
+      "cwe": "CWE-79",
+      "github_advisory_id": "GHSA-gx5p-jg67-6x7h",
+      "url": "https://github.com/advisories/GHSA-gx5p-jg67-6x7h"
+    },
+    "1118952": {
+      "findings": [
+        {
+          "version": "14.2.35",
+          "paths": [
+            "apps__web>next",
+            "apps__web>next-auth>next"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1118952,
+      "title": "Next.js has a Denial of Service in the Image Optimization API",
+      "module_name": "next",
+      "vulnerable_versions": ">=10.0.0 <15.5.16",
+      "patched_versions": ">=15.5.16",
+      "severity": "moderate",
+      "cwe": "CWE-770",
+      "github_advisory_id": "GHSA-h64f-5h5j-jqjh",
+      "url": "https://github.com/advisories/GHSA-h64f-5h5j-jqjh"
+    },
+    "1118954": {
+      "findings": [
+        {
+          "version": "14.2.35",
+          "paths": [
+            "apps__web>next",
+            "apps__web>next-auth>next"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1118954,
+      "title": "Next.js vulnerable to server-side request forgery in applications using WebSocket upgrades",
+      "module_name": "next",
+      "vulnerable_versions": ">=13.4.13 <15.5.16",
+      "patched_versions": ">=15.5.16",
+      "severity": "high",
+      "cwe": "CWE-918",
+      "github_advisory_id": "GHSA-c4j6-fc7j-m34r",
+      "url": "https://github.com/advisories/GHSA-c4j6-fc7j-m34r"
+    },
+    "1118958": {
+      "findings": [
+        {
+          "version": "14.2.35",
+          "paths": [
+            "apps__web>next",
+            "apps__web>next-auth>next"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1118958,
+      "title": "Next.js vulnerable to cache poisoning in React Server Component responses",
+      "module_name": "next",
+      "vulnerable_versions": ">=14.2.0 <15.5.16",
+      "patched_versions": ">=15.5.16",
+      "severity": "moderate",
+      "cwe": "CWE-436",
+      "github_advisory_id": "GHSA-wfc6-r584-vfw7",
+      "url": "https://github.com/advisories/GHSA-wfc6-r584-vfw7"
+    },
+    "1118962": {
+      "findings": [
+        {
+          "version": "14.2.35",
+          "paths": [
+            "apps__web>next",
+            "apps__web>next-auth>next"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1118962,
+      "title": "Next.js has a Middleware / Proxy bypass in Pages Router applications using i18n",
+      "module_name": "next",
+      "vulnerable_versions": ">=12.2.0 <15.5.16",
+      "patched_versions": ">=15.5.16",
+      "severity": "high",
+      "cwe": "CWE-863",
+      "github_advisory_id": "GHSA-36qx-fr4f-26g5",
+      "url": "https://github.com/advisories/GHSA-36qx-fr4f-26g5"
+    },
+    "1118965": {
+      "findings": [
+        {
+          "version": "1.0.0",
+          "paths": [
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-env>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-http>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-env>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-http>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-login>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-login>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-login>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-login>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-process>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-web-identity>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-process>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-web-identity>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/middleware-flexible-checksums>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/middleware-sdk-s3>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/signature-v4-multi-region>@aws-sdk/middleware-sdk-s3>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__web>@aws-sdk/s3-request-presigner>@aws-sdk/signature-v4-multi-region>@aws-sdk/middleware-sdk-s3>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-env>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-http>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-env>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-http>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-login>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-login>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-login>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-login>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-process>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-web-identity>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-process>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-web-identity>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/middleware-flexible-checksums>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/middleware-sdk-s3>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/signature-v4-multi-region>@aws-sdk/middleware-sdk-s3>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser>fast-xml-builder"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1118965,
+      "title": "fast-xml-builder allows attribute values with unwanted quotes to bypass malicious or unwanted attributes",
+      "module_name": "fast-xml-builder",
+      "vulnerable_versions": "<=1.1.6",
+      "patched_versions": ">=1.1.7",
+      "severity": "high",
+      "cwe": "CWE-91, CWE-611",
+      "github_advisory_id": "GHSA-5wm8-gmm8-39j9",
+      "url": "https://github.com/advisories/GHSA-5wm8-gmm8-39j9"
+    },
+    "1119108": {
+      "findings": [
+        {
+          "version": "8.19.0",
+          "paths": [
+            "apps__web>@web3modal/ethers>@coinbase/wallet-sdk>@solana/web3.js>rpc-websockets>ws"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "version": "8.17.1",
+          "paths": [
+            "apps__web>@web3modal/ethers>ethers>ws",
+            "apps__web>ethers>ws"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1119108,
+      "title": "ws: Uninitialized memory disclosure",
+      "module_name": "ws",
+      "vulnerable_versions": ">=8.0.0 <8.20.1",
+      "patched_versions": ">=8.20.1",
+      "severity": "moderate",
+      "cwe": "CWE-908",
+      "github_advisory_id": "GHSA-58qx-3vcg-4xpx",
+      "url": "https://github.com/advisories/GHSA-58qx-3vcg-4xpx"
+    },
+    "1119441": {
+      "findings": [
+        {
+          "version": "8.3.2",
+          "paths": [
+            "apps__web>@web3modal/ethers>@coinbase/wallet-sdk>@solana/web3.js>jayson>uuid",
+            "apps__web>next-auth>uuid"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "version": "11.1.0",
+          "paths": [
+            "apps__web>@web3modal/ethers>@coinbase/wallet-sdk>@solana/web3.js>rpc-websockets>uuid",
+            "apps__web>bullmq>uuid",
+            "apps__worker>bullmq>uuid"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1119441,
+      "title": "uuid: Missing buffer bounds check in v3/v5/v6 when buf is provided",
+      "module_name": "uuid",
+      "vulnerable_versions": "<11.1.1",
+      "patched_versions": ">=11.1.1",
+      "severity": "moderate",
+      "cwe": "CWE-787, CWE-1285",
+      "github_advisory_id": "GHSA-w5hq-g745-h8pq",
+      "url": "https://github.com/advisories/GHSA-w5hq-g745-h8pq"
+    },
+    "1119502": {
+      "findings": [
+        {
+          "version": "6.15.0",
+          "paths": [
+            "apps__web>@web3modal/ethers>@coinbase/wallet-sdk>qs"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1119502,
+      "title": "qs has a remotely triggerable DoS: qs.stringify crashes with TypeError on null/undefined entries in comma-format arrays when encodeValuesOnly is set",
+      "module_name": "qs",
+      "vulnerable_versions": ">=6.11.1 <=6.15.1",
+      "patched_versions": ">=6.15.2",
+      "severity": "moderate",
+      "cwe": "CWE-476",
+      "github_advisory_id": "GHSA-q8mj-m7cp-5q26",
+      "url": "https://github.com/advisories/GHSA-q8mj-m7cp-5q26"
+    },
+    "1120680": {
+      "findings": [
+        {
+          "version": "0.27.3",
+          "paths": [
+            "apps__web>tailwindcss-animate>tailwindcss>postcss-load-config>tsx>esbuild"
+          ],
+          "dev": false,
+          "optional": true,
+          "bundled": false
+        }
+      ],
+      "id": 1120680,
+      "title": "esbuild allows arbitrary file read when running the development server on Windows",
+      "module_name": "esbuild",
+      "vulnerable_versions": ">=0.27.3 <0.28.1",
+      "patched_versions": ">=0.28.1",
+      "severity": "low",
+      "cwe": "CWE-22",
+      "github_advisory_id": "GHSA-g7r4-m6w7-qqqr",
+      "url": "https://github.com/advisories/GHSA-g7r4-m6w7-qqqr"
+    },
+    "1120743": {
+      "findings": [
+        {
+          "version": "4.0.5",
+          "paths": [
+            "apps__web>openai>@types/node-fetch>form-data"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1120743,
+      "title": "form-data: CRLF injection in form-data via unescaped multipart field names and filenames",
+      "module_name": "form-data",
+      "vulnerable_versions": ">=4.0.0 <4.0.6",
+      "patched_versions": ">=4.0.6",
+      "severity": "high",
+      "cwe": "CWE-93",
+      "github_advisory_id": "GHSA-hmw2-7cc7-3qxx",
+      "url": "https://github.com/advisories/GHSA-hmw2-7cc7-3qxx"
+    },
+    "1123259": {
+      "findings": [
+        {
+          "version": "8.19.0",
+          "paths": [
+            "apps__web>@web3modal/ethers>@coinbase/wallet-sdk>@solana/web3.js>rpc-websockets>ws"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "version": "8.17.1",
+          "paths": [
+            "apps__web>@web3modal/ethers>ethers>ws",
+            "apps__web>ethers>ws"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1123259,
+      "title": "ws: Memory exhaustion DoS from tiny fragments and data chunks",
+      "module_name": "ws",
+      "vulnerable_versions": ">=8.0.0 <8.21.0",
+      "patched_versions": ">=8.21.0",
+      "severity": "high",
+      "cwe": "CWE-400, CWE-770, CWE-1050",
+      "github_advisory_id": "GHSA-96hv-2xvq-fx4p",
+      "url": "https://github.com/advisories/GHSA-96hv-2xvq-fx4p"
+    },
+    "1123260": {
+      "findings": [
+        {
+          "version": "7.5.10",
+          "paths": [
+            "apps__web>@web3modal/ethers>@coinbase/wallet-sdk>@solana/web3.js>jayson>isomorphic-ws>ws",
+            "apps__web>@web3modal/ethers>@coinbase/wallet-sdk>@solana/web3.js>jayson>ws",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/sign-client>@walletconnect/core>@walletconnect/jsonrpc-ws-connection>ws",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/sign-client>@walletconnect/core>@walletconnect/jsonrpc-ws-connection>ws",
+            "apps__web>openai>ws"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1123260,
+      "title": "ws: Memory exhaustion DoS from tiny fragments and data chunks",
+      "module_name": "ws",
+      "vulnerable_versions": ">=7.0.0 <7.5.11",
+      "patched_versions": ">=7.5.11",
+      "severity": "high",
+      "cwe": "CWE-400, CWE-770, CWE-1050",
+      "github_advisory_id": "GHSA-96hv-2xvq-fx4p",
+      "url": "https://github.com/advisories/GHSA-96hv-2xvq-fx4p"
+    },
+    "1124172": {
+      "findings": [
+        {
+          "version": "14.2.35",
+          "paths": [
+            "apps__web>next",
+            "apps__web>next-auth>next"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1124172,
+      "title": "Next.js: Denial of Service in App Router using Server Actions",
+      "module_name": "next",
+      "vulnerable_versions": ">=13.0.0 <15.5.21",
+      "patched_versions": ">=15.5.21",
+      "severity": "high",
+      "cwe": "CWE-834",
+      "github_advisory_id": "GHSA-m99w-x7hq-7vfj",
+      "url": "https://github.com/advisories/GHSA-m99w-x7hq-7vfj"
+    },
+    "1124185": {
+      "findings": [
+        {
+          "version": "14.2.35",
+          "paths": [
+            "apps__web>next",
+            "apps__web>next-auth>next"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1124185,
+      "title": "Next.js: Server-Side Request Forgery in Server Actions on custom servers",
+      "module_name": "next",
+      "vulnerable_versions": ">=14.1.1 <15.5.21",
+      "patched_versions": ">=15.5.21",
+      "severity": "high",
+      "cwe": "CWE-918",
+      "github_advisory_id": "GHSA-89xv-2m56-2m9x",
+      "url": "https://github.com/advisories/GHSA-89xv-2m56-2m9x"
+    },
+    "1124187": {
+      "findings": [
+        {
+          "version": "14.2.35",
+          "paths": [
+            "apps__web>next",
+            "apps__web>next-auth>next"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1124187,
+      "title": "Next.js: Cache confusion of response bodies for requests with bodies",
+      "module_name": "next",
+      "vulnerable_versions": ">=13.0.0 <15.5.21",
+      "patched_versions": ">=15.5.21",
+      "severity": "moderate",
+      "cwe": "CWE-524",
+      "github_advisory_id": "GHSA-68g3-v927-f742",
+      "url": "https://github.com/advisories/GHSA-68g3-v927-f742"
+    },
+    "1124189": {
+      "findings": [
+        {
+          "version": "14.2.35",
+          "paths": [
+            "apps__web>next",
+            "apps__web>next-auth>next"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1124189,
+      "title": "Next.js: Cache confusion of response bodies for requests with bodies containing invalid UTF-8 byte sequences",
+      "module_name": "next",
+      "vulnerable_versions": ">=13.0.0 <15.5.21",
+      "patched_versions": ">=15.5.21",
+      "severity": "moderate",
+      "cwe": "CWE-116",
+      "github_advisory_id": "GHSA-4633-3j49-mh5q",
+      "url": "https://github.com/advisories/GHSA-4633-3j49-mh5q"
+    },
+    "1124191": {
+      "findings": [
+        {
+          "version": "14.2.35",
+          "paths": [
+            "apps__web>next",
+            "apps__web>next-auth>next"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1124191,
+      "title": "Next.js: Unbounded Server Action payload in Edge runtime",
+      "module_name": "next",
+      "vulnerable_versions": ">=13.0.0 <15.5.21",
+      "patched_versions": ">=15.5.21",
+      "severity": "moderate",
+      "cwe": "CWE-770",
+      "github_advisory_id": "GHSA-4c39-4ccg-62r3",
+      "url": "https://github.com/advisories/GHSA-4c39-4ccg-62r3"
+    },
+    "1124193": {
+      "findings": [
+        {
+          "version": "14.2.35",
+          "paths": [
+            "apps__web>next",
+            "apps__web>next-auth>next"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1124193,
+      "title": "Next.js: Server-Side Request Forgery in rewrites via attacker-controlled destination hostname",
+      "module_name": "next",
+      "vulnerable_versions": ">=12.0.0 <15.5.21",
+      "patched_versions": ">=15.5.21",
+      "severity": "high",
+      "cwe": "CWE-918",
+      "github_advisory_id": "GHSA-p9j2-gv94-2wf4",
+      "url": "https://github.com/advisories/GHSA-p9j2-gv94-2wf4"
+    },
+    "1124197": {
+      "findings": [
+        {
+          "version": "14.2.35",
+          "paths": [
+            "apps__web>next",
+            "apps__web>next-auth>next"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1124197,
+      "title": "Next.js: Unauthenticated disclosure of internal Server Function endpoints",
+      "module_name": "next",
+      "vulnerable_versions": ">=13.0.0 <15.5.21",
+      "patched_versions": ">=15.5.21",
+      "severity": "moderate",
+      "cwe": "CWE-201",
+      "github_advisory_id": "GHSA-955p-x3mx-jcvp",
+      "url": "https://github.com/advisories/GHSA-955p-x3mx-jcvp"
+    },
+    "1124252": {
+      "findings": [
+        {
+          "version": "8.5.8",
+          "paths": [
+            "apps__web>@web3modal/ethers>@web3modal/scaffold-vue>vue>@vue/compiler-sfc>postcss",
+            "apps__web>@web3modal/ethers>@web3modal/siwe>vue>@vue/compiler-sfc>postcss",
+            "apps__web>@web3modal/ethers>vue>@vue/compiler-sfc>postcss",
+            "apps__web>tailwindcss-animate>tailwindcss>postcss",
+            "apps__web>tailwindcss-animate>tailwindcss>postcss-import>postcss",
+            "apps__web>tailwindcss-animate>tailwindcss>postcss-js>postcss",
+            "apps__web>tailwindcss-animate>tailwindcss>postcss-load-config>postcss",
+            "apps__web>tailwindcss-animate>tailwindcss>postcss-nested>postcss"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "version": "8.4.31",
+          "paths": [
+            "apps__web>next>postcss",
+            "apps__web>next-auth>next>postcss"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1124252,
+      "title": "PostCSS: Arbitrary file read and information disclosure via attacker-controlled sourceMappingURL in CSS comments",
+      "module_name": "postcss",
+      "vulnerable_versions": "<=8.5.11",
+      "patched_versions": ">=8.5.12",
+      "severity": "high",
+      "cwe": "CWE-22, CWE-200",
+      "github_advisory_id": "GHSA-6g55-p6wh-862q",
+      "url": "https://github.com/advisories/GHSA-6g55-p6wh-862q"
+    },
+    "1130709": {
+      "findings": [
+        {
+          "version": "8.5.8",
+          "paths": [
+            "apps__web>@web3modal/ethers>@web3modal/scaffold-vue>vue>@vue/compiler-sfc>postcss",
+            "apps__web>@web3modal/ethers>@web3modal/siwe>vue>@vue/compiler-sfc>postcss",
+            "apps__web>@web3modal/ethers>vue>@vue/compiler-sfc>postcss",
+            "apps__web>tailwindcss-animate>tailwindcss>postcss",
+            "apps__web>tailwindcss-animate>tailwindcss>postcss-import>postcss",
+            "apps__web>tailwindcss-animate>tailwindcss>postcss-js>postcss",
+            "apps__web>tailwindcss-animate>tailwindcss>postcss-load-config>postcss",
+            "apps__web>tailwindcss-animate>tailwindcss>postcss-nested>postcss"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "version": "8.4.31",
+          "paths": [
+            "apps__web>next>postcss",
+            "apps__web>next-auth>next>postcss"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1130709,
+      "title": "PostCSS: incomplete fix of GHSA-6g55-p6wh-862q — attacker-controlled sourceMappingURL reads arbitrary .map files when `from` is unset",
+      "module_name": "postcss",
+      "vulnerable_versions": "<=8.5.22",
+      "patched_versions": ">=8.5.23",
+      "severity": "moderate",
+      "cwe": "CWE-22, CWE-200",
+      "github_advisory_id": "GHSA-fxqj-rqcc-2cmp",
+      "url": "https://github.com/advisories/GHSA-fxqj-rqcc-2cmp"
+    },
+    "1138811": {
+      "findings": [
+        {
+          "version": "3.3.11",
+          "paths": [
+            "apps__web>@web3modal/ethers>@web3modal/scaffold-vue>vue>@vue/compiler-sfc>postcss>nanoid",
+            "apps__web>@web3modal/ethers>@web3modal/siwe>vue>@vue/compiler-sfc>postcss>nanoid",
+            "apps__web>@web3modal/ethers>vue>@vue/compiler-sfc>postcss>nanoid",
+            "apps__web>next>postcss>nanoid",
+            "apps__web>next-auth>next>postcss>nanoid",
+            "apps__web>tailwindcss-animate>tailwindcss>postcss>nanoid",
+            "apps__web>tailwindcss-animate>tailwindcss>postcss-import>postcss>nanoid",
+            "apps__web>tailwindcss-animate>tailwindcss>postcss-js>postcss>nanoid",
+            "apps__web>tailwindcss-animate>tailwindcss>postcss-load-config>postcss>nanoid",
+            "apps__web>tailwindcss-animate>tailwindcss>postcss-nested>postcss>nanoid"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1138811,
+      "title": "nanoid: non-secure generators can loop indefinitely with negative size",
+      "module_name": "nanoid",
+      "vulnerable_versions": "<3.3.16",
+      "patched_versions": ">=3.3.16",
+      "severity": "high",
+      "cwe": "CWE-835",
+      "github_advisory_id": "GHSA-28wg-ghj8-5hjv",
+      "url": "https://github.com/advisories/GHSA-28wg-ghj8-5hjv"
+    },
+    "1139362": {
+      "findings": [
+        {
+          "version": "4.24.13",
+          "paths": [
+            "apps__web>next-auth"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1139362,
+      "title": "Auth.js: Email normalizer validates the address before Unicode normalization, allowing a homoglyph @ bypass",
+      "module_name": "next-auth",
+      "vulnerable_versions": ">=4.10.3 <4.24.15",
+      "patched_versions": ">=4.24.15",
+      "severity": "critical",
+      "cwe": "CWE-180",
+      "github_advisory_id": "GHSA-7rqj-j65f-68wh",
+      "url": "https://github.com/advisories/GHSA-7rqj-j65f-68wh"
+    },
+    "1139363": {
+      "findings": [
+        {
+          "version": "0.41.1",
+          "paths": [
+            "apps__web>@auth/prisma-adapter>@auth/core"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1139363,
+      "title": "Auth.js: Email normalizer validates the address before Unicode normalization, allowing a homoglyph @ bypass",
+      "module_name": "@auth/core",
+      "vulnerable_versions": ">=0.1.0 <0.41.3",
+      "patched_versions": ">=0.41.3",
+      "severity": "critical",
+      "cwe": "CWE-180",
+      "github_advisory_id": "GHSA-7rqj-j65f-68wh",
+      "url": "https://github.com/advisories/GHSA-7rqj-j65f-68wh"
+    },
+    "1139427": {
+      "findings": [
+        {
+          "version": "3.3.11",
+          "paths": [
+            "apps__web>@web3modal/ethers>@web3modal/scaffold-vue>vue>@vue/compiler-sfc>postcss>nanoid",
+            "apps__web>@web3modal/ethers>@web3modal/siwe>vue>@vue/compiler-sfc>postcss>nanoid",
+            "apps__web>@web3modal/ethers>vue>@vue/compiler-sfc>postcss>nanoid",
+            "apps__web>next>postcss>nanoid",
+            "apps__web>next-auth>next>postcss>nanoid",
+            "apps__web>tailwindcss-animate>tailwindcss>postcss>nanoid",
+            "apps__web>tailwindcss-animate>tailwindcss>postcss-import>postcss>nanoid",
+            "apps__web>tailwindcss-animate>tailwindcss>postcss-js>postcss>nanoid",
+            "apps__web>tailwindcss-animate>tailwindcss>postcss-load-config>postcss>nanoid",
+            "apps__web>tailwindcss-animate>tailwindcss>postcss-nested>postcss>nanoid"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1139427,
+      "title": "nanoid: custom generators can loop indefinitely when size is zero",
+      "module_name": "nanoid",
+      "vulnerable_versions": "<3.3.18",
+      "patched_versions": ">=3.3.18",
+      "severity": "high",
+      "cwe": "CWE-835",
+      "github_advisory_id": "GHSA-2v37-7h3g-55p8",
+      "url": "https://github.com/advisories/GHSA-2v37-7h3g-55p8"
+    },
+    "1139510": {
+      "findings": [
+        {
+          "version": "8.5.8",
+          "paths": [
+            "apps__web>@web3modal/ethers>@web3modal/scaffold-vue>vue>@vue/compiler-sfc>postcss",
+            "apps__web>@web3modal/ethers>@web3modal/siwe>vue>@vue/compiler-sfc>postcss",
+            "apps__web>@web3modal/ethers>vue>@vue/compiler-sfc>postcss",
+            "apps__web>tailwindcss-animate>tailwindcss>postcss",
+            "apps__web>tailwindcss-animate>tailwindcss>postcss-import>postcss",
+            "apps__web>tailwindcss-animate>tailwindcss>postcss-js>postcss",
+            "apps__web>tailwindcss-animate>tailwindcss>postcss-load-config>postcss",
+            "apps__web>tailwindcss-animate>tailwindcss>postcss-nested>postcss"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "version": "8.4.31",
+          "paths": [
+            "apps__web>next>postcss",
+            "apps__web>next-auth>next>postcss"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1139510,
+      "title": "PostCSS: Path Traversal in Previous Source Map Auto-Loading (sourceMappingURL) leads to Arbitrary .map File Disclosure",
+      "module_name": "postcss",
+      "vulnerable_versions": "<=8.5.17",
+      "patched_versions": ">=8.5.18",
+      "severity": "high",
+      "cwe": "CWE-22",
+      "github_advisory_id": "GHSA-r28c-9q8g-f849",
+      "url": "https://github.com/advisories/GHSA-r28c-9q8g-f849"
+    },
+    "1139570": {
+      "findings": [
+        {
+          "version": "4.24.13",
+          "paths": [
+            "apps__web>next-auth"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1139570,
+      "title": "Auth.js: getToken() throws an uncaught exception on malformed Bearer authorization headers",
+      "module_name": "next-auth",
+      "vulnerable_versions": ">=4.0.6 <=4.24.14",
+      "patched_versions": ">=4.24.15",
+      "severity": "high",
+      "cwe": "CWE-20",
+      "github_advisory_id": "GHSA-xmf8-cvqr-rfgj",
+      "url": "https://github.com/advisories/GHSA-xmf8-cvqr-rfgj"
+    },
+    "1139572": {
+      "findings": [
+        {
+          "version": "0.41.1",
+          "paths": [
+            "apps__web>@auth/prisma-adapter>@auth/core"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1139572,
+      "title": "Auth.js: getToken() throws an uncaught exception on malformed Bearer authorization headers",
+      "module_name": "@auth/core",
+      "vulnerable_versions": ">=0.1.0 <0.41.3",
+      "patched_versions": ">=0.41.3",
+      "severity": "high",
+      "cwe": "CWE-20",
+      "github_advisory_id": "GHSA-xmf8-cvqr-rfgj",
+      "url": "https://github.com/advisories/GHSA-xmf8-cvqr-rfgj"
+    },
+    "1139573": {
+      "findings": [
+        {
+          "version": "4.24.13",
+          "paths": [
+            "apps__web>next-auth"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1139573,
+      "title": "Auth.js: OAuth state, nonce, and PKCE check cookies are not bound to the provider that created them",
+      "module_name": "next-auth",
+      "vulnerable_versions": "<=4.24.14",
+      "patched_versions": ">=4.24.15",
+      "severity": "moderate",
+      "cwe": "CWE-345, CWE-346, CWE-940",
+      "github_advisory_id": "GHSA-x445-f3h2-j279",
+      "url": "https://github.com/advisories/GHSA-x445-f3h2-j279"
+    },
+    "1139575": {
+      "findings": [
+        {
+          "version": "0.41.1",
+          "paths": [
+            "apps__web>@auth/prisma-adapter>@auth/core"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1139575,
+      "title": "Auth.js: OAuth state, nonce, and PKCE check cookies are not bound to the provider that created them",
+      "module_name": "@auth/core",
+      "vulnerable_versions": "<=0.41.2",
+      "patched_versions": ">=0.41.3",
+      "severity": "moderate",
+      "cwe": "CWE-345, CWE-346, CWE-940",
+      "github_advisory_id": "GHSA-x445-f3h2-j279",
+      "url": "https://github.com/advisories/GHSA-x445-f3h2-j279"
+    },
+    "1147955": {
+      "findings": [
+        {
+          "version": "0.2.2",
+          "paths": [
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/sign-client>@walletconnect/core>@walletconnect/utils>query-string>decode-uri-component",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/sign-client>@walletconnect/utils>query-string>decode-uri-component",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/sign-client>@walletconnect/core>@walletconnect/utils>query-string>decode-uri-component",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/sign-client>@walletconnect/utils>query-string>decode-uri-component",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/utils>query-string>decode-uri-component",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/utils>query-string>decode-uri-component"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1147955,
+      "title": "decode-uri-component: Denial of service via exponential decoding of malformed percent-encoded input",
+      "module_name": "decode-uri-component",
+      "vulnerable_versions": "<=0.4.2",
+      "patched_versions": ">=0.5.0",
+      "severity": "moderate",
+      "cwe": "CWE-400, CWE-405, CWE-407, CWE-1176",
+      "github_advisory_id": "GHSA-vcc3-ghjq-m6fr",
+      "url": "https://github.com/advisories/GHSA-vcc3-ghjq-m6fr"
+    },
+    "1153170": {
+      "findings": [
+        {
+          "version": "6.1.2",
+          "paths": [
+            "apps__web>tailwindcss-animate>tailwindcss>postcss-nested>postcss-selector-parser",
+            "apps__web>tailwindcss-animate>tailwindcss>postcss-selector-parser"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1153170,
+      "title": "postcss-selector-parser allows denial of service through uncontrolled AST recursion",
+      "module_name": "postcss-selector-parser",
+      "vulnerable_versions": ">=6.1.0 <6.1.3",
+      "patched_versions": ">=6.1.3",
+      "severity": "low",
+      "cwe": "CWE-404",
+      "github_advisory_id": "GHSA-w9m9-85wc-3x92",
+      "url": "https://github.com/advisories/GHSA-w9m9-85wc-3x92"
+    },
+    "1153189": {
+      "findings": [
+        {
+          "version": "3.3.11",
+          "paths": [
+            "apps__web>@web3modal/ethers>@web3modal/scaffold-vue>vue>@vue/compiler-sfc>postcss>nanoid",
+            "apps__web>@web3modal/ethers>@web3modal/siwe>vue>@vue/compiler-sfc>postcss>nanoid",
+            "apps__web>@web3modal/ethers>vue>@vue/compiler-sfc>postcss>nanoid",
+            "apps__web>next>postcss>nanoid",
+            "apps__web>next-auth>next>postcss>nanoid",
+            "apps__web>tailwindcss-animate>tailwindcss>postcss>nanoid",
+            "apps__web>tailwindcss-animate>tailwindcss>postcss-import>postcss>nanoid",
+            "apps__web>tailwindcss-animate>tailwindcss>postcss-js>postcss>nanoid",
+            "apps__web>tailwindcss-animate>tailwindcss>postcss-load-config>postcss>nanoid",
+            "apps__web>tailwindcss-animate>tailwindcss>postcss-nested>postcss>nanoid"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1153189,
+      "title": "nanoid: Integer Overflow or Wraparound",
+      "module_name": "nanoid",
+      "vulnerable_versions": "<3.3.12",
+      "patched_versions": ">=3.3.12",
+      "severity": "high",
+      "cwe": "CWE-190",
+      "github_advisory_id": "GHSA-xwg4-73v4-xw9w",
+      "url": "https://github.com/advisories/GHSA-xwg4-73v4-xw9w"
+    },
+    "1158506": {
+      "findings": [
+        {
+          "version": "6.15.0",
+          "paths": [
+            "apps__web>@web3modal/ethers>@coinbase/wallet-sdk>qs"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1158506,
+      "title": "qs array-limit bypass via bracket-key comma parsing",
+      "module_name": "qs",
+      "vulnerable_versions": ">=6.14.2 <=6.15.3",
+      "patched_versions": ">=6.15.4",
+      "severity": "moderate",
+      "cwe": "CWE-770",
+      "github_advisory_id": "GHSA-x5fp-wj9c-mxmx",
+      "url": "https://github.com/advisories/GHSA-x5fp-wj9c-mxmx"
+    },
+    "1158507": {
+      "findings": [
+        {
+          "version": "6.15.0",
+          "paths": [
+            "apps__web>@web3modal/ethers>@coinbase/wallet-sdk>qs"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1158507,
+      "title": "qs: Denial of Service via Attacker Controlled isBuffer",
+      "module_name": "qs",
+      "vulnerable_versions": ">=2.2.5 <6.16.0",
+      "patched_versions": ">=6.16.0",
+      "severity": "moderate",
+      "cwe": "CWE-248, CWE-703",
+      "github_advisory_id": "GHSA-4mjr-xmp4-gh2g",
+      "url": "https://github.com/advisories/GHSA-4mjr-xmp4-gh2g"
+    },
+    "1164823": {
+      "findings": [
+        {
+          "version": "1.9.1",
+          "paths": [
+            "apps__web>@web3modal/ethers>@coinbase/wallet-sdk>@solana/web3.js>jayson>stream-json"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1164823,
+      "title": "stream-json: pick/ignore/filter/replace filters are O(depth²) on nested input — small crafted JSON blocks the event loop for seconds→minutes (DoS)",
+      "module_name": "stream-json",
+      "vulnerable_versions": "<=3.4.0",
+      "patched_versions": ">=3.5.0",
+      "severity": "moderate",
+      "cwe": "CWE-407",
+      "github_advisory_id": "GHSA-528h-pc64-c93x",
+      "url": "https://github.com/advisories/GHSA-528h-pc64-c93x"
+    },
+    "1193677": {
+      "findings": [
+        {
+          "version": "14.2.35",
+          "paths": [
+            "apps__web>next",
+            "apps__web>next-auth>next"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1193677,
+      "title": "Next.js: Unauthenticated Remote Code Execution on windows-hosted servers",
+      "module_name": "next",
+      "vulnerable_versions": ">=13.4.0 <15.5.24",
+      "patched_versions": ">=15.5.24",
+      "severity": "critical",
+      "cwe": "CWE-22",
+      "github_advisory_id": "GHSA-p293-qw3h-jr36",
+      "url": "https://github.com/advisories/GHSA-p293-qw3h-jr36"
+    },
+    "1193733": {
+      "findings": [
+        {
+          "version": "14.2.35",
+          "paths": [
+            "apps__web>next",
+            "apps__web>next-auth>next"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1193733,
+      "title": "Next.js: Unauthenticated Remote Code Execution in Image Optimization API when AVIF files are used",
+      "module_name": "next",
+      "vulnerable_versions": ">=10.0.0 <15.5.24",
+      "patched_versions": ">=15.5.24",
+      "severity": "critical",
+      "cwe": "CWE-1395",
+      "github_advisory_id": "GHSA-2xp9-vwfh-vxw4",
+      "url": "https://github.com/advisories/GHSA-2xp9-vwfh-vxw4"
+    },
+    "1241209": {
+      "findings": [
+        {
+          "version": "1.2.1",
+          "paths": [
+            "apps__web>@web3modal/ethers>@web3modal/scaffold-vue>vue>@vue/compiler-dom>@vue/compiler-core>source-map-js",
+            "apps__web>@web3modal/ethers>@web3modal/scaffold-vue>vue>@vue/compiler-sfc>@vue/compiler-core>source-map-js",
+            "apps__web>@web3modal/ethers>@web3modal/scaffold-vue>vue>@vue/compiler-sfc>@vue/compiler-dom>@vue/compiler-core>source-map-js",
+            "apps__web>@web3modal/ethers>@web3modal/scaffold-vue>vue>@vue/compiler-sfc>@vue/compiler-ssr>@vue/compiler-dom>@vue/compiler-core>source-map-js",
+            "apps__web>@web3modal/ethers>@web3modal/scaffold-vue>vue>@vue/compiler-sfc>postcss>source-map-js",
+            "apps__web>@web3modal/ethers>@web3modal/scaffold-vue>vue>@vue/compiler-sfc>source-map-js",
+            "apps__web>@web3modal/ethers>@web3modal/scaffold-vue>vue>@vue/server-renderer>@vue/compiler-ssr>@vue/compiler-dom>@vue/compiler-core>source-map-js",
+            "apps__web>@web3modal/ethers>@web3modal/siwe>vue>@vue/compiler-dom>@vue/compiler-core>source-map-js",
+            "apps__web>@web3modal/ethers>@web3modal/siwe>vue>@vue/compiler-sfc>@vue/compiler-core>source-map-js",
+            "apps__web>@web3modal/ethers>@web3modal/siwe>vue>@vue/compiler-sfc>@vue/compiler-dom>@vue/compiler-core>source-map-js",
+            "apps__web>@web3modal/ethers>@web3modal/siwe>vue>@vue/compiler-sfc>@vue/compiler-ssr>@vue/compiler-dom>@vue/compiler-core>source-map-js",
+            "apps__web>@web3modal/ethers>@web3modal/siwe>vue>@vue/compiler-sfc>postcss>source-map-js",
+            "apps__web>@web3modal/ethers>@web3modal/siwe>vue>@vue/compiler-sfc>source-map-js",
+            "apps__web>@web3modal/ethers>@web3modal/siwe>vue>@vue/server-renderer>@vue/compiler-ssr>@vue/compiler-dom>@vue/compiler-core>source-map-js",
+            "apps__web>@web3modal/ethers>vue>@vue/compiler-dom>@vue/compiler-core>source-map-js",
+            "apps__web>@web3modal/ethers>vue>@vue/compiler-sfc>@vue/compiler-core>source-map-js",
+            "apps__web>@web3modal/ethers>vue>@vue/compiler-sfc>@vue/compiler-dom>@vue/compiler-core>source-map-js",
+            "apps__web>@web3modal/ethers>vue>@vue/compiler-sfc>@vue/compiler-ssr>@vue/compiler-dom>@vue/compiler-core>source-map-js",
+            "apps__web>@web3modal/ethers>vue>@vue/compiler-sfc>postcss>source-map-js",
+            "apps__web>@web3modal/ethers>vue>@vue/compiler-sfc>source-map-js",
+            "apps__web>@web3modal/ethers>vue>@vue/server-renderer>@vue/compiler-ssr>@vue/compiler-dom>@vue/compiler-core>source-map-js",
+            "apps__web>next>postcss>source-map-js",
+            "apps__web>next-auth>next>postcss>source-map-js",
+            "apps__web>tailwindcss-animate>tailwindcss>postcss>source-map-js",
+            "apps__web>tailwindcss-animate>tailwindcss>postcss-import>postcss>source-map-js",
+            "apps__web>tailwindcss-animate>tailwindcss>postcss-js>postcss>source-map-js",
+            "apps__web>tailwindcss-animate>tailwindcss>postcss-load-config>postcss>source-map-js",
+            "apps__web>tailwindcss-animate>tailwindcss>postcss-nested>postcss>source-map-js"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1241209,
+      "title": "source-map-js allows event-loop denial of service through indexed source-map section offsets",
+      "module_name": "source-map-js",
+      "vulnerable_versions": ">=1.0.0 <1.2.2",
+      "patched_versions": ">=1.2.2",
+      "severity": "high",
+      "cwe": "CWE-1284",
+      "github_advisory_id": "GHSA-68fv-2mgg-jv7q",
+      "url": "https://github.com/advisories/GHSA-68fv-2mgg-jv7q"
+    },
+    "1241259": {
+      "findings": [
+        {
+          "version": "3.5.29",
+          "paths": [
+            "apps__web>@web3modal/ethers>@web3modal/scaffold-vue>vue>@vue/server-renderer",
+            "apps__web>@web3modal/ethers>@web3modal/siwe>vue>@vue/server-renderer",
+            "apps__web>@web3modal/ethers>vue>@vue/server-renderer"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1241259,
+      "title": "@vue/server-renderer: XSS via missing CR in attribute-name blacklist",
+      "module_name": "@vue/server-renderer",
+      "vulnerable_versions": "<3.5.42",
+      "patched_versions": ">=3.5.42",
+      "severity": "high",
+      "cwe": "CWE-79, CWE-116",
+      "github_advisory_id": "GHSA-g2v6-rqmx-r4w6",
+      "url": "https://github.com/advisories/GHSA-g2v6-rqmx-r4w6"
+    },
+    "1241262": {
+      "findings": [
+        {
+          "version": "1.9.1",
+          "paths": [
+            "apps__web>@web3modal/ethers>@coinbase/wallet-sdk>@solana/web3.js>jayson>stream-json"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1241262,
+      "title": "stream-json: JSONC parser and verifier re-scan the whole accumulated comment on every input chunk",
+      "module_name": "stream-json",
+      "vulnerable_versions": "<=3.5.0",
+      "patched_versions": ">=3.6.0",
+      "severity": "moderate",
+      "cwe": "CWE-407",
+      "github_advisory_id": "GHSA-hqr4-qq8f-hg3x",
+      "url": "https://github.com/advisories/GHSA-hqr4-qq8f-hg3x"
+    },
+    "1241263": {
+      "findings": [
+        {
+          "version": "1.9.1",
+          "paths": [
+            "apps__web>@web3modal/ethers>@coinbase/wallet-sdk>@solana/web3.js>jayson>stream-json"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1241263,
+      "title": "stream-json has a prototype pollution issue: Assembler writes this.current[this.key] on plain objects",
+      "module_name": "stream-json",
+      "vulnerable_versions": "<3.6.0",
+      "patched_versions": ">=3.6.0",
+      "severity": "moderate",
+      "cwe": "CWE-1321",
+      "github_advisory_id": "GHSA-mjw6-4jj6-33hc",
+      "url": "https://github.com/advisories/GHSA-mjw6-4jj6-33hc"
+    },
+    "1242817": {
+      "findings": [
+        {
+          "version": "14.2.35",
+          "paths": [
+            "apps__web>next",
+            "apps__web>next-auth>next"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1242817,
+      "title": "Next.js: Unauthenticated Remote Code Execution in Image Optimization API when SVG files are used",
+      "module_name": "next",
+      "vulnerable_versions": ">=10.0.0 <=15.5.27",
+      "patched_versions": ">=15.5.28",
+      "severity": "critical",
+      "cwe": "CWE-1395",
+      "github_advisory_id": "GHSA-2464-fhr4-w9xw",
+      "url": "https://github.com/advisories/GHSA-2464-fhr4-w9xw"
+    },
+    "1242819": {
+      "findings": [
+        {
+          "version": "14.2.35",
+          "paths": [
+            "apps__web>next",
+            "apps__web>next-auth>next"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1242819,
+      "title": "Next.js: Denial of Service in App Router using Server Actions",
+      "module_name": "next",
+      "vulnerable_versions": ">=13.0.0 <=15.5.27",
+      "patched_versions": ">=15.5.28",
+      "severity": "high",
+      "cwe": "CWE-770",
+      "github_advisory_id": "GHSA-p3m5-59mp-jv5r",
+      "url": "https://github.com/advisories/GHSA-p3m5-59mp-jv5r"
+    },
+    "1243066": {
+      "findings": [
+        {
+          "version": "3.22.4",
+          "paths": [
+            "apps__web>@web3modal/ethers>@web3modal/scaffold>@web3modal/core>@web3modal/wallet>zod",
+            "apps__web>@web3modal/ethers>@web3modal/scaffold-react>@web3modal/scaffold>@web3modal/core>@web3modal/wallet>zod",
+            "apps__web>@web3modal/ethers>@web3modal/scaffold-utils>@web3modal/scaffold>@web3modal/core>@web3modal/wallet>zod",
+            "apps__web>@web3modal/ethers>@web3modal/scaffold-vue>@web3modal/scaffold>@web3modal/core>@web3modal/wallet>zod",
+            "apps__web>@web3modal/ethers>@web3modal/siwe>@web3modal/core>@web3modal/wallet>zod",
+            "apps__web>@web3modal/ethers>@web3modal/siwe>@web3modal/scaffold-utils>@web3modal/scaffold>@web3modal/core>@web3modal/wallet>zod"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "version": "3.25.76",
+          "paths": [
+            "apps__web>openai>zod",
+            "apps__web>zod",
+            "packages__shared>zod"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1243066,
+      "title": "Zod can exhaust memory while validating oversized constrained collections",
+      "module_name": "zod",
+      "vulnerable_versions": "<4.6.6",
+      "patched_versions": ">=4.6.6",
+      "severity": "high",
+      "cwe": "CWE-770",
+      "github_advisory_id": "GHSA-mrhx-c7xc-m3w5",
+      "url": "https://github.com/advisories/GHSA-mrhx-c7xc-m3w5"
+    },
+    "1243379": {
+      "findings": [
+        {
+          "version": "6.1.2",
+          "paths": [
+            "apps__web>tailwindcss-animate>tailwindcss>postcss-nested>postcss-selector-parser",
+            "apps__web>tailwindcss-animate>tailwindcss>postcss-selector-parser"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1243379,
+      "title": "PostCSS: Quadratic complexity in flat selector parsing allows CPU exhaustion",
+      "module_name": "postcss-selector-parser",
+      "vulnerable_versions": "<6.1.5",
+      "patched_versions": ">=6.1.5",
+      "severity": "moderate",
+      "cwe": "CWE-400, CWE-407",
+      "github_advisory_id": "GHSA-rj75-hqrm-r3gf",
+      "url": "https://github.com/advisories/GHSA-rj75-hqrm-r3gf"
+    },
+    "1243687": {
+      "findings": [
+        {
+          "version": "6.15.0",
+          "paths": [
+            "apps__web>@web3modal/ethers>@coinbase/wallet-sdk>qs"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1243687,
+      "title": "qs : qs.stringify with arrayFormat 'comma' throws an uncaught TypeError on array elements carrying a non-callable own toString (DoS)",
+      "module_name": "qs",
+      "vulnerable_versions": ">=6.7.0 <=6.16.0",
+      "patched_versions": ">=6.16.1",
+      "severity": "moderate",
+      "cwe": "CWE-248, CWE-704",
+      "github_advisory_id": "GHSA-6pq8-jhm2-2vcw",
+      "url": "https://github.com/advisories/GHSA-6pq8-jhm2-2vcw"
+    },
+    "1243857": {
+      "findings": [
+        {
+          "version": "0.2.2",
+          "paths": [
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/sign-client>@walletconnect/core>@walletconnect/utils>query-string>decode-uri-component",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/sign-client>@walletconnect/utils>query-string>decode-uri-component",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/sign-client>@walletconnect/core>@walletconnect/utils>query-string>decode-uri-component",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/sign-client>@walletconnect/utils>query-string>decode-uri-component",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/universal-provider>@walletconnect/utils>query-string>decode-uri-component",
+            "apps__web>@web3modal/ethers>@walletconnect/ethereum-provider>@walletconnect/utils>query-string>decode-uri-component"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1243857,
+      "title": "decode-uri-component vulnerable to denial of service via quadratic replacement of percent-encoded runs",
+      "module_name": "decode-uri-component",
+      "vulnerable_versions": "<=0.5.0",
+      "patched_versions": ">=0.5.1",
+      "severity": "high",
+      "cwe": "CWE-400, CWE-407",
+      "github_advisory_id": "GHSA-qr28-fpjm-wq7f",
+      "url": "https://github.com/advisories/GHSA-qr28-fpjm-wq7f"
+    },
+    "1246029": {
+      "findings": [
+        {
+          "version": "5.4.1",
+          "paths": [
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-env>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-http>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-env>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-http>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-login>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-login>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-login>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-login>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-process>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-web-identity>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-process>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-web-identity>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/middleware-flexible-checksums>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/middleware-sdk-s3>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/signature-v4-multi-region>@aws-sdk/middleware-sdk-s3>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/s3-request-presigner>@aws-sdk/signature-v4-multi-region>@aws-sdk/middleware-sdk-s3>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-env>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-http>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-env>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-http>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-login>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-login>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-login>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-login>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-process>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-web-identity>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-process>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-web-identity>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/middleware-flexible-checksums>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/middleware-sdk-s3>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/signature-v4-multi-region>@aws-sdk/middleware-sdk-s3>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1246029,
+      "title": "fast-xml-parser: Quadratic CPU consumption scanning unterminated stop-node tags",
+      "module_name": "fast-xml-parser",
+      "vulnerable_versions": "<=5.11.2",
+      "patched_versions": ">=5.12.0",
+      "severity": "low",
+      "cwe": "CWE-407",
+      "github_advisory_id": "GHSA-474x-hrwr-fgx4",
+      "url": "https://github.com/advisories/GHSA-474x-hrwr-fgx4"
+    },
+    "1247788": {
+      "findings": [
+        {
+          "version": "5.4.1",
+          "paths": [
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-env>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-http>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-env>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-http>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-login>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-login>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-login>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-login>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-process>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-web-identity>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-process>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-web-identity>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/middleware-flexible-checksums>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/middleware-sdk-s3>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/signature-v4-multi-region>@aws-sdk/middleware-sdk-s3>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/client-s3>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__web>@aws-sdk/s3-request-presigner>@aws-sdk/signature-v4-multi-region>@aws-sdk/middleware-sdk-s3>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-env>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-http>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-env>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-http>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-login>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-login>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-login>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-login>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-process>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-web-identity>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-ini>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-process>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-sso>@aws-sdk/token-providers>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-web-identity>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/credential-provider-node>@aws-sdk/credential-provider-web-identity>@aws-sdk/nested-clients>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/middleware-flexible-checksums>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/middleware-sdk-s3>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/signature-v4-multi-region>@aws-sdk/middleware-sdk-s3>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser",
+            "apps__worker>@aws-sdk/client-s3>@aws-sdk/util-user-agent-node>@aws-sdk/middleware-user-agent>@aws-sdk/core>@aws-sdk/xml-builder>fast-xml-parser"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1247788,
+      "title": "fast-xml-parser XMLBuilder: XML Comment and CDATA Injection via Unescaped Delimiters",
+      "module_name": "fast-xml-parser",
+      "vulnerable_versions": ">=5.0.0 <5.7.0",
+      "patched_versions": ">=5.7.0",
+      "severity": "moderate",
+      "cwe": "CWE-91",
+      "github_advisory_id": "GHSA-gh4j-gqv2-49f6",
+      "url": "https://github.com/advisories/GHSA-gh4j-gqv2-49f6"
+    },
+    "1248082": {
+      "findings": [
+        {
+          "version": "14.2.35",
+          "paths": [
+            "apps__web>next",
+            "apps__web>next-auth>next"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1248082,
+      "title": "Next.js: Cross-client response injection and disclosure in self-hosted Next.js applications forwarding fetched responses",
+      "module_name": "next",
+      "vulnerable_versions": "<=15.5.28",
+      "patched_versions": ">=15.5.29",
+      "severity": "moderate",
+      "cwe": "CWE-444",
+      "github_advisory_id": "GHSA-pc58-hwjq-p385",
+      "url": "https://github.com/advisories/GHSA-pc58-hwjq-p385"
+    }
+  },
+  "metadata": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 5,
+      "moderate": 34,
+      "high": 29,
+      "critical": 5
+    },
+    "dependencies": 615,
+    "devDependencies": 0,
+    "optionalDependencies": 61,
+    "totalDependencies": 676
+  }
+}

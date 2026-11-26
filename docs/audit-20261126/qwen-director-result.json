@@ -1,0 +1,10 @@
+{
+  "at": "2026-11-26T22:08:17.818Z",
+  "ownedQwen": true,
+  "planValidated": true,
+  "shots": 1,
+  "latencyMs": 11152,
+  "externalModelCalls": 0,
+  "financialActions": 0,
+  "publicChatTested": false
+}

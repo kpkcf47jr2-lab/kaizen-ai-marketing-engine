@@ -1,0 +1,35 @@
+✔ director uses injected owned model and validates every response (1.549834ms)
+﹣ render validated real Qwen plan with own Blender engine (0.045584ms) # SKIP
+✔ shared immutable assets across shots and exact duration (0.13775ms)
+✔ reject untrusted scene 0 (0.111084ms)
+✔ reject untrusted scene 1 (0.098083ms)
+✔ reject untrusted scene 2 (0.088875ms)
+✔ reject untrusted scene 3 (0.079208ms)
+✔ reject untrusted scene 4 (0.092542ms)
+✔ reject untrusted scene 5 (0.081ms)
+✔ reject untrusted scene 6 (0.111666ms)
+✔ reject untrusted scene 7 (0.082ms)
+✔ reject untrusted scene 8 (0.063417ms)
+✔ reject untrusted scene 9 (0.066583ms)
+✔ reject untrusted scene 10 (0.065167ms)
+✔ reject untrusted scene 11 (0.075208ms)
+✔ reject untrusted scene 12 (0.06725ms)
+✔ aggregate work cap accounts for samples (0.083834ms)
+✔ Linux renderer has no network, home, credentials or GPU device binds (0.718083ms)
+﹣ real Blender native rendering and cancellation (0.02225ms) # SKIP
+(node:22995) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/kaizenllc/Development/kame-native-audit-20261126/packages/shared/src/generation-safety.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/kaizenllc/Development/kame-native-audit-20261126/packages/shared/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ no external model calls by default (0.685291ms)
+✔ mock content cannot be billed or published as real (0.077417ms)
+✔ content job ownership and terminal states (0.072166ms)
+✔ post account and media must belong to same owner and exact IDs (0.111208ms)
+ℹ tests 23
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 2
+ℹ todo 0
+ℹ duration_ms 119.706291

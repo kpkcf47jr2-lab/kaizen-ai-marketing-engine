@@ -1,0 +1,64 @@
+{
+  "version": 1,
+  "width": 320,
+  "height": 240,
+  "fps": 12,
+  "samples": 8,
+  "assets": [
+    {
+      "id": "object-a",
+      "shape": "sphere",
+      "color": [
+        0.5,
+        0.1,
+        0.8
+      ],
+      "scale": [
+        0.7,
+        0.7,
+        0.7
+      ]
+    }
+  ],
+  "shots": [
+    {
+      "id": "shot-a",
+      "frames": 24,
+      "camera": [
+        4,
+        -7,
+        3
+      ],
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "objects": [
+        {
+          "asset": "object-a",
+          "from": [
+            -1,
+            0,
+            0
+          ],
+          "to": [
+            1,
+            0,
+            0
+          ],
+          "rotationFrom": [
+            0,
+            0,
+            0
+          ],
+          "rotationTo": [
+            0,
+            0,
+            90
+          ]
+        }
+      ]
+    }
+  ]
+}

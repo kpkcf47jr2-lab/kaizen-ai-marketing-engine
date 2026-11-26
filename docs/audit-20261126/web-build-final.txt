@@ -1,0 +1,428 @@
+$ next build
+  ▲ Next.js 14.2.35
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+   Collecting page data ...
+⚠️  REDIS_URL not set — falling back to localhost:6379 (not suitable for production)
+⚠️  REDIS_URL not set — falling back to localhost:6379 (not suitable for production)
+(node:23163) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+[ioredis] Unhandled error event: AggregateError [EPERM]: 
+    at internalConnectMultiple (node:net:1201:49)
+    at internalConnectMultiple (node:net:1277:5)
+    at internalConnectMultiple (node:net:1277:5)
+    at defaultTriggerAsyncIdScope (node:internal/async_hooks:473:12)
+    at GetAddrInfoReqWrap.emitLookup [as callback] (node:net:1619:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:133:8)
+(node:23166) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+⚠️  REDIS_URL not set — falling back to localhost:6379 (not suitable for production)
+⚠️  REDIS_URL not set — falling back to localhost:6379 (not suitable for production)
+(node:23161) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:23165) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+AggregateError [EPERM]: 
+    at internalConnectMultiple (node:net:1201:49)
+    at internalConnectMultiple (node:net:1277:5)
+    at internalConnectMultiple (node:net:1277:5)
+    at defaultTriggerAsyncIdScope (node:internal/async_hooks:473:12)
+    at GetAddrInfoReqWrap.emitLookup [as callback] (node:net:1619:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:133:8) {
+  code: 'EPERM',
+  [errors]: [
+    Error: connect EPERM ::1:6379 - Local (:::0)
+        at internalConnectMultiple (node:net:1273:16)
+        at defaultTriggerAsyncIdScope (node:internal/async_hooks:473:12)
+        at GetAddrInfoReqWrap.emitLookup [as callback] (node:net:1619:7)
+        at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:133:8) {
+      errno: -1,
+      code: 'EPERM',
+      syscall: 'connect',
+      address: '::1',
+      port: 6379
+    },
+    Error: connect EPERM 127.0.0.1:6379 - Local (0.0.0.0:0)
+        at internalConnectMultiple (node:net:1273:16)
+        at internalConnectMultiple (node:net:1277:5)
+        at defaultTriggerAsyncIdScope (node:internal/async_hooks:473:12)
+        at GetAddrInfoReqWrap.emitLookup [as callback] (node:net:1619:7)
+        at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:133:8) {
+      errno: -1,
+      code: 'EPERM',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 6379
+    }
+  ]
+}
+[ioredis] Unhandled error event: AggregateError [EPERM]: 
+    at internalConnectMultiple (node:net:1201:49)
+    at internalConnectMultiple (node:net:1277:5)
+    at internalConnectMultiple (node:net:1277:5)
+    at defaultTriggerAsyncIdScope (node:internal/async_hooks:473:12)
+    at GetAddrInfoReqWrap.emitLookup [as callback] (node:net:1619:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:133:8)
+[ioredis] Unhandled error event: AggregateError [EPERM]: 
+    at internalConnectMultiple (node:net:1201:49)
+    at internalConnectMultiple (node:net:1277:5)
+    at internalConnectMultiple (node:net:1277:5)
+    at defaultTriggerAsyncIdScope (node:internal/async_hooks:473:12)
+    at GetAddrInfoReqWrap.emitLookup [as callback] (node:net:1619:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:133:8)
+   Generating static pages (0/32) ...
+Posts GET error: n [Error]: Dynamic server usage: Route /api/posts couldn't be rendered statically because it used `headers`. See more info here: https://nextjs.org/docs/messages/dynamic-server-error
+    at l (/Users/kaizenllc/Development/kame-native-audit-20261126/apps/web/.next/server/chunks/352.js:1:37219)
+    at d (/Users/kaizenllc/Development/kame-native-audit-20261126/apps/web/.next/server/chunks/223.js:25:28366)
+    at s (/Users/kaizenllc/Development/kame-native-audit-20261126/apps/web/.next/server/chunks/223.js:25:20922)
+    at c (/Users/kaizenllc/Development/kame-native-audit-20261126/apps/web/.next/server/app/api/posts/route.js:1:1300)
+    at /Users/kaizenllc/Development/kame-native-audit-20261126/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:6:38417
+    at /Users/kaizenllc/Development/kame-native-audit-20261126/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/trace/tracer.js:140:36
+    at NoopContextManager.with (/Users/kaizenllc/Development/kame-native-audit-20261126/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:7062)
+    at ContextAPI.with (/Users/kaizenllc/Development/kame-native-audit-20261126/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:518)
+    at NoopTracer.startActiveSpan (/Users/kaizenllc/Development/kame-native-audit-20261126/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:18093)
+    at ProxyTracer.startActiveSpan (/Users/kaizenllc/Development/kame-native-audit-20261126/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:18854) {
+  description: "Route /api/posts couldn't be rendered statically because it used `headers`. See more info here: https://nextjs.org/docs/messages/dynamic-server-error",
+  digest: 'DYNAMIC_SERVER_USAGE'
+}
+[ioredis] Unhandled error event: AggregateError [EPERM]: 
+    at internalConnectMultiple (node:net:1201:49)
+    at internalConnectMultiple (node:net:1277:5)
+    at internalConnectMultiple (node:net:1277:5)
+    at defaultTriggerAsyncIdScope (node:internal/async_hooks:473:12)
+    at GetAddrInfoReqWrap.emitLookup [as callback] (node:net:1619:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:133:8)
+[ioredis] Unhandled error event: AggregateError [EPERM]: 
+    at internalConnectMultiple (node:net:1201:49)
+    at internalConnectMultiple (node:net:1277:5)
+    at internalConnectMultiple (node:net:1277:5)
+    at defaultTriggerAsyncIdScope (node:internal/async_hooks:473:12)
+    at GetAddrInfoReqWrap.emitLookup [as callback] (node:net:1619:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:133:8)
+Credits GET error: n [Error]: Dynamic server usage: Route /api/credits couldn't be rendered statically because it used `headers`. See more info here: https://nextjs.org/docs/messages/dynamic-server-error
+    at l (/Users/kaizenllc/Development/kame-native-audit-20261126/apps/web/.next/server/chunks/352.js:1:37219)
+    at d (/Users/kaizenllc/Development/kame-native-audit-20261126/apps/web/.next/server/chunks/223.js:25:28366)
+    at s (/Users/kaizenllc/Development/kame-native-audit-20261126/apps/web/.next/server/chunks/223.js:25:20922)
+    at u (/Users/kaizenllc/Development/kame-native-audit-20261126/apps/web/.next/server/app/api/credits/route.js:1:1300)
+    at /Users/kaizenllc/Development/kame-native-audit-20261126/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:6:38417
+    at /Users/kaizenllc/Development/kame-native-audit-20261126/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/trace/tracer.js:140:36
+    at NoopContextManager.with (/Users/kaizenllc/Development/kame-native-audit-20261126/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:7062)
+    at ContextAPI.with (/Users/kaizenllc/Development/kame-native-audit-20261126/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:518)
+    at NoopTracer.startActiveSpan (/Users/kaizenllc/Development/kame-native-audit-20261126/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:18093)
+    at ProxyTracer.startActiveSpan (/Users/kaizenllc/Development/kame-native-audit-20261126/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:18854) {
+  description: "Route /api/credits couldn't be rendered statically because it used `headers`. See more info here: https://nextjs.org/docs/messages/dynamic-server-error",
+  digest: 'DYNAMIC_SERVER_USAGE'
+}
+AggregateError [EPERM]: 
+    at internalConnectMultiple (node:net:1201:49)
+    at internalConnectMultiple (node:net:1277:5)
+    at internalConnectMultiple (node:net:1277:5)
+    at defaultTriggerAsyncIdScope (node:internal/async_hooks:473:12)
+    at GetAddrInfoReqWrap.emitLookup [as callback] (node:net:1619:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:133:8) {
+  code: 'EPERM',
+  [errors]: [
+    Error: connect EPERM ::1:6379 - Local (:::0)
+        at internalConnectMultiple (node:net:1273:16)
+        at defaultTriggerAsyncIdScope (node:internal/async_hooks:473:12)
+        at GetAddrInfoReqWrap.emitLookup [as callback] (node:net:1619:7)
+        at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:133:8) {
+      errno: -1,
+      code: 'EPERM',
+      syscall: 'connect',
+      address: '::1',
+      port: 6379
+    },
+    Error: connect EPERM 127.0.0.1:6379 - Local (0.0.0.0:0)
+        at internalConnectMultiple (node:net:1273:16)
+        at internalConnectMultiple (node:net:1277:5)
+        at defaultTriggerAsyncIdScope (node:internal/async_hooks:473:12)
+        at GetAddrInfoReqWrap.emitLookup [as callback] (node:net:1619:7)
+        at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:133:8) {
+      errno: -1,
+      code: 'EPERM',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 6379
+    }
+  ]
+}
+AggregateError [EPERM]: 
+    at internalConnectMultiple (node:net:1201:49)
+    at internalConnectMultiple (node:net:1277:5)
+    at internalConnectMultiple (node:net:1277:5)
+    at defaultTriggerAsyncIdScope (node:internal/async_hooks:473:12)
+    at GetAddrInfoReqWrap.emitLookup [as callback] (node:net:1619:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:133:8) {
+  code: 'EPERM',
+  [errors]: [
+    Error: connect EPERM ::1:6379 - Local (:::0)
+        at internalConnectMultiple (node:net:1273:16)
+        at defaultTriggerAsyncIdScope (node:internal/async_hooks:473:12)
+        at GetAddrInfoReqWrap.emitLookup [as callback] (node:net:1619:7)
+        at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:133:8) {
+      errno: -1,
+      code: 'EPERM',
+      syscall: 'connect',
+      address: '::1',
+      port: 6379
+    },
+    Error: connect EPERM 127.0.0.1:6379 - Local (0.0.0.0:0)
+        at internalConnectMultiple (node:net:1273:16)
+        at internalConnectMultiple (node:net:1277:5)
+        at defaultTriggerAsyncIdScope (node:internal/async_hooks:473:12)
+        at GetAddrInfoReqWrap.emitLookup [as callback] (node:net:1619:7)
+        at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:133:8) {
+      errno: -1,
+      code: 'EPERM',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 6379
+    }
+  ]
+}
+[ioredis] Unhandled error event: AggregateError [EPERM]: 
+    at internalConnectMultiple (node:net:1201:49)
+    at internalConnectMultiple (node:net:1277:5)
+    at internalConnectMultiple (node:net:1277:5)
+    at defaultTriggerAsyncIdScope (node:internal/async_hooks:473:12)
+    at GetAddrInfoReqWrap.emitLookup [as callback] (node:net:1619:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:133:8)
+[ioredis] Unhandled error event: AggregateError [EPERM]: 
+    at internalConnectMultiple (node:net:1201:49)
+    at internalConnectMultiple (node:net:1277:5)
+    at internalConnectMultiple (node:net:1277:5)
+    at defaultTriggerAsyncIdScope (node:internal/async_hooks:473:12)
+    at GetAddrInfoReqWrap.emitLookup [as callback] (node:net:1619:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:133:8)
+[ioredis] Unhandled error event: AggregateError [EPERM]: 
+    at internalConnectMultiple (node:net:1201:49)
+    at internalConnectMultiple (node:net:1277:5)
+    at internalConnectMultiple (node:net:1277:5)
+    at defaultTriggerAsyncIdScope (node:internal/async_hooks:473:12)
+    at GetAddrInfoReqWrap.emitLookup [as callback] (node:net:1619:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:133:8)
+[ioredis] Unhandled error event: AggregateError [EPERM]: 
+    at internalConnectMultiple (node:net:1201:49)
+    at internalConnectMultiple (node:net:1277:5)
+    at internalConnectMultiple (node:net:1277:5)
+    at defaultTriggerAsyncIdScope (node:internal/async_hooks:473:12)
+    at GetAddrInfoReqWrap.emitLookup [as callback] (node:net:1619:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:133:8)
+   Generating static pages (8/32) 
+[ioredis] Unhandled error event: AggregateError [EPERM]: 
+    at internalConnectMultiple (node:net:1201:49)
+    at internalConnectMultiple (node:net:1277:5)
+    at internalConnectMultiple (node:net:1277:5)
+    at defaultTriggerAsyncIdScope (node:internal/async_hooks:473:12)
+    at GetAddrInfoReqWrap.emitLookup [as callback] (node:net:1619:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:133:8)
+[ioredis] Unhandled error event: AggregateError [EPERM]: 
+    at internalConnectMultiple (node:net:1201:49)
+    at internalConnectMultiple (node:net:1277:5)
+    at internalConnectMultiple (node:net:1277:5)
+    at defaultTriggerAsyncIdScope (node:internal/async_hooks:473:12)
+    at GetAddrInfoReqWrap.emitLookup [as callback] (node:net:1619:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:133:8)
+AggregateError [EPERM]: 
+    at internalConnectMultiple (node:net:1201:49)
+    at internalConnectMultiple (node:net:1277:5)
+    at internalConnectMultiple (node:net:1277:5)
+    at defaultTriggerAsyncIdScope (node:internal/async_hooks:473:12)
+    at GetAddrInfoReqWrap.emitLookup [as callback] (node:net:1619:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:133:8) {
+  code: 'EPERM',
+  [errors]: [
+    Error: connect EPERM ::1:6379 - Local (:::0)
+        at internalConnectMultiple (node:net:1273:16)
+        at defaultTriggerAsyncIdScope (node:internal/async_hooks:473:12)
+        at GetAddrInfoReqWrap.emitLookup [as callback] (node:net:1619:7)
+        at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:133:8) {
+      errno: -1,
+      code: 'EPERM',
+      syscall: 'connect',
+      address: '::1',
+      port: 6379
+    },
+    Error: connect EPERM 127.0.0.1:6379 - Local (0.0.0.0:0)
+        at internalConnectMultiple (node:net:1273:16)
+        at internalConnectMultiple (node:net:1277:5)
+        at defaultTriggerAsyncIdScope (node:internal/async_hooks:473:12)
+        at GetAddrInfoReqWrap.emitLookup [as callback] (node:net:1619:7)
+        at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:133:8) {
+      errno: -1,
+      code: 'EPERM',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 6379
+    }
+  ]
+}
+   Generating static pages (16/32) 
+AggregateError [EPERM]: 
+    at internalConnectMultiple (node:net:1201:49)
+    at internalConnectMultiple (node:net:1277:5)
+    at internalConnectMultiple (node:net:1277:5)
+    at defaultTriggerAsyncIdScope (node:internal/async_hooks:473:12)
+    at GetAddrInfoReqWrap.emitLookup [as callback] (node:net:1619:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:133:8) {
+  code: 'EPERM',
+  [errors]: [
+    Error: connect EPERM ::1:6379 - Local (:::0)
+        at internalConnectMultiple (node:net:1273:16)
+        at defaultTriggerAsyncIdScope (node:internal/async_hooks:473:12)
+        at GetAddrInfoReqWrap.emitLookup [as callback] (node:net:1619:7)
+        at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:133:8) {
+      errno: -1,
+      code: 'EPERM',
+      syscall: 'connect',
+      address: '::1',
+      port: 6379
+    },
+    Error: connect EPERM 127.0.0.1:6379 - Local (0.0.0.0:0)
+        at internalConnectMultiple (node:net:1273:16)
+        at internalConnectMultiple (node:net:1277:5)
+        at defaultTriggerAsyncIdScope (node:internal/async_hooks:473:12)
+        at GetAddrInfoReqWrap.emitLookup [as callback] (node:net:1619:7)
+        at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:133:8) {
+      errno: -1,
+      code: 'EPERM',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 6379
+    }
+  ]
+}
+   Generating static pages (24/32) 
+[ioredis] Unhandled error event: AggregateError [EPERM]: 
+    at internalConnectMultiple (node:net:1201:49)
+    at internalConnectMultiple (node:net:1277:5)
+    at internalConnectMultiple (node:net:1277:5)
+    at defaultTriggerAsyncIdScope (node:internal/async_hooks:473:12)
+    at GetAddrInfoReqWrap.emitLookup [as callback] (node:net:1619:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:133:8)
+[ioredis] Unhandled error event: AggregateError [EPERM]: 
+    at internalConnectMultiple (node:net:1201:49)
+    at internalConnectMultiple (node:net:1277:5)
+    at internalConnectMultiple (node:net:1277:5)
+    at defaultTriggerAsyncIdScope (node:internal/async_hooks:473:12)
+    at GetAddrInfoReqWrap.emitLookup [as callback] (node:net:1619:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:133:8)
+ ✓ Generating static pages (32/32)
+AggregateError [EPERM]: 
+    at internalConnectMultiple (node:net:1201:49)
+    at internalConnectMultiple (node:net:1277:5)
+    at internalConnectMultiple (node:net:1277:5)
+    at defaultTriggerAsyncIdScope (node:internal/async_hooks:473:12)
+    at GetAddrInfoReqWrap.emitLookup [as callback] (node:net:1619:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:133:8) {
+  code: 'EPERM',
+  [errors]: [
+    Error: connect EPERM ::1:6379 - Local (:::0)
+        at internalConnectMultiple (node:net:1273:16)
+        at defaultTriggerAsyncIdScope (node:internal/async_hooks:473:12)
+        at GetAddrInfoReqWrap.emitLookup [as callback] (node:net:1619:7)
+        at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:133:8) {
+      errno: -1,
+      code: 'EPERM',
+      syscall: 'connect',
+      address: '::1',
+      port: 6379
+    },
+    Error: connect EPERM 127.0.0.1:6379 - Local (0.0.0.0:0)
+        at internalConnectMultiple (node:net:1273:16)
+        at internalConnectMultiple (node:net:1277:5)
+        at defaultTriggerAsyncIdScope (node:internal/async_hooks:473:12)
+        at GetAddrInfoReqWrap.emitLookup [as callback] (node:net:1619:7)
+        at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:133:8) {
+      errno: -1,
+      code: 'EPERM',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 6379
+    }
+  ]
+}
+AggregateError [EPERM]: 
+    at internalConnectMultiple (node:net:1201:49)
+    at internalConnectMultiple (node:net:1277:5)
+    at internalConnectMultiple (node:net:1277:5)
+    at defaultTriggerAsyncIdScope (node:internal/async_hooks:473:12)
+    at GetAddrInfoReqWrap.emitLookup [as callback] (node:net:1619:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:133:8) {
+  code: 'EPERM',
+  [errors]: [
+    Error: connect EPERM ::1:6379 - Local (:::0)
+        at internalConnectMultiple (node:net:1273:16)
+        at defaultTriggerAsyncIdScope (node:internal/async_hooks:473:12)
+        at GetAddrInfoReqWrap.emitLookup [as callback] (node:net:1619:7)
+        at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:133:8) {
+      errno: -1,
+      code: 'EPERM',
+      syscall: 'connect',
+      address: '::1',
+      port: 6379
+    },
+    Error: connect EPERM 127.0.0.1:6379 - Local (0.0.0.0:0)
+        at internalConnectMultiple (node:net:1273:16)
+        at internalConnectMultiple (node:net:1277:5)
+        at defaultTriggerAsyncIdScope (node:internal/async_hooks:473:12)
+        at GetAddrInfoReqWrap.emitLookup [as callback] (node:net:1619:7)
+        at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:133:8) {
+      errno: -1,
+      code: 'EPERM',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 6379
+    }
+  ]
+}
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                              Size     First Load JS
+┌ ○ /                                    178 B          96.2 kB
+├ ○ /_not-found                          148 B          87.5 kB
+├ ƒ /api/assistant                       0 B                0 B
+├ ƒ /api/auth/[...nextauth]              0 B                0 B
+├ ƒ /api/auth/register                   0 B                0 B
+├ ƒ /api/brand                           0 B                0 B
+├ ƒ /api/campaign                        0 B                0 B
+├ ƒ /api/content/generate                0 B                0 B
+├ ƒ /api/credits                         0 B                0 B
+├ ƒ /api/health                          0 B                0 B
+├ ƒ /api/posts                           0 B                0 B
+├ ƒ /api/social                          0 B                0 B
+├ ƒ /api/social/elite/callback           0 B                0 B
+├ ƒ /api/social/meta/callback            0 B                0 B
+├ ƒ /api/social/telegram/connect         0 B                0 B
+├ ƒ /api/social/tiktok/callback          0 B                0 B
+├ ƒ /api/social/whatsapp/connect         0 B                0 B
+├ ƒ /api/social/x/callback               0 B                0 B
+├ ƒ /api/social/youtube/callback         0 B                0 B
+├ ƒ /api/wallet                          0 B                0 B
+├ ƒ /dashboard                           149 B          87.5 kB
+├ ○ /dashboard/admin                     1.31 kB        88.6 kB
+├ ○ /dashboard/brand                     1.94 kB         112 kB
+├ ○ /dashboard/calendar                  1.42 kB        88.7 kB
+├ ○ /dashboard/campaign                  2.92 kB        90.2 kB
+├ ○ /dashboard/connections               5.19 kB         115 kB
+├ ○ /dashboard/credits                   6.93 kB         117 kB
+├ ○ /dashboard/library                   1.22 kB        88.5 kB
+├ ○ /login                               1.6 kB          107 kB
+├ ○ /privacy                             149 B          87.5 kB
+├ ○ /register                            1.26 kB        97.2 kB
+└ ○ /terms                               148 B          87.5 kB
++ First Load JS shared by all            87.3 kB
+  ├ chunks/5b8f0dd8-808a97fc99ab430f.js  53.7 kB
+  ├ chunks/749-5761ff94208eef02.js       31.7 kB
+  └ other shared chunks (total)          1.94 kB
+
+
+ƒ Middleware                             48.4 kB
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+

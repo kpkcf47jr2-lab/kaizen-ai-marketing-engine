@@ -1,3 +1,7 @@
+> Estado actualizado 2026-11-26: las afirmaciones LIVE siguientes son históricas.
+> Auditoría y bloqueos actuales: `docs/audit-20261126/REVIEW.md`.
+> No usar modelos externos; no confundir mocks con generación ni publicar este candidato sin aceptación.
+
 # Copilot Instructions for KAME (Kaizen AI Marketing Engine)
 
 > **⚠️ AGENTE: LEE ESTA SECCIÓN PRIMERO — ES TU BRIEFING DE CONTINUIDAD**
@@ -42,7 +46,7 @@ Web + Worker + DB + Redis desplegados y corriendo en Render.
 | **Total** | | | **$14/mes** |
 
 ### Render API Key
-- `rnd_6M1ALbz5pCRw3PoBiNifCWy0MDXB` (para gestión via API)
+- `[REDACTED_REVOKE_RENDER_CREDENTIAL]` (para gestión via API)
 
 ### GitHub
 - **Repo:** `https://github.com/kpkcf47jr2-lab/kaizen-ai-marketing-engine.git`

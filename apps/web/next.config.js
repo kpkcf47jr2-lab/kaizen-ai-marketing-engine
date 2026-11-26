@@ -7,6 +7,9 @@ const nextConfig = {
     },
   },
   images: {
+    // Temporary containment for the legacy Next 14 image-optimizer advisories.
+    // Serve original images until the framework/security migration is qualified.
+    unoptimized: true,
     remotePatterns: [
       { protocol: 'https', hostname: '**.amazonaws.com' },
       { protocol: 'https', hostname: '**.googleusercontent.com' },
