@@ -13,6 +13,7 @@ export function createNativeRenderer({blenderPath,ffmpegPath,ffprobePath,bwrapPa
   const sandboxBinary=process.platform==='linux'?executable(bwrapPath):undefined;
   const roots=[process.platform==='darwin'?path.resolve(blender,'../../..'):path.dirname(blender),process.platform==='darwin'?'/opt/homebrew':'/usr'];
   if (roots.some(r=>r==='/' || r===os.homedir())) throw new Error('unsafe_renderer_root');
+  const checkpointDirectory=checkpointRoot?fs.realpathSync(checkpointRoot):undefined;
   let busy=false;
   return async (input,{signal=new AbortController().signal,checkpointKey}={}) => {
     const plan=scenePlan(input); signal.throwIfAborted();
@@ -30,9 +31,9 @@ export function createNativeRenderer({blenderPath,ffmpegPath,ffprobePath,bwrapPa
         await run(blender,['--background','--factory-startup','--disable-autoexec','--threads','2','--python-exit-code','1','--python',path.join(job,'render.py'),'--',path.join(job,'scene.json')],opts);
         await run(ffmpeg,['-v','error','-nostdin','-framerate',String(plan.fps),'-i','frame-%04d.png','-frames:v',String(current.shots.reduce((n,s)=>n+s.frames,0)),'-c:v','libx264','-threads','2','-crf','18','-pix_fmt','yuv420p','-movflags','+faststart',output],opts);
       };
-      if(checkpointRoot){
+      if(checkpointDirectory){
         const fingerprint=createHash('sha256').update(JSON.stringify(plan)).update(script).update(fs.readFileSync(fileURLToPath(import.meta.url))).digest('hex');
-        checkpoint=openCheckpoints(checkpointRoot,checkpointKey,fingerprint,plan.shots.length);
+        checkpoint=openCheckpoints(checkpointDirectory,checkpointKey,fingerprint,plan.shots.length);
         for(const [i,shot] of plan.shots.entries()){
           opts.signal.throwIfAborted();const name=`clip-${i}.mp4`,cached=checkpoint.get(i);
           if(cached){fs.writeFileSync(path.join(job,name),cached,{mode:0o600});resumedShots++;}
