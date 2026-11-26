@@ -48,11 +48,14 @@ requiere KAME_NATIVE_TEST_BLENDER, KAME_NATIVE_TEST_BWRAP y FFmpeg/ffprobe en
 
 ## Películas y producción: pendiente
 
-Faltan proyectos persistentes por capítulos, reanudación comprobada tras caída,
-continuidad narrativa/visual, assets ricos autorizados, audio, montaje prolongado,
-control de almacenamiento y pruebas de duración. No aumentar sin más este límite
-para intentar renderizar una película de una sola vez. La integración con el chat
-público y la cola autenticada aún no se ha desplegado.
+Faltan proyectos persistentes por capítulos, continuidad narrativa/visual, assets
+ricos autorizados, audio, montaje prolongado y pruebas de duración. No aumentar
+sin más este límite para intentar renderizar una película de una sola vez. La
+integración básica con el chat y la cola autenticada ya fue desplegada y probada
+con una animación corta; véase el informe de recuperación de agente del repositorio
+KairosCoin (26 noviembre). La ampliación de checkpoints descrita abajo tiene
+prueba real aislada; su publicación se verifica por separado en el informe de
+aceptación, no se deduce de que estos archivos estén en Git.
 
 ## Reanudación acotada (26 noviembre, ampliación)
 
